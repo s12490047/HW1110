@@ -1,5 +1,6 @@
 .freebuff/
 server.log
+.wiki-build/
 __pycache__/
 *.pyc
 .DS_Store
