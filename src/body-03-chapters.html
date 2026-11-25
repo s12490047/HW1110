@@ -1,0 +1,261 @@
+      <section class="chapter" id="ch9">
+        <div class="section-head">
+          <div class="kicker">Deliverable 6 · Loop / Graph</div>
+          <h2>從資料到簡報：不是直線，是會回頭的圖</h2>
+          <p class="lead">真正的工作流不是「抓資料 → 寫簡報」一條線，而是「取得資料 → 查詢 Wiki → 整理 → 檢查 → 產生簡報」的循環。檢查會把錯誤送回上游；QA 會把問題送回渲染；反思會改寫 Wiki 的規則。</p>
+        </div>
+
+        <div class="card" style="padding:.8rem">
+          <svg viewBox="0 0 1000 430" role="img" aria-label="從取得資料到產生簡報的循環工作流圖" style="width:100%;height:auto">
+            <defs>
+              <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#5eead4"/></marker>
+              <marker id="arrowFeedback" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#fb7185"/></marker>
+            </defs>
+            <g font-family="Segoe UI, Noto Sans TC, sans-serif">
+              <rect x="35" y="45" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="112" y="72" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">1. 取得資料</text>
+              <text x="112" y="91" text-anchor="middle" fill="#8fa7b9" font-size="11">來源卡・URL・日期</text>
+
+              <rect x="230" y="45" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="307" y="72" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">2. 查詢 Wiki</text>
+              <text x="307" y="91" text-anchor="middle" fill="#8fa7b9" font-size="11">實體・口徑・缺口</text>
+
+              <rect x="425" y="45" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="502" y="72" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">3. 整理／正規化</text>
+              <text x="502" y="91" text-anchor="middle" fill="#8fa7b9" font-size="11">schema・單位・年度</text>
+
+              <rect x="620" y="45" width="155" height="62" rx="12" fill="#2a2416" stroke="#8a6a22"/>
+              <text x="697" y="72" text-anchor="middle" fill="#ffe6a6" font-size="14" font-weight="700">4. 檢查</text>
+              <text x="697" y="91" text-anchor="middle" fill="#c9b47a" font-size="11">JSON・加總・邊界</text>
+
+              <rect x="815" y="45" width="150" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="890" y="72" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">5. 產生簡報</text>
+              <text x="890" y="91" text-anchor="middle" fill="#8fa7b9" font-size="11">HTML・圖表・互動</text>
+
+              <rect x="815" y="245" width="150" height="62" rx="12" fill="#1d1828" stroke="#6b4b8a"/>
+              <text x="890" y="272" text-anchor="middle" fill="#eed8ff" font-size="14" font-weight="700">6. QA</text>
+              <text x="890" y="291" text-anchor="middle" fill="#bda5cf" font-size="11">瀏覽器・鍵盤・手機</text>
+
+              <rect x="620" y="245" width="155" height="62" rx="12" fill="#1d1828" stroke="#6b4b8a"/>
+              <text x="697" y="272" text-anchor="middle" fill="#eed8ff" font-size="14" font-weight="700">7. 反思</text>
+              <text x="697" y="291" text-anchor="middle" fill="#bda5cf" font-size="11">錯誤・規則・限制</text>
+
+              <rect x="425" y="245" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="502" y="272" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">8. 分析／建模</text>
+              <text x="502" y="291" text-anchor="middle" fill="#8fa7b9" font-size="11">Index・Tier・敏感度</text>
+
+              <rect x="230" y="245" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="307" y="272" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">9. 圖譜／索引</text>
+              <text x="307" y="291" text-anchor="middle" fill="#8fa7b9" font-size="11">節點・邊・可追溯</text>
+
+              <path d="M190 76 L225 76" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M385 76 L420 76" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M580 76 L615 76" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M775 76 L810 76" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M890 107 L890 240" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M815 276 L780 276" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M620 276 L585 276" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M425 276 L390 276" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M307 245 L307 112" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+
+              <path d="M697 107 C697 160, 190 150, 190 107" fill="none" stroke="#fb7185" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arrowFeedback)"/>
+              <text x="440" y="166" text-anchor="middle" fill="#fb7185" font-size="11">檢查失敗 → 回來源補證／改 schema</text>
+
+              <path d="M965 276 C1010 276, 1010 76, 970 76" fill="none" stroke="#fb7185" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arrowFeedback)"/>
+              <text x="1015" y="180" text-anchor="middle" fill="#fb7185" font-size="11" transform="rotate(90 1015 180)">QA 失敗 → 回渲染</text>
+
+              <path d="M697 307 C697 350, 502 350, 502 312" fill="none" stroke="#fb7185" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arrowFeedback)"/>
+              <text x="600" y="352" text-anchor="middle" fill="#fb7185" font-size="11">反思 → 更新分析與 Wiki 規則</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:1rem">
+          <div class="card">
+            <h3>哪些步驟會重複？</h3>
+            <div class="table-wrap" style="margin-top:.6rem">
+              <table>
+                <thead><tr><th>步驟</th><th>重複原因</th><th>典型次數</th></tr></thead>
+                <tbody>
+                  <tr><td>取得資料</td><td>新來源、官方公告更新、403 後改替代路徑</td><td>每個來源 1–3 次</td></tr>
+                  <tr><td>查詢 Wiki</td><td>實體別名、年度邊界、同一遊戲多版本</td><td>每款案例 2–4 次</td></tr>
+                  <tr><td>整理／正規化</td><td>單位、欄位、編碼、重複獎項</td><td>每批資料 2 次以上</td></tr>
+                  <tr><td>檢查</td><td>JSON、加總、來源 ID、年度、缺值</td><td>每次寫入後</td></tr>
+                  <tr><td>QA</td><td>桌面／手機、鍵盤、console、圖表</td><td>每次渲染後</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h3>檢查點放在哪裡？</h3>
+            <div class="table-wrap" style="margin-top:.6rem">
+              <table>
+                <thead><tr><th>檢查點</th><th>檢查什麼</th><th>失敗時</th></tr></thead>
+                <tbody>
+                  <tr><td>來源卡</td><td>URL、發布日、擷取日、限制</td><td>不讓它進 ingest</td></tr>
+                  <tr><td>主張層</td><td>每個數字是否有來源 ID</td><td>標 N/A 或補來源</td></tr>
+                  <tr><td>Schema</td><td>必填欄位、型別、單位</td><td>build 直接失敗</td></tr>
+                  <tr><td>獎項帳本</td><td>得獎／入圍、年度、加總</td><td>修正 breakdown</td></tr>
+                  <tr><td>渲染</td><td>資料綁定、空值、HTML escape</td><td>回修 render</td></tr>
+                  <tr><td>QA</td><td>導覽、搜尋、篩選、圖表、鍵盤</td><td>回修 UI</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout good" style="margin-top:1rem">
+          <strong>為什麼這樣設計？</strong> 因為最便宜的修正點在最上游。與其在簡報裡改一個錯字，不如讓 schema 在寫入時就拒絕錯誤的單位；與其在圖表上發現加總不對，不如讓 build 在獎項 breakdown 不等於 Award Index 時直接失敗。
+        </div>
+      </section>
+
+      <section class="chapter" id="ch10">
+        <div class="section-head">
+          <div class="kicker">Deliverable 7 · Execution Log</div>
+          <h2>實際執行與修正紀錄：錯誤不是附註，是方法的一部分</h2>
+          <p class="lead">以下是這次真實發生的 loop：資料落地、JSON 失敗、獎項重算、來源受阻、HTML 渲染與 QA。每一次修正都改變了下一次檢查的位置。</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item"><div class="when">2026-11-25 · 09:55</div><h4>建立資料與 Wiki 目錄</h4><p>先建立 <code>data/</code> 與 <code>wiki/</code>，把「可重用的資料」與「最後的簡報」分開。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 09:56</div><h4>22 個來源卡</h4><p>包含 Newzoo、Roblox 10-K、PMC 論文、TGA 2021–2025、BAFTA、GJ、Steam 官方 API、SteamDB 方法論，以及 7 個遊戲 Wikipedia 交叉核對。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 09:58</div><h4>18 款案例初稿</h4><p>建立 awardIndex、marketTier、來源與 caveat。此時還沒有 HTML，先確保資料可以被驗證。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 10:00</div><h4 class="fix">JSON 失敗：BOM＋編碼損壞</h4><p>PowerShell 的 <code>Get-Content -Raw</code>／<code>Set-Content -Encoding UTF8</code> 把中文與引號弄壞，<code>ConvertFrom-Json</code> 回報 invalid JSON。改為用 write tool 重建、Python <code>utf-8-sig</code> 讀取、<code>json.load</code> 驗證，並在 build 加上 schema gate。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 10:10</div><h4 class="fix">獎項重算：FFXIV 18 → 24</h4><p>初稿只列 3 勝。重新核對 TGA 2021／2022 後，確認 Best Ongoing 與 Best Community Support 各兩次，共 4 勝；修正 breakdown 並讓 build 檢查加總。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 10:20</div><h4>SteamDB 403：停止爬取</h4><p>站方明示禁止爬取且回 403。停止請求，只引用 FAQ 方法論；CCU 改用 Steam 官方 API 快照，並標記為 2026 補充。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 10:30</div><h4>TGA 官方 FAQ 403</h4><p>官方頁面訪問受限；改用 Wikipedia 轉述＋官方 URL 標註，報告中明確標記「官方頁面訪問受限」，不把轉述當官方原文。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 11:00</div><h4>單一 HTML 建置</h4><p>以 <code>src/</code> 分檔維護 CSS、HTML、JS，build 時合併成單一 <code>index.html</code>；資料以 JSON 內嵌，離線可用。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 11:30</div><h4>Browser QA</h4><p>檢查 console、導覽、搜尋、篩選、比較器、圖表、graph、模擬器、quiz、手機寬度、鍵盤操作與列印樣式。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 14:53</div><h4>Build 通過</h4><p><code>py tools/build.py</code> exit 0：210,073 bytes、18 games、22 sources、5 ceremonies、133 edges。至此資料層與渲染層第一次同時就緒。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 14:55</div><h4 class="fix">繁簡掃描：3 處簡體字</h4><p>以簡體字集掃描 <code>src/</code>，找到 3 處簡體字（「於」「徑」誤用簡體字形）；修正後重建，殘留 0。這道檢查已列入交付前清單。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 14:56</div><h4 class="fix">比較器：勾選後焦點消失</h4><p>連續勾選 3 款時，<code>renderGameGrid()</code> 重建整個 grid，把剛勾選的 checkbox 銷毀，鍵盤焦點掉回 body。改為只同步 checkbox 狀態與計數。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 14:57</div><h4 class="fix">375px：頁面横向溢出</h4><p>375px 下 <code>scrollWidth</code> 為 857，主因是 grid 用 <code>1fr</code> 被 560px 寬的表格撐開。改為 <code>minmax(0,1fr)</code>＋子項 <code>min-width:0</code>；修正後 360 ≤ 375。</p></div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>錯誤 → 偵測 → 修正 → 預防</h3>
+          <div class="table-wrap" style="margin-top:.6rem">
+            <table>
+              <thead><tr><th>錯誤</th><th>偵測方式</th><th>修正</th><th>預防（把檢查往前移）</th></tr></thead>
+              <tbody>
+                <tr><td>UTF-8 BOM／中文亂碼</td><td><code>json.load</code> 回報 BOM 或 invalid control character</td><td>用 write tool 重建；Python 以 utf-8 寫入</td><td>build 讀 <code>utf-8-sig</code>；JSON parse gate；禁止 PowerShell 改中文</td></tr>
+                <tr><td>FFXIV 獎項少計</td><td>awardIndex 與 breakdown 加總不一致</td><td>補上 2021 Best Community Support</td><td>每個獎項列 event／category／result／points；build 驗證加總</td></tr>
+                <tr><td>SteamDB 403</td><td>HTTP 403／站方禁止爬取</td><td>停止請求，改用 Steam API</td><td>來源卡先記 status 與限制；不把 blocked 來源當數據</td></tr>
+                <tr><td>TGA FAQ 403</td><td>HTTP 403</td><td>用 Wikipedia 轉述＋官方 URL</td><td>來源卡標 <code>blocked-403</code>；報告揭露</td></tr>
+                <tr><td>年度邊界混算</td><td>2025 遊戲出現 2026 BAFTA／DICE／GDC</td><td>排除 2026 獎項與 8M 等後續數據</td><td>schema 加 period／asOf；build 檢查 2021–2025</td></tr>
+                <tr><td>簡體字混用</td><td>交付前以簡體字集掃描 <code>src/</code></td><td>「於」「徑」共 3 處誤用簡體字形，已改為繁體</td><td>把繁簡掃描列為交付前必要檢查</td></tr>
+                <tr><td>比較器勾選後焦點消失</td><td>連續勾選 3 款後檢查 <code>document.activeElement</code></td><td>改為 <code>syncCompareCheckboxes()</code>，只同步狀態、不重建 grid</td><td>狀態更新不得重建整個清單</td></tr>
+                <tr><td>375px 頁面横向溢出</td><td><code>scrollWidth</code> 857 &gt; <code>innerWidth</code> 375</td><td>grid 軌道改 <code>minmax(0,1fr)</code>、子項加 <code>min-width:0</code></td><td>每次改版面都量 375px 的 scrollWidth</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>QA 清單</h3>
+          <div class="table-wrap" style="margin-top:.6rem">
+            <table>
+              <thead><tr><th>項目</th><th>檢查</th><th>狀態</th></tr></thead>
+              <tbody>
+                <tr><td>Console</td><td>無 uncaught error；資料載入與圖表渲染正常</td><td><span class="chip accent">通過</span> 0 error／0 failed request</td></tr>
+                <tr><td>導覽</td><td>12 章 anchor、active 狀態、手機選單</td><td><span class="chip accent">通過</span> 12 sections；375px 抽屜可開</td></tr>
+                <tr><td>搜尋</td><td>遊戲／來源／獎項；Ctrl+K；Esc 關閉</td><td><span class="chip accent">通過</span> 輸入 Elden 得 6 筆</td></tr>
+                <tr><td>篩選</td><td>類型、平台、排序、有獎、服務型</td><td><span class="chip accent">通過</span> MMORPG → 2 款；重設正常</td></tr>
+                <tr><td>圖表</td><td>Award、Tier、Scatter、Genre、Sim</td><td><span class="chip accent">通過</span> 18／6／18／12／5 列</td></tr>
+                <tr><td>Graph</td><td>節點可點、可拖、可鍵盤選取、filter</td><td><span class="chip accent">通過</span> 72 nodes／145 edges；點擊顯示 5 條連線</td></tr>
+                <tr><td>模擬器</td><td>權重、preset、缺值重分配、敏感度</td><td><span class="chip accent">通過</span> 市場優先：Roblox 82.0；覆蓋 7／6／5 款</td></tr>
+                <tr><td>Quiz</td><td>選答、計分、解釋、重設</td><td><span class="chip accent">通過</span> 1 題作答 → 1/8、8 題解釋全顯示</td></tr>
+                <tr><td>手機</td><td>375px 寬度、横向溢出、觸控目標</td><td><span class="chip accent">通過</span> 修正後 scrollWidth 360 ≤ 375</td></tr>
+                <tr><td>鍵盤／無障礙</td><td>skip link、focus、aria-live、對比</td><td><span class="chip accent">通過</span> 比較器勾選後焦點保留、來源 chip 可聚焦</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch11">
+        <div class="section-head">
+          <div class="kicker">Check Your Understanding</div>
+          <h2>測驗：你有沒有把口徑分開？</h2>
+          <p class="lead">八題，重點不是背數字，而是辨認「這個數字能不能這樣用」。</p>
+        </div>
+        <form class="quiz" id="quiz" aria-label="遊戲獎項與市場數據測驗"></form>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem">
+          <button class="btn btn-primary" id="quizSubmit" type="button">提交答案</button>
+          <button class="btn" id="quizReset" type="button">重設</button>
+          <div class="quiz-result" id="quizResult" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch12">
+        <div class="section-head">
+          <div class="kicker">Limits · Reflection · Sources</div>
+          <h2>限制、反思與來源追溯</h2>
+          <p class="lead">一份好的 Wiki 不是「什麼都知道」，而是「知道自己不知道什麼」。以下是本專案的主要限制，以及這次 loop 最常出錯的節點。</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card"><h3>選擇偏差</h3><p>18 款案例是 purposive sample，不是隨機抽樣；不能推論全體遊戲或全體玩家。</p></div>
+          <div class="card"><h3>權重是任意的</h3><p>Award Index 與模擬器權重是教學選擇，不是自然定律；換一組權重，排名會變。</p></div>
+          <div class="card"><h3>Ordinal 不是基數</h3><p>Market Tier 0–5 是證據等級，不是全球市場規模；Tier 4 不等於某個固定營收。</p></div>
+          <div class="card"><h3>平台數據不可混用</h3><p>Roblox 是平台層級；Steam CCU 只涵蓋 PC；註冊帳號不是活躍玩家。</p></div>
+          <div class="card"><h3>年度邊界</h3><p>2025 遊戲的 2026 BAFTA／DICE／GDC 與後續銷量不計入，避免與未完成年度混算。</p></div>
+          <div class="card"><h3>二手來源</h3><p>部分獎項與銷量以 Wikipedia 轉述交叉核對；官方頁面 403 時已明確標記。</p></div>
+        </div>
+
+        <div class="callout" style="margin-top:1rem">
+          <strong>哪個節點最常出錯？</strong> 不是圖表，也不是 CSS，而是<strong>「來源 → schema 的落地層」</strong>：編碼、單位、年度、獎項重複計分、平台口徑。這些錯誤一旦進到資料，後面每個畫面都會被污染。第二常錯的是<strong>獎項帳本的年度邊界</strong>，因為同一個遊戲會跨年度、跨典禮、跨「得獎／入圍」。
+        </div>
+
+        <div class="grid grid-2" style="margin-top:1rem">
+          <div class="card">
+            <h3>如何把檢查往前移？</h3>
+            <ol style="margin-top:.5rem;color:var(--muted);font-size:.82rem;line-height:1.9">
+              <li>來源卡先要求 URL、發布日、擷取日、status、限制；缺一不進 ingest。</li>
+              <li>每個數字都要有 source ID；沒有就標 N/A，不寫「據估計」。</li>
+              <li>schema 用 enum 管單位與口徑；build 驗證 awardIndex＝breakdown 加總。</li>
+              <li>年度與 asOf 寫進資料，而不是寫在簡報註解。</li>
+              <li>渲染前先跑資料檢查；QA 只負責互動與視覺，不負責抓資料錯。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>如果重做，我會改什麼？</h3>
+            <ol style="margin-top:.5rem;color:var(--muted);font-size:.82rem;line-height:1.9">
+              <li>先做 schema 與 validation，再抓資料；不要先寫 HTML。</li>
+              <li>把獎項 ledger 做成獨立表，每個 event／category／result 一列。</li>
+              <li>為每個來源加「可引用欄位」與「不可引用欄位」，減少誤用。</li>
+              <li>用官方 API 抓可重現快照，並記錄抓取時間與參數。</li>
+              <li>把 QA 自動化：console、連結、表格加總、手機寬度、鍵盤焦點。</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>來源追溯表</h3>
+          <div class="table-wrap" style="margin-top:.6rem" id="sourceTable"></div>
+        </div>
+
+        <div class="callout info" style="margin-top:1rem">
+          <strong>最後一句：</strong> 這份 Wiki 的價值不在於告訴你「哪款遊戲最成功」，而在於讓你能夠反駁它：指出哪個權重不合理、哪個口徑被混用、哪個年度不該算。能被打斷的模型，比看起來很準的模型誠實。
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div><strong>全球遊戲獎項、玩家表現與市場成功</strong> · 2021–2025 LLM Wiki</div>
+        <div>資料截止 2025-12-31 · 補充快照 2026-11-25 · <span id="buildMetaFooter"></span></div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-backdrop" data-close="1"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" type="button" data-close="1" aria-label="關閉詳情">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="chart-tooltip" id="chartTooltip" role="tooltip"></div>

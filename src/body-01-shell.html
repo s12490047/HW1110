@@ -1,0 +1,258 @@
+<body>
+<a class="skip-link" href="#main">跳至主要內容</a>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="章節導覽">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">GX</div>
+      <div>
+        <div class="brand-title">Game Success Wiki</div>
+        <div class="brand-sub">2021–2025 · LLM Wiki</div>
+      </div>
+    </div>
+    <nav class="chapter-nav" aria-label="章節">
+      <a href="#ch1" data-chapter="ch1"><span class="num">01</span>研究問題與範圍</a>
+      <a href="#ch2" data-chapter="ch2"><span class="num">02</span>研究方法與來源</a>
+      <a href="#ch3" data-chapter="ch3"><span class="num">03</span>獎項機制與 Index</a>
+      <a href="#ch4" data-chapter="ch4"><span class="num">04</span>市場軸與證據</a>
+      <a href="#ch5" data-chapter="ch5"><span class="num">05</span>18 款案例資料庫</a>
+      <a href="#ch6" data-chapter="ch6"><span class="num">06</span>獎項 × 市場分析</a>
+      <a href="#ch7" data-chapter="ch7"><span class="num">07</span>Knowledge Graph</a>
+      <a href="#ch8" data-chapter="ch8"><span class="num">08</span>成功權重模擬器</a>
+      <a href="#ch9" data-chapter="ch9"><span class="num">09</span>Loop / Graph 工作流</a>
+      <a href="#ch10" data-chapter="ch10"><span class="num">10</span>執行與修正紀錄</a>
+      <a href="#ch11" data-chapter="ch11"><span class="num">11</span>測驗</a>
+      <a href="#ch12" data-chapter="ch12"><span class="num">12</span>限制、反思、來源</a>
+    </nav>
+    <div class="side-meta">
+      <div><strong>研究期間</strong> 2021–2025</div>
+      <div><strong>補充快照</strong> 2026-11-25</div>
+      <div><strong>案例</strong> 18 款 · <strong>來源</strong> 22 個</div>
+      <div id="buildMetaSide" class="mono tiny" style="margin-top:.5rem"></div>
+    </div>
+  </aside>
+
+  <div class="content">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="開啟章節導覽" aria-expanded="false" aria-controls="sidebar">☰</button>
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <label class="sr-only" for="globalSearch">搜尋遊戲、獎項或來源</label>
+        <input id="globalSearch" type="search" placeholder="搜尋遊戲、獎項、來源…" autocomplete="off" aria-controls="searchResults" aria-expanded="false">
+        <kbd>Ctrl K</kbd>
+      </div>
+      <div class="top-actions">
+        <span class="pill"><span class="dot"></span>離線可用 · 單一 HTML</span>
+        <button class="btn btn-small" id="printBtn" type="button">列印 <span class="long">/ PDF</span></button>
+      </div>
+    </header>
+    <div class="search-results" id="searchResults" role="listbox" aria-label="搜尋結果" hidden></div>
+
+    <main id="main">
+      <section class="chapter hero" id="ch1">
+        <div class="hero-copy">
+          <p class="eyebrow">LLM Wiki · Awards × Players × Market</p>
+          <h1>全球遊戲獎項、<br><span class="grad">玩家表現</span>與市場成功</h1>
+          <p class="lead">這不是一份「得獎就等於成功」的清單。它把 2021–2025 的 TGA、BAFTA、Golden Joystick、DICE、GDC 訊號，和可公開核對的玩家／銷量／平台數據放在同一張桌上，讓你看見<strong>證據的形狀</strong>，而不是被單一分數說服。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#ch5">進入 18 款案例</a>
+            <a class="btn" href="#ch7">打開 Knowledge Graph</a>
+            <a class="btn btn-ghost" href="#ch8">跑成功模擬器</a>
+          </div>
+          <div class="hero-note"><span class="mark">!</span><span>2026 年資料只作補充快照，不與 2021–2025 的年度獎項、銷量或玩家數混算。所有缺失值標為 N/A，不以估算補洞。</span></div>
+        </div>
+        <div class="hero-panel">
+          <div class="stat-grid">
+            <div class="stat"><div class="num">18</div><div class="lbl">Games</div></div>
+            <div class="stat"><div class="num">22</div><div class="lbl">Sources</div></div>
+            <div class="stat"><div class="num">5</div><div class="lbl">TGA years</div></div>
+            <div class="stat"><div class="num">110<small>/110</small></div><div class="lbl">Award Index max</div></div>
+          </div>
+          <div class="axis-card" aria-label="研究軸示意">
+            <div class="axis-row"><span>獎項訊號</span><span class="axis-line amber"></span></div>
+            <div class="axis-row"><span>玩家證據</span><span class="axis-line"></span></div>
+            <div class="axis-row"><span>市場成功</span><span class="axis-line amber"></span></div>
+            <div class="axis-row"><span>長線營運</span><span class="axis-line"></span></div>
+            <div class="note" style="margin-top:.6rem">四個軸各自有口徑；複合分數只是教學模型，不是客觀排名。</div>
+          </div>
+          <div class="read-path">
+            <div class="step"><div class="n">PATH 01</div><b>先看獎項</b><span>理解 TGA 90/10 與各典禮差異</span></div>
+            <div class="step"><div class="n">PATH 02</div><b>再看市場</b><span>分辨 CCU、DAU、銷量、bookings</span></div>
+            <div class="step"><div class="n">PATH 03</div><b>最後模擬</b><span>調整權重，觀察排名如何改變</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch2">
+        <div class="section-head">
+          <div class="kicker">Deliverable 2 · Ingest Report</div>
+          <h2>研究方法與來源：先把「不能比」的東西分開</h2>
+          <p class="lead">研究採「來源卡 → 主張 → 正規化 → 檢查 → 分析」的流程。每個來源都記錄 URL、發布日、擷取日、用途與限制；每個數字都回到來源或標 N/A。</p>
+        </div>
+
+        <div class="grid grid-4" style="margin-bottom:1rem">
+          <div class="card card-tight"><div class="stat"><div class="num">2021–2025</div><div class="lbl">主要研究期間</div></div></div>
+          <div class="card card-tight"><div class="stat"><div class="num">2026-11-25</div><div class="lbl">擷取／補充快照</div></div></div>
+          <div class="card card-tight"><div class="stat"><div class="num">A–D</div><div class="lbl">證據等級</div></div></div>
+          <div class="card card-tight"><div class="stat"><div class="num">0–5</div><div class="lbl">Audience Evidence Tier</div></div></div>
+        </div>
+
+        <div class="split">
+          <div class="stack">
+            <div class="card">
+              <h3>證據等級：不是所有來源都一樣重</h3>
+              <div class="table-wrap" style="margin-top:.6rem">
+                <table>
+                  <caption>本專案的證據分級；同一遊戲可以同時有不同等級的證據。</caption>
+                  <thead><tr><th>等級</th><th>定義</th><th>例子</th><th>使用方式</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="chip accent">A</span></td><td>官方 API、SEC 申報、官方平台快照</td><td>Steam CCU API、Roblox 10-K</td><td>可直接引用；仍需注意口徑</td></tr>
+                    <tr><td><span class="chip blue">B</span></td><td>官方公告的可靠轉述、發行商里程碑</td><td>30M copies、24M registered</td><td>可用，但標註二手轉述</td></tr>
+                    <tr><td><span class="chip amber">C</span></td><td>可信第三方估算</td><td>2026 年部分銷量／營收估算</td><td>主表不用；只作背景</td></tr>
+                    <tr><td><span class="chip pink">D</span></td><td>無公開可比較數據</td><td>LoL、Fortnite、WoW 的全球 DAU</td><td>標 N/A，不用估算補洞</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="callout danger">
+              <strong>四個不可混算：</strong> CCU ≠ DAU／MAU；revenue ≠ bookings；下載／註冊 ≠ 玩家；Steam PC ≠ 全球跨平台。這四條是整份 Wiki 的硬邊界。
+            </div>
+
+            <div class="card">
+              <div class="comparator-head">
+                <div><h3>來源卡（22）</h3><div class="note">點開可看用途與限制；點遊戲裡的來源 chip 會回到這裡。</div></div>
+                <div class="note" id="sourceCount" aria-live="polite"></div>
+              </div>
+              <div class="controls">
+                <div class="control"><label for="sourceSearch">搜尋來源</label><input id="sourceSearch" type="search" placeholder="標題、發布者、用途…"></div>
+                <div class="control"><label for="sourceStatus">狀態</label><select id="sourceStatus"><option value="all">全部</option><option value="primary">官方／主要</option><option value="secondary">二手核對</option><option value="context">背景／補充</option><option value="blocked">受限／阻擋</option></select></div>
+                <div class="control-actions"><button class="btn btn-small" id="sourceReset" type="button">重設</button></div>
+              </div>
+              <div class="source-list" id="sourceList"></div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card">
+              <h3>研究問題</h3>
+              <p style="margin-top:.4rem">1. 2021–2025 的大獎訊號，和可公開核對的玩家／市場數據，呈現什麼關係？</p>
+              <p style="margin-top:.4rem">2. 哪些「成功」是獎項看得到的，哪些只看得到長線營運或平台效應？</p>
+              <p style="margin-top:.4rem">3. 當數據缺失時，我們應該留白，還是用模型補洞？本 Wiki 的選擇是：留白，並在模擬器重新分配權重。</p>
+            </div>
+            <div class="card">
+              <h3>研究邊界</h3>
+              <dl class="kv" style="margin-top:.5rem">
+                <dt>期間</dt><dd>2021-01-01–2025-12-31；2026 僅補充</dd>
+                <dt>獎項</dt><dd>TGA 為核心；BAFTA／GJ／DICE／GDC 作機制對照</dd>
+                <dt>市場</dt><dd>官方／可核對數據優先；缺失標 N/A</dd>
+                <dt>遊戲</dt><dd>18 款，涵蓋 MOBA、FPS、MMORPG、BR、Survival、Sandbox／UGC、Online RPG</dd>
+                <dt>推論</dt><dd>不做因果推論；樣本小，不計算誤導性的相關係數</dd>
+              </dl>
+            </div>
+            <div class="callout info">
+              <strong>為什麼要 Wiki？</strong> 因為簡報只是最後一層。真正可重用的是：來源卡、主張、口徑、檢查規則與圖譜。HTML 只是把 Wiki 投影成可操作的介面。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch3">
+        <div class="section-head">
+          <div class="kicker">Deliverable 3 · Awards</div>
+          <h2>獎項不是單一分數：先拆機制，再談權重</h2>
+          <p class="lead">TGA 的 GOTY 由評審 90%＋公眾 10% 決定；Players' Voice 則是 100% 公眾投票。BAFTA、DICE、GDC 偏同業評審，Golden Joystick 偏公眾。把它們等權相加，會把不同機制誤讀成同一種「品質」。</p>
+        </div>
+
+        <div class="grid grid-2" style="margin-bottom:1rem">
+          <div class="card">
+            <h3>TGA GOTY 2021–2025</h3>
+            <div id="tgaTimeline" class="stack" style="margin-top:.6rem"></div>
+          </div>
+          <div class="stack">
+            <div class="card">
+              <h3>Award Index 公式（教學模型）</h3>
+              <div class="table-wrap" style="margin-top:.6rem">
+                <table>
+                  <thead><tr><th>訊號</th><th class="num">得獎</th><th class="num">入圍</th><th>備註</th></tr></thead>
+                  <tbody>
+                    <tr><td>TGA GOTY</td><td class="num">40</td><td class="num">15</td><td>核心大獎</td></tr>
+                    <tr><td>TGA 其他獎</td><td class="num">6</td><td class="num">0</td><td>合計上限 24</td></tr>
+                    <tr><td>BAFTA Best Game</td><td class="num">20</td><td class="num">6</td><td>同業評審</td></tr>
+                    <tr><td>Golden Joystick Ultimate GOTY</td><td class="num">10</td><td class="num">0</td><td>公眾投票</td></tr>
+                    <tr><td>DICE GOTY</td><td class="num">8</td><td class="num">0</td><td>同業評審</td></tr>
+                    <tr><td>GDC GOTY</td><td class="num">8</td><td class="num">0</td><td>開發者評審</td></tr>
+                    <tr><td colspan="2"><strong>上限</strong></td><td class="num"><strong>110</strong></td><td>不是客觀滿分</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>修正紀錄：</strong> FFXIV 原本記為 18 分，只列 3 勝；重新核對 TGA 2021／2022 後，確認 Best Ongoing 與 Best Community Support 各兩次，共 4 勝，修正為 24 分。這是「獎項帳本」最典型的年度邊界與重複計分錯誤。
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="chart-title"><strong>Award Index：18 款案例</strong><span>點長條看詳情 · 0 分只代表本期大獎訊號缺失</span></div>
+          <div class="chart" id="awardChart" role="img" aria-label="18 款遊戲的 Award Index 長條圖"></div>
+          <div class="legend"><span><i style="background:#5eead4"></i>GOTY 級訊號</span><span><i style="background:#fbbf24"></i>分類獎／入圍</span><span><i style="background:#3b4d61"></i>0 分</span></div>
+          <div class="note" style="margin-top:.5rem">Award Index 只捕捉「2021–2025 的 TGA／BAFTA／GJ／DICE／GDC 大獎訊號」，不衡量遊戲品質、玩家滿意度或電競生態。2025 年遊戲的 2026 BAFTA／DICE／GDC 不計入，避免年度邊界混算。</div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch4">
+        <div class="section-head">
+          <div class="kicker">Deliverable 4 · Market Context</div>
+          <h2>市場軸：用「證據等級」代替假精準</h2>
+          <p class="lead">全球市場預測只能當背景，不能拿來推單一遊戲。個別遊戲的市場軸採 0–5 的 Audience Evidence Tier：它是一個 ordinal 教學 rubric，混合註冊、DAU、銷量與 CCU 等不同證據型態，不是全球市場規模。</p>
+        </div>
+
+        <div class="grid grid-3" style="margin-bottom:1rem">
+          <div class="card">
+            <div class="kicker tiny faint">2026F · 僅背景</div>
+            <div class="stat"><div class="num">$213.9B</div><div class="lbl">全球遊戲市場預測 · +6.1%</div></div>
+            <p style="margin-top:.4rem">Newzoo 2026 預測；不是 2021–2025 實際值，也不可推單一遊戲。</p>
+          </div>
+          <div class="card">
+            <div class="kicker tiny faint">2026F · 僅背景</div>
+            <div class="stat"><div class="num">3.70B</div><div class="lbl">全球玩家預測 · +4.4%</div></div>
+            <p style="margin-top:.4rem">Mobile $121.1B／57%、Console $46.9B／22%、PC $45.9B／21%。</p>
+          </div>
+          <div class="card">
+            <div class="kicker tiny faint">2026F · 僅背景</div>
+            <div class="stat"><div class="num">APAC 47%</div><div class="lbl">區域結構</div></div>
+            <p style="margin-top:.4rem">NA 27%、Europe 18%、LatAm 4%、MEA 4%；皆為預測值。</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="card">
+            <h3>Audience Evidence Tier 0–5</h3>
+            <div class="table-wrap" style="margin-top:.6rem">
+              <table>
+                <thead><tr><th>Tier</th><th>規則（任一）</th><th>意義</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="tier-badge tier-5">5</span></td><td>≥100M active／registered 或 ≥300M copies</td><td>最大量級證據</td></tr>
+                  <tr><td><span class="tier-badge tier-4">4</span></td><td>20–99.9M 或 ≥500k Steam CCU</td><td>大型量級</td></tr>
+                  <tr><td><span class="tier-badge tier-3">3</span></td><td>5–19.9M 或 200–499k CCU</td><td>中大型</td></tr>
+                  <tr><td><span class="tier-badge tier-2">2</span></td><td>1–4.9M 或 50–199k CCU</td><td>中型</td></tr>
+                  <tr><td><span class="tier-badge tier-1">1</span></td><td>&lt;1M 或 &lt;50k CCU</td><td>小型</td></tr>
+                  <tr><td><span class="tier-badge tier-0">0</span></td><td>無公開可比較數據</td><td>留白，不是 0 玩家</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note" style="margin-top:.5rem">Tier 4 同時容納「20M 銷量」與「≥500k CCU」；這兩種量體不可互換。Tier 0 不是「很小」，而是「沒有可公開比較的口徑」。</div>
+          </div>
+          <div class="stack">
+            <div class="chart" id="tierChart" role="img" aria-label="18 款遊戲的市場證據等級分布"></div>
+            <div class="callout info">
+              <strong>Steam 快照：</strong> 2026-11-25 的 CS2 1,191,632、PUBG 751,352、Dota 2 709,916、Apex 236,918、Rust 72,087、Elden Ring 25,283、BG3 30,580、Helldivers 2 26,721。只作補充，不是 2021–2025 同期比較。
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>市場證據表</h3>
+          <div class="table-wrap" style="margin-top:.6rem" id="marketTable"></div>
+        </div>
+      </section>

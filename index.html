@@ -1,0 +1,2777 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="全球遊戲獎項、玩家表現與市場成功：2021–2025 的 LLM Wiki、資料分析與互動教學簡報。">
+<meta name="color-scheme" content="dark">
+<title>全球遊戲獎項、玩家表現與市場成功｜2021–2025 LLM Wiki</title>
+<style>
+:root{
+  --bg:#080c12;
+  --bg-2:#0b1119;
+  --panel:#101923;
+  --panel-2:#14202c;
+  --panel-3:#182635;
+  --line:#26384b;
+  --line-soft:#1b2a3a;
+  --text:#e8eef6;
+  --muted:#9aacbf;
+  --faint:#6f8297;
+  --accent:#5eead4;
+  --accent-2:#fbbf24;
+  --blue:#60a5fa;
+  --purple:#c084fc;
+  --pink:#fb7185;
+  --green:#34d399;
+  --orange:#fb923c;
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow:0 20px 60px rgba(0,0,0,.38);
+  --max:1180px;
+  --sidebar:264px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(1100px 700px at 78% -10%, rgba(94,234,212,.08), transparent 60%),
+    radial-gradient(900px 600px at 18% 8%, rgba(96,165,250,.07), transparent 55%),
+    linear-gradient(180deg, #080c12 0%, #090e15 45%, #070a0f 100%);
+  color:var(--text);
+  font-family:"Segoe UI","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  letter-spacing:.01em;
+}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,select{font:inherit}
+button{cursor:pointer}
+img,svg{max-width:100%}
+h1,h2,h3,h4{line-height:1.25;margin:0;letter-spacing:-.01em}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.25rem}
+code,kbd{font-family:"Cascadia Code","SFMono-Regular",Consolas,monospace}
+code{background:#0a121b;border:1px solid var(--line-soft);border-radius:6px;padding:.1em .38em;color:#b9f5e9;font-size:.9em}
+kbd{background:#0a121b;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:.05em .38em;font-size:.76em;color:var(--muted)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{
+  position:fixed;top:10px;left:10px;z-index:1000;transform:translateY(-160%);
+  background:var(--accent);color:#04100e;padding:.65rem 1rem;border-radius:10px;font-weight:800;
+}
+.skip-link:focus{transform:translateY(0);outline:3px solid #fff;outline-offset:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* shell */
+.app{min-height:100vh}
+.sidebar{
+  position:fixed;inset:0 auto 0 0;width:var(--sidebar);z-index:60;
+  display:flex;flex-direction:column;gap:1rem;
+  padding:1.15rem 1rem 1.4rem;
+  background:linear-gradient(180deg, rgba(11,17,25,.98), rgba(8,12,18,.98));
+  border-right:1px solid var(--line-soft);
+  overflow-y:auto;
+}
+.brand{display:flex;gap:.7rem;align-items:center;padding:.35rem .3rem .9rem;border-bottom:1px solid var(--line-soft)}
+.brand-mark{
+  width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto;
+  background:linear-gradient(145deg, rgba(94,234,212,.2), rgba(96,165,250,.12));
+  border:1px solid rgba(94,234,212,.35);color:var(--accent);font-weight:900;font-size:1.05rem;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.brand-title{font-size:.9rem;font-weight:800;line-height:1.3}
+.brand-sub{font-size:.7rem;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+.chapter-nav{display:flex;flex-direction:column;gap:.18rem;padding:.2rem 0}
+.chapter-nav a{
+  display:flex;align-items:center;gap:.6rem;padding:.52rem .62rem;border-radius:9px;
+  color:var(--muted);font-size:.83rem;border:1px solid transparent;
+}
+.chapter-nav a:hover{background:rgba(255,255,255,.035);color:var(--text);text-decoration:none}
+.chapter-nav a.active{background:rgba(94,234,212,.09);border-color:rgba(94,234,212,.22);color:#d7fff8}
+.chapter-nav .num{font-family:"Cascadia Code",Consolas,monospace;font-size:.68rem;color:var(--faint);width:1.5rem;text-align:right;flex:0 0 auto}
+.chapter-nav a.active .num{color:var(--accent)}
+.side-meta{margin-top:auto;padding-top:1rem;border-top:1px solid var(--line-soft);font-size:.7rem;color:var(--faint);line-height:1.6}
+.side-meta strong{color:var(--muted);font-weight:700}
+.content{margin-left:var(--sidebar);min-width:0}
+.topbar{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:.9rem;
+  padding:.72rem clamp(1rem,3vw,2.2rem);
+  background:rgba(8,12,18,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+.menu-btn{display:none;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:9px;padding:.45rem .65rem}
+.search-wrap{position:relative;flex:1;max-width:640px}
+.search-wrap input{
+  width:100%;background:#0a1119;border:1px solid var(--line);color:var(--text);
+  border-radius:11px;padding:.58rem 4.6rem .58rem 2.35rem;font-size:.88rem;
+}
+.search-wrap input::placeholder{color:var(--faint)}
+.search-wrap .search-icon{position:absolute;left:.8rem;top:50%;transform:translateY(-50%);color:var(--faint);font-size:.95rem;pointer-events:none}
+.search-wrap kbd{position:absolute;right:.55rem;top:50%;transform:translateY(-50%);pointer-events:none}
+.top-actions{display:flex;align-items:center;gap:.55rem;margin-left:auto}
+.pill{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:.28rem .62rem;font-size:.7rem;white-space:nowrap}
+.pill .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+  background:var(--panel);border:1px solid var(--line);color:var(--text);
+  border-radius:10px;padding:.5rem .8rem;font-size:.8rem;font-weight:650;white-space:nowrap;
+  transition:background .15s ease,border-color .15s ease,transform .15s ease;
+}
+.btn:hover{background:var(--panel-2);border-color:#35506a;text-decoration:none}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:linear-gradient(135deg, rgba(94,234,212,.95), rgba(45,212,191,.82));border-color:transparent;color:#04110e;font-weight:850}
+.btn-primary:hover{background:linear-gradient(135deg,#7ff7e3,#5eead4)}
+.btn-ghost{background:transparent}
+.btn-small{padding:.32rem .55rem;font-size:.72rem;border-radius:8px}
+.search-results{
+  position:fixed;z-index:70;top:64px;left:calc(var(--sidebar) + clamp(1rem,3vw,2.2rem));right:clamp(1rem,3vw,2.2rem);
+  max-width:720px;max-height:min(70vh,560px);overflow:auto;
+  background:#0d151f;border:1px solid #2c4359;border-radius:14px;box-shadow:var(--shadow);padding:.4rem;
+}
+.search-results[hidden]{display:none}
+.search-result{
+  display:flex;gap:.7rem;align-items:flex-start;width:100%;text-align:left;
+  background:transparent;border:0;color:var(--text);padding:.55rem .6rem;border-radius:9px;
+}
+.search-result:hover,.search-result:focus-visible{background:rgba(94,234,212,.07)}
+.search-result .sr-type{font-size:.62rem;font-weight:800;letter-spacing:.06em;color:var(--accent);border:1px solid rgba(94,234,212,.25);border-radius:999px;padding:.1rem .4rem;white-space:nowrap;margin-top:.15rem}
+.search-result .sr-main{min-width:0}
+.search-result .sr-title{font-size:.84rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.search-result .sr-sub{font-size:.72rem;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.search-empty{padding:.9rem;color:var(--faint);font-size:.82rem}
+
+/* main */
+main{max-width:var(--max);margin:0 auto;padding:0 clamp(1rem,3vw,2.2rem) 4rem}
+.chapter{padding:clamp(2.4rem,6vw,4.6rem) 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:80px}
+.chapter:last-child{border-bottom:0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  color:var(--accent);font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  margin-bottom:.9rem;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.65}
+h1{font-size:clamp(2.15rem,5.2vw,4.3rem);font-weight:850;letter-spacing:-.035em}
+h2{font-size:clamp(1.55rem,3.2vw,2.3rem);font-weight:820;letter-spacing:-.02em}
+h3{font-size:1.02rem;font-weight:780}
+h4{font-size:.86rem;font-weight:780}
+.lead{color:var(--muted);font-size:clamp(.98rem,1.5vw,1.12rem);line-height:1.8;max-width:72ch}
+.section-head{margin-bottom:1.7rem;max-width:84ch}
+.section-head p{margin-top:.65rem}
+.section-head .kicker{font-size:.72rem;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
+.grad{background:linear-gradient(100deg,#e8fff9 0%,#5eead4 45%,#60a5fa 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:var(--muted)}
+.faint{color:var(--faint)}
+.small{font-size:.8rem}
+.tiny{font-size:.7rem}
+.mono{font-family:"Cascadia Code","SFMono-Regular",Consolas,monospace}
+.nowrap{white-space:nowrap}
+.center{text-align:center}
+.grid{display:grid;gap:1rem}
+.grid>*,.split>*,.stack>*,.hero>*,.sim-layout>*{min-width:0}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{
+  background:linear-gradient(180deg, rgba(20,32,44,.88), rgba(13,21,30,.9));
+  border:1px solid var(--line-soft);border-radius:var(--radius);padding:1.1rem;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+.card-tight{padding:.8rem}
+.card h3{margin-bottom:.35rem}
+.card p{color:var(--muted);font-size:.86rem}
+.callout{
+  border:1px solid rgba(251,191,36,.28);background:linear-gradient(135deg, rgba(251,191,36,.08), rgba(251,191,36,.02));
+  border-radius:var(--radius);padding:1rem 1.1rem;color:#f8e6b4;font-size:.86rem;
+}
+.callout.info{border-color:rgba(96,165,250,.28);background:linear-gradient(135deg, rgba(96,165,250,.09), rgba(96,165,250,.02));color:#cfe5ff}
+.callout.danger{border-color:rgba(251,113,133,.3);background:linear-gradient(135deg, rgba(251,113,133,.09), rgba(251,113,133,.02));color:#ffd5dc}
+.callout.good{border-color:rgba(52,211,153,.28);background:linear-gradient(135deg, rgba(52,211,153,.08), rgba(52,211,153,.02));color:#c9fbe8}
+.callout strong{color:#fff}
+.chip{
+  display:inline-flex;align-items:center;gap:.3rem;border:1px solid var(--line);
+  background:#0d1620;color:var(--muted);border-radius:999px;padding:.18rem .52rem;font-size:.68rem;white-space:nowrap;
+}
+.chip.accent{border-color:rgba(94,234,212,.3);color:#bffcf2;background:rgba(94,234,212,.07)}
+.chip.amber{border-color:rgba(251,191,36,.3);color:#ffe6a6;background:rgba(251,191,36,.07)}
+.chip.blue{border-color:rgba(96,165,250,.3);color:#cfe5ff;background:rgba(96,165,250,.07)}
+.chip.purple{border-color:rgba(192,132,252,.3);color:#eed8ff;background:rgba(192,132,252,.07)}
+.chip.pink{border-color:rgba(251,113,133,.3);color:#ffd5dc;background:rgba(251,113,133,.07)}
+.tag-row{display:flex;flex-wrap:wrap;gap:.32rem}
+.meter{height:7px;background:#0a121a;border:1px solid var(--line-soft);border-radius:999px;overflow:hidden}
+.meter > i{display:block;height:100%;background:linear-gradient(90deg,#2dd4bf,#60a5fa);border-radius:999px}
+.meter.amber > i{background:linear-gradient(90deg,#fbbf24,#fb923c)}
+.meter.pink > i{background:linear-gradient(90deg,#fb7185,#c084fc)}
+.hr{height:1px;background:var(--line-soft);border:0;margin:1.2rem 0}
+.sr-only-focusable:focus{position:static!important;width:auto!important;height:auto!important;clip:auto!important}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:clamp(1.5rem,4vw,3.2rem);align-items:center;padding-top:clamp(2rem,5vw,4rem)}
+.hero .lead{margin-top:1.1rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.35rem}
+.hero-note{display:flex;gap:.55rem;align-items:flex-start;margin-top:1.4rem;color:var(--faint);font-size:.76rem;max-width:60ch}
+.hero-note .mark{color:var(--accent-2);font-weight:900}
+.hero-panel{position:relative}
+.hero-panel::before{content:"";position:absolute;inset:-18px;background:radial-gradient(circle at 50% 40%,rgba(94,234,212,.12),transparent 65%);filter:blur(10px);z-index:-1}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.stat{background:linear-gradient(160deg,rgba(20,32,44,.95),rgba(10,17,25,.92));border:1px solid var(--line-soft);border-radius:14px;padding:.85rem .9rem}
+.stat .num{font-size:1.65rem;font-weight:850;letter-spacing:-.04em;line-height:1.1}
+.stat .num small{font-size:.62em;color:var(--faint);font-weight:600}
+.stat .lbl{font-size:.66rem;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;margin-top:.25rem}
+.axis-card{margin-top:.7rem;background:#0b131c;border:1px solid var(--line-soft);border-radius:14px;padding:.9rem}
+.axis-card .axis-row{display:grid;grid-template-columns:76px 1fr;gap:.6rem;align-items:center;font-size:.68rem;color:var(--faint);margin:.35rem 0}
+.axis-card .axis-line{height:1px;background:linear-gradient(90deg,rgba(94,234,212,.6),rgba(96,165,250,.1));position:relative}
+.axis-card .axis-line::after{content:"";position:absolute;right:0;top:-2px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
+.axis-card .axis-line.amber{background:linear-gradient(90deg,rgba(251,191,36,.65),rgba(251,113,133,.1))}
+.axis-card .axis-line.amber::after{background:var(--accent-2)}
+.read-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-top:1rem}
+.read-path .step{background:rgba(16,25,35,.7);border:1px solid var(--line-soft);border-radius:12px;padding:.75rem}
+.read-path .step b{display:block;font-size:.78rem;color:var(--text)}
+.read-path .step span{display:block;font-size:.7rem;color:var(--faint);margin-top:.2rem}
+.read-path .step .n{font-family:"Cascadia Code",Consolas,monospace;font-size:.62rem;color:var(--accent);margin-bottom:.3rem}
+
+/* generic section pieces */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:1rem;align-items:start}
+.stack{display:flex;flex-direction:column;gap:.8rem}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:.55rem;font-size:.8rem}
+.kv dt{color:var(--faint)}
+.kv dd{margin:0;color:var(--muted)}
+.stat-row{display:flex;flex-wrap:wrap;gap:.5rem}
+.stat-chip{background:#0c141d;border:1px solid var(--line-soft);border-radius:10px;padding:.45rem .65rem;min-width:110px}
+.stat-chip .v{font-weight:800;font-size:1rem}
+.stat-chip .k{font-size:.64rem;color:var(--faint);letter-spacing:.06em;text-transform:uppercase}
+.note{font-size:.76rem;color:var(--faint);line-height:1.65}
+.source-list{display:flex;flex-direction:column;gap:.55rem}
+.source-card{border:1px solid var(--line-soft);border-radius:12px;background:rgba(13,21,30,.7);overflow:hidden}
+.source-card[open]{border-color:#2f4a61;background:rgba(16,26,37,.9)}
+.source-card summary{display:flex;gap:.65rem;align-items:center;padding:.62rem .75rem;cursor:pointer;list-style:none}
+.source-card summary::-webkit-details-marker{display:none}
+.source-card summary:hover{background:rgba(255,255,255,.025)}
+.source-card .sid{font-family:"Cascadia Code",Consolas,monospace;font-size:.68rem;color:var(--accent);border:1px solid rgba(94,234,212,.25);border-radius:6px;padding:.1rem .3rem;flex:0 0 auto}
+.source-card .stitle{font-size:.78rem;font-weight:650;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.source-card .sbody{padding:.1rem .8rem .8rem;border-top:1px solid var(--line-soft);font-size:.76rem;color:var(--muted)}
+.source-card .sbody p{margin:.45rem 0}
+.source-card .sbody .label{color:var(--faint);font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;margin-right:.35rem}
+.source-card.highlight{box-shadow:0 0 0 2px rgba(94,234,212,.65);border-color:var(--accent)}
+.status{font-size:.6rem;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:.12rem .4rem;white-space:nowrap}
+.status.primary{background:rgba(52,211,153,.12);color:#9df5d3;border:1px solid rgba(52,211,153,.3)}
+.status.secondary{background:rgba(96,165,250,.12);color:#cfe5ff;border:1px solid rgba(96,165,250,.3)}
+.status.context{background:rgba(251,191,36,.1);color:#ffe6a6;border:1px solid rgba(251,191,36,.28)}
+.status.supplement{background:rgba(192,132,252,.1);color:#eed8ff;border:1px solid rgba(192,132,252,.28)}
+.status.blocked{background:rgba(251,113,133,.1);color:#ffd5dc;border:1px solid rgba(251,113,133,.28)}
+.status.method{background:rgba(148,163,184,.12);color:#d7e0ea;border:1px solid rgba(148,163,184,.28)}
+.source-chip{
+  display:inline-flex;align-items:center;border:1px solid rgba(94,234,212,.24);background:rgba(94,234,212,.06);
+  color:#bffcf2;border-radius:7px;padding:.08rem .34rem;font-size:.64rem;font-family:"Cascadia Code",Consolas,monospace;
+}
+.source-chip:hover{background:rgba(94,234,212,.14);text-decoration:none}
+
+/* tables */
+.table-wrap{overflow:auto;border:1px solid var(--line-soft);border-radius:14px;background:rgba(10,17,25,.7)}
+table{width:100%;border-collapse:collapse;font-size:.78rem;min-width:620px}
+caption{text-align:left;padding:.75rem .9rem .35rem;color:var(--faint);font-size:.7rem}
+th,td{padding:.58rem .68rem;border-bottom:1px solid var(--line-soft);text-align:left;vertical-align:top}
+th{position:sticky;top:0;background:#0d1620;color:var(--faint);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;z-index:1}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:rgba(255,255,255,.025)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.table-note{padding:.6rem .9rem;color:var(--faint);font-size:.68rem;border-top:1px solid var(--line-soft)}
+
+/* charts */
+.chart{
+  border:1px solid var(--line-soft);border-radius:14px;background:
+    linear-gradient(rgba(38,56,75,.12) 1px,transparent 1px) 0 0/100% 28px,
+    rgba(10,17,25,.72);
+  padding:.75rem;overflow:hidden;
+}
+.chart svg{display:block;width:100%;height:auto}
+.chart .chart-title{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;padding:.15rem .2rem .55rem;font-size:.72rem;color:var(--faint)}
+.chart .chart-title strong{color:var(--muted);font-size:.78rem}
+.chart-row{cursor:pointer}
+.chart-row:hover rect.bar{filter:brightness(1.22)}
+.chart-row:focus-visible{outline:none}
+.chart-row:focus-visible rect.bar{stroke:#fff;stroke-width:2}
+.axis{stroke:#2a3d50;stroke-width:1}
+.axis-label{fill:#6f8297;font-size:11px}
+.axis-title{fill:#9aacbf;font-size:12px;font-weight:600}
+.bar{transition:filter .15s ease}
+.legend{display:flex;flex-wrap:wrap;gap:.7rem;font-size:.68rem;color:var(--faint);padding:.2rem .2rem 0}
+.legend span{display:inline-flex;align-items:center;gap:.3rem}
+.legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.chart-tooltip{position:fixed;z-index:120;pointer-events:none;background:#0b141e;border:1px solid #35506a;border-radius:8px;padding:.35rem .5rem;font-size:.7rem;color:var(--text);box-shadow:var(--shadow);max-width:280px;display:none}
+
+/* controls */
+.controls{display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;margin:1rem 0}
+.control{display:flex;flex-direction:column;gap:.22rem;font-size:.66rem;color:var(--faint)}
+.control input,.control select{
+  background:#0a121b;border:1px solid var(--line);color:var(--text);border-radius:9px;
+  padding:.45rem .55rem;font-size:.78rem;min-width:150px;
+}
+.control input[type="search"]{min-width:220px}
+.control.check{flex-direction:row;align-items:center;gap:.4rem;font-size:.74rem;color:var(--muted);background:#0a121b;border:1px solid var(--line);border-radius:9px;padding:.42rem .55rem;cursor:pointer}
+.control.check input{min-width:auto;accent-color:var(--accent)}
+.control-actions{display:flex;gap:.45rem;align-items:flex-end;margin-left:auto}
+.result-count{font-size:.72rem;color:var(--faint);margin:.2rem 0 .8rem}
+.empty{padding:2rem 1rem;text-align:center;color:var(--faint);border:1px dashed var(--line);border-radius:14px;font-size:.82rem}
+
+/* game cards */
+.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem}
+.game-card{
+  position:relative;display:flex;flex-direction:column;gap:.65rem;
+  background:linear-gradient(170deg,rgba(20,32,44,.92),rgba(11,18,26,.92));
+  border:1px solid var(--line-soft);border-radius:15px;padding:.9rem;
+  transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+}
+.game-card:hover{transform:translateY(-2px);border-color:#345069;box-shadow:0 12px 30px rgba(0,0,0,.24)}
+.game-card .top{display:flex;gap:.6rem;justify-content:space-between;align-items:flex-start}
+.game-card h3{font-size:1rem}
+.game-card h3 span{display:block;font-size:.7rem;color:var(--faint);font-weight:500;margin-top:.1rem}
+.game-card .meta{font-size:.68rem;color:var(--faint);margin-top:.25rem}
+.game-card p{font-size:.78rem;color:var(--muted);line-height:1.65;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.game-card .award-mini{display:flex;align-items:center;gap:.5rem;font-size:.68rem;color:var(--faint)}
+.game-card .award-mini strong{color:var(--accent);font-size:.9rem;min-width:2.1rem;text-align:right}
+.game-card .award-mini .meter{flex:1}
+.game-card .actions{display:flex;gap:.45rem;align-items:center;margin-top:auto;padding-top:.25rem}
+.game-card .actions .compare{display:flex;align-items:center;gap:.35rem;font-size:.7rem;color:var(--muted);margin-left:auto;cursor:pointer}
+.game-card .actions input{accent-color:var(--accent)}
+.tier-badge{font-size:.6rem;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:.15rem .45rem;white-space:nowrap;border:1px solid var(--line);color:var(--muted);background:#0c141d}
+.tier-0{color:#a9b6c5;border-color:#3a4b5e}
+.tier-1{color:#cfe5ff;border-color:rgba(96,165,250,.35);background:rgba(96,165,250,.08)}
+.tier-2{color:#bffcf2;border-color:rgba(94,234,212,.35);background:rgba(94,234,212,.07)}
+.tier-3{color:#ffe6a6;border-color:rgba(251,191,36,.35);background:rgba(251,191,36,.07)}
+.tier-4{color:#ffd5dc;border-color:rgba(251,113,133,.35);background:rgba(251,113,133,.07)}
+.tier-5{color:#eed8ff;border-color:rgba(192,132,252,.4);background:rgba(192,132,252,.09)}
+
+/* comparator */
+.comparator{margin-top:1.2rem}
+.comparator-head{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:.6rem}
+.comparator-head h3{font-size:.95rem}
+.compare-empty{border:1px dashed var(--line);border-radius:12px;padding:1rem;color:var(--faint);font-size:.78rem}
+.compare-table td:first-child{color:var(--faint);white-space:nowrap}
+
+/* timeline */
+.timeline{position:relative;display:flex;flex-direction:column;gap:.8rem;padding-left:1.35rem}
+.timeline::before{content:"";position:absolute;left:.36rem;top:.3rem;bottom:.3rem;width:1px;background:linear-gradient(var(--accent),rgba(96,165,250,.2))}
+.timeline-item{position:relative;background:rgba(13,21,30,.7);border:1px solid var(--line-soft);border-radius:12px;padding:.75rem .85rem}
+.timeline-item::before{content:"";position:absolute;left:-1.12rem;top:1rem;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(94,234,212,.12)}
+.timeline-item .when{font-size:.62rem;color:var(--faint);font-family:"Cascadia Code",Consolas,monospace;letter-spacing:.04em}
+.timeline-item h4{margin:.15rem 0 .2rem;font-size:.82rem}
+.timeline-item p{font-size:.76rem;color:var(--muted)}
+.timeline-item .fix{color:#bffcf2}
+
+/* graph */
+.graph-controls{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.65rem}
+.graph-controls select,.graph-controls input{background:#0a121b;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:.42rem .55rem;font-size:.76rem}
+.graph-wrap{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:.8rem;align-items:stretch}
+.graph-canvas{position:relative;border:1px solid var(--line-soft);border-radius:14px;background:
+  radial-gradient(circle at 50% 50%,rgba(94,234,212,.04),transparent 55%),
+  linear-gradient(rgba(38,56,75,.13) 1px,transparent 1px) 0 0/100% 32px,
+  linear-gradient(90deg,rgba(38,56,75,.13) 1px,transparent 1px) 0 0/32px 100%,
+  #0a1119;
+  overflow:hidden;min-height:520px;
+}
+.graph-canvas svg{display:block;width:100%;height:100%;min-height:520px;touch-action:none}
+.graph-edge{stroke:#2b4055;stroke-width:1;opacity:.55}
+.graph-edge.award{stroke:rgba(251,191,36,.55)}
+.graph-edge.source{stroke:rgba(96,165,250,.32)}
+.graph-edge.genre{stroke:rgba(94,234,212,.42)}
+.graph-node{cursor:pointer;transition:opacity .15s ease}
+.graph-node circle{stroke:#0a1119;stroke-width:2;transition:r .15s ease,filter .15s ease}
+.graph-node text{fill:#c6d2df;font-size:10px;pointer-events:none;paint-order:stroke;stroke:#0a1119;stroke-width:3px;stroke-linejoin:round}
+.graph-node:hover circle,.graph-node:focus-visible circle{filter:brightness(1.3);stroke:#fff}
+.graph-node:focus-visible{outline:none}
+.graph-node.dim{opacity:.13}
+.graph-node.match circle{stroke:#fff;stroke-width:3;filter:drop-shadow(0 0 8px rgba(94,234,212,.9))}
+.graph-node.hidden{display:none}
+.graph-node.center text{font-size:12px;font-weight:800;fill:#eafffb}
+.graph-node.genre text{fill:#bffcf2;font-weight:700}
+.graph-node.game text{fill:#e8eef6}
+.graph-node.award text{fill:#ffe6a6}
+.graph-node.source text{fill:#cfe5ff;font-size:9px}
+.graph-node.platform text{fill:#eed8ff}
+.graph-detail{border:1px solid var(--line-soft);border-radius:14px;background:rgba(13,21,30,.8);padding:.85rem;min-height:200px;overflow:auto;max-height:600px}
+.graph-detail h4{font-size:.8rem;margin-bottom:.25rem}
+.graph-detail p{font-size:.74rem;color:var(--muted);margin:.35rem 0}
+.graph-detail .conn{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
+.graph-detail .conn button{font-size:.64rem;border:1px solid var(--line);background:#0c141d;color:var(--muted);border-radius:6px;padding:.12rem .34rem}
+.graph-legend{display:flex;flex-wrap:wrap;gap:.55rem;font-size:.66rem;color:var(--faint);margin-top:.45rem}
+.graph-legend span{display:inline-flex;align-items:center;gap:.3rem}
+.graph-legend i{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* simulator */
+.sim-layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:.9rem;align-items:start}
+.sim-controls{display:flex;flex-direction:column;gap:.75rem}
+.weight{background:#0b131c;border:1px solid var(--line-soft);border-radius:11px;padding:.55rem .65rem}
+.weight label{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);gap:.5rem}
+.weight label strong{color:var(--accent);font-variant-numeric:tabular-nums}
+.weight input[type="range"]{width:100%;accent-color:var(--accent);margin-top:.35rem}
+.preset-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.sim-table .score-cell{min-width:120px}
+.sim-table .score-line{display:flex;align-items:center;gap:.45rem}
+.sim-table .score-line .meter{flex:1;min-width:60px}
+.sim-table .coverage{font-size:.64rem;color:var(--faint)}
+.dim-pill{display:inline-flex;align-items:center;gap:.25rem;font-size:.62rem;border:1px solid var(--line);border-radius:6px;padding:.08rem .3rem;color:var(--muted)}
+.dim-pill b{color:var(--text);font-weight:700}
+
+/* quiz */
+.quiz{display:flex;flex-direction:column;gap:.8rem}
+.question{border:1px solid var(--line-soft);border-radius:13px;background:rgba(13,21,30,.72);padding:.85rem}
+.question legend{font-size:.84rem;font-weight:700;padding:0 .2rem}
+.question .options{display:flex;flex-direction:column;gap:.4rem;margin-top:.55rem}
+.question label.opt{display:flex;gap:.5rem;align-items:flex-start;border:1px solid var(--line-soft);border-radius:9px;padding:.45rem .55rem;font-size:.78rem;color:var(--muted);cursor:pointer}
+.question label.opt:hover{background:rgba(255,255,255,.025)}
+.question label.opt input{margin-top:.25rem;accent-color:var(--accent)}
+.question label.opt.correct{border-color:rgba(52,211,153,.55);background:rgba(52,211,153,.08);color:#c9fbe8}
+.question label.opt.wrong{border-color:rgba(251,113,133,.55);background:rgba(251,113,133,.08);color:#ffd5dc}
+.quiz-explain{display:none;margin-top:.55rem;padding:.5rem .6rem;border-left:2px solid var(--accent);background:rgba(94,234,212,.05);font-size:.74rem;color:var(--muted)}
+.quiz-explain.show{display:block}
+.quiz-result{font-size:.88rem;font-weight:700;color:var(--accent)}
+
+/* modal / toast */
+.modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:1rem}
+.modal[hidden]{display:none}
+.modal-backdrop{position:absolute;inset:0;background:rgba(2,6,10,.78);backdrop-filter:blur(6px)}
+.modal-card{
+  position:relative;z-index:1;width:min(760px,100%);max-height:88vh;overflow:auto;
+  background:linear-gradient(180deg,#121d28,#0b121a);border:1px solid #31485e;border-radius:18px;
+  box-shadow:var(--shadow);padding:1.15rem;
+}
+.modal-close{position:absolute;right:.7rem;top:.65rem;background:#0c141d;border:1px solid var(--line);color:var(--muted);border-radius:8px;width:32px;height:32px;font-size:1.1rem;line-height:1}
+.modal h3{font-size:1.35rem;padding-right:2.2rem}
+.modal .modal-sub{color:var(--faint);font-size:.75rem;margin-top:.2rem}
+.modal .modal-section{margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--line-soft)}
+.modal .modal-section h4{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:.45rem}
+.modal .modal-section p{font-size:.8rem;color:var(--muted)}
+.modal .dim-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.modal .dim{background:#0b131c;border:1px solid var(--line-soft);border-radius:10px;padding:.5rem .6rem}
+.modal .dim .k{font-size:.62rem;color:var(--faint)}
+.modal .dim .v{font-size:.9rem;font-weight:800;color:var(--text)}
+.modal .dim .meter{margin-top:.3rem}
+.toast{
+  position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,20px);z-index:300;
+  background:#0d1823;border:1px solid #35506a;color:var(--text);border-radius:10px;
+  padding:.55rem .8rem;font-size:.76rem;box-shadow:var(--shadow);opacity:0;pointer-events:none;
+  transition:opacity .2s ease,transform .2s ease;max-width:90vw;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* footer */
+footer{border-top:1px solid var(--line-soft);padding:1.4rem clamp(1rem,3vw,2.2rem);color:var(--faint);font-size:.72rem}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-inner strong{color:var(--muted)}
+
+@media (max-width:1100px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:2rem}
+  .hero-panel{max-width:560px}
+  .sim-layout{grid-template-columns:minmax(0,1fr)}
+  .graph-wrap{grid-template-columns:minmax(0,1fr)}
+  .graph-detail{max-height:none}
+}
+@media (max-width:980px){
+  :root{--sidebar:0px}
+  .sidebar{
+    transform:translateX(-102%);transition:transform .22s ease;width:270px;
+    box-shadow:20px 0 50px rgba(0,0,0,.4);
+  }
+  body.nav-open .sidebar{transform:translateX(0)}
+  body.nav-open::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:55}
+  .content{margin-left:0}
+  .menu-btn{display:inline-flex}
+  .search-results{left:1rem;right:1rem}
+  .top-actions .pill{display:none}
+  .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .split{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:720px){
+  body{font-size:15px}
+  .topbar{padding:.6rem .8rem;gap:.5rem}
+  .search-wrap input{padding-right:2.6rem}
+  .search-wrap kbd{display:none}
+  .chapter{padding:2.3rem 0}
+  .hero{padding-top:1.7rem}
+  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .read-path{grid-template-columns:1fr}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:minmax(0,1fr)}
+  .controls{gap:.45rem}
+  .control,.control input,.control select{width:100%;min-width:0}
+  .control-actions{width:100%;margin-left:0}
+  .control-actions .btn{flex:1}
+  .game-grid{grid-template-columns:minmax(0,1fr)}
+  .modal .dim-grid{grid-template-columns:minmax(0,1fr)}
+  .top-actions .btn span.long{display:none}
+  .footer-inner{flex-direction:column}
+  .graph-canvas,.graph-canvas svg{min-height:430px}
+  table{min-width:560px}
+}
+@media (max-width:480px){
+  .stat .num{font-size:1.35rem}
+  .hero-actions .btn{width:100%}
+  .hero-actions{flex-direction:column}
+  .modal-card{padding:.9rem}
+  .modal .dim-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+@media print{
+  :root{--bg:#fff;--text:#111;--muted:#333;--faint:#555;--line:#bbb;--line-soft:#ddd;--panel:#fff;--panel-2:#f5f5f5}
+  body{background:#fff;color:#111;font-size:11pt}
+  .sidebar,.topbar,.search-results,.hero-actions,.controls,.graph-controls,.modal,.toast,.btn,.game-card .actions,.quiz button,.chart-tooltip{display:none!important}
+  .content{margin:0}
+  main{max-width:none;padding:0}
+  .chapter{break-inside:avoid;border-bottom:1px solid #ddd;padding:1.2rem 0}
+  .card,.callout,.chart,.table-wrap,.game-card,.question,.timeline-item{background:#fff!important;box-shadow:none!important;border-color:#ccc!important}
+  .grad{color:#111!important;background:none!important;-webkit-text-fill-color:#111}
+  a{color:#111;text-decoration:underline}
+  .game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .game-card p{-webkit-line-clamp:unset;display:block}
+  .graph-canvas{min-height:360px}
+  .graph-canvas svg{min-height:360px}
+  .tier-badge{border-color:#999!important;color:#111!important}
+  .chart svg{max-height:300px}
+}
+
+</style>
+</head>
+
+<body>
+<a class="skip-link" href="#main">跳至主要內容</a>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="章節導覽">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">GX</div>
+      <div>
+        <div class="brand-title">Game Success Wiki</div>
+        <div class="brand-sub">2021–2025 · LLM Wiki</div>
+      </div>
+    </div>
+    <nav class="chapter-nav" aria-label="章節">
+      <a href="#ch1" data-chapter="ch1"><span class="num">01</span>研究問題與範圍</a>
+      <a href="#ch2" data-chapter="ch2"><span class="num">02</span>研究方法與來源</a>
+      <a href="#ch3" data-chapter="ch3"><span class="num">03</span>獎項機制與 Index</a>
+      <a href="#ch4" data-chapter="ch4"><span class="num">04</span>市場軸與證據</a>
+      <a href="#ch5" data-chapter="ch5"><span class="num">05</span>18 款案例資料庫</a>
+      <a href="#ch6" data-chapter="ch6"><span class="num">06</span>獎項 × 市場分析</a>
+      <a href="#ch7" data-chapter="ch7"><span class="num">07</span>Knowledge Graph</a>
+      <a href="#ch8" data-chapter="ch8"><span class="num">08</span>成功權重模擬器</a>
+      <a href="#ch9" data-chapter="ch9"><span class="num">09</span>Loop / Graph 工作流</a>
+      <a href="#ch10" data-chapter="ch10"><span class="num">10</span>執行與修正紀錄</a>
+      <a href="#ch11" data-chapter="ch11"><span class="num">11</span>測驗</a>
+      <a href="#ch12" data-chapter="ch12"><span class="num">12</span>限制、反思、來源</a>
+    </nav>
+    <div class="side-meta">
+      <div><strong>研究期間</strong> 2021–2025</div>
+      <div><strong>補充快照</strong> 2026-11-25</div>
+      <div><strong>案例</strong> 18 款 · <strong>來源</strong> 22 個</div>
+      <div id="buildMetaSide" class="mono tiny" style="margin-top:.5rem"></div>
+    </div>
+  </aside>
+
+  <div class="content">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="開啟章節導覽" aria-expanded="false" aria-controls="sidebar">☰</button>
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <label class="sr-only" for="globalSearch">搜尋遊戲、獎項或來源</label>
+        <input id="globalSearch" type="search" placeholder="搜尋遊戲、獎項、來源…" autocomplete="off" aria-controls="searchResults" aria-expanded="false">
+        <kbd>Ctrl K</kbd>
+      </div>
+      <div class="top-actions">
+        <span class="pill"><span class="dot"></span>離線可用 · 單一 HTML</span>
+        <button class="btn btn-small" id="printBtn" type="button">列印 <span class="long">/ PDF</span></button>
+      </div>
+    </header>
+    <div class="search-results" id="searchResults" role="listbox" aria-label="搜尋結果" hidden></div>
+
+    <main id="main">
+      <section class="chapter hero" id="ch1">
+        <div class="hero-copy">
+          <p class="eyebrow">LLM Wiki · Awards × Players × Market</p>
+          <h1>全球遊戲獎項、<br><span class="grad">玩家表現</span>與市場成功</h1>
+          <p class="lead">這不是一份「得獎就等於成功」的清單。它把 2021–2025 的 TGA、BAFTA、Golden Joystick、DICE、GDC 訊號，和可公開核對的玩家／銷量／平台數據放在同一張桌上，讓你看見<strong>證據的形狀</strong>，而不是被單一分數說服。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#ch5">進入 18 款案例</a>
+            <a class="btn" href="#ch7">打開 Knowledge Graph</a>
+            <a class="btn btn-ghost" href="#ch8">跑成功模擬器</a>
+          </div>
+          <div class="hero-note"><span class="mark">!</span><span>2026 年資料只作補充快照，不與 2021–2025 的年度獎項、銷量或玩家數混算。所有缺失值標為 N/A，不以估算補洞。</span></div>
+        </div>
+        <div class="hero-panel">
+          <div class="stat-grid">
+            <div class="stat"><div class="num">18</div><div class="lbl">Games</div></div>
+            <div class="stat"><div class="num">22</div><div class="lbl">Sources</div></div>
+            <div class="stat"><div class="num">5</div><div class="lbl">TGA years</div></div>
+            <div class="stat"><div class="num">110<small>/110</small></div><div class="lbl">Award Index max</div></div>
+          </div>
+          <div class="axis-card" aria-label="研究軸示意">
+            <div class="axis-row"><span>獎項訊號</span><span class="axis-line amber"></span></div>
+            <div class="axis-row"><span>玩家證據</span><span class="axis-line"></span></div>
+            <div class="axis-row"><span>市場成功</span><span class="axis-line amber"></span></div>
+            <div class="axis-row"><span>長線營運</span><span class="axis-line"></span></div>
+            <div class="note" style="margin-top:.6rem">四個軸各自有口徑；複合分數只是教學模型，不是客觀排名。</div>
+          </div>
+          <div class="read-path">
+            <div class="step"><div class="n">PATH 01</div><b>先看獎項</b><span>理解 TGA 90/10 與各典禮差異</span></div>
+            <div class="step"><div class="n">PATH 02</div><b>再看市場</b><span>分辨 CCU、DAU、銷量、bookings</span></div>
+            <div class="step"><div class="n">PATH 03</div><b>最後模擬</b><span>調整權重，觀察排名如何改變</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch2">
+        <div class="section-head">
+          <div class="kicker">Deliverable 2 · Ingest Report</div>
+          <h2>研究方法與來源：先把「不能比」的東西分開</h2>
+          <p class="lead">研究採「來源卡 → 主張 → 正規化 → 檢查 → 分析」的流程。每個來源都記錄 URL、發布日、擷取日、用途與限制；每個數字都回到來源或標 N/A。</p>
+        </div>
+
+        <div class="grid grid-4" style="margin-bottom:1rem">
+          <div class="card card-tight"><div class="stat"><div class="num">2021–2025</div><div class="lbl">主要研究期間</div></div></div>
+          <div class="card card-tight"><div class="stat"><div class="num">2026-11-25</div><div class="lbl">擷取／補充快照</div></div></div>
+          <div class="card card-tight"><div class="stat"><div class="num">A–D</div><div class="lbl">證據等級</div></div></div>
+          <div class="card card-tight"><div class="stat"><div class="num">0–5</div><div class="lbl">Audience Evidence Tier</div></div></div>
+        </div>
+
+        <div class="split">
+          <div class="stack">
+            <div class="card">
+              <h3>證據等級：不是所有來源都一樣重</h3>
+              <div class="table-wrap" style="margin-top:.6rem">
+                <table>
+                  <caption>本專案的證據分級；同一遊戲可以同時有不同等級的證據。</caption>
+                  <thead><tr><th>等級</th><th>定義</th><th>例子</th><th>使用方式</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="chip accent">A</span></td><td>官方 API、SEC 申報、官方平台快照</td><td>Steam CCU API、Roblox 10-K</td><td>可直接引用；仍需注意口徑</td></tr>
+                    <tr><td><span class="chip blue">B</span></td><td>官方公告的可靠轉述、發行商里程碑</td><td>30M copies、24M registered</td><td>可用，但標註二手轉述</td></tr>
+                    <tr><td><span class="chip amber">C</span></td><td>可信第三方估算</td><td>2026 年部分銷量／營收估算</td><td>主表不用；只作背景</td></tr>
+                    <tr><td><span class="chip pink">D</span></td><td>無公開可比較數據</td><td>LoL、Fortnite、WoW 的全球 DAU</td><td>標 N/A，不用估算補洞</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="callout danger">
+              <strong>四個不可混算：</strong> CCU ≠ DAU／MAU；revenue ≠ bookings；下載／註冊 ≠ 玩家；Steam PC ≠ 全球跨平台。這四條是整份 Wiki 的硬邊界。
+            </div>
+
+            <div class="card">
+              <div class="comparator-head">
+                <div><h3>來源卡（22）</h3><div class="note">點開可看用途與限制；點遊戲裡的來源 chip 會回到這裡。</div></div>
+                <div class="note" id="sourceCount" aria-live="polite"></div>
+              </div>
+              <div class="controls">
+                <div class="control"><label for="sourceSearch">搜尋來源</label><input id="sourceSearch" type="search" placeholder="標題、發布者、用途…"></div>
+                <div class="control"><label for="sourceStatus">狀態</label><select id="sourceStatus"><option value="all">全部</option><option value="primary">官方／主要</option><option value="secondary">二手核對</option><option value="context">背景／補充</option><option value="blocked">受限／阻擋</option></select></div>
+                <div class="control-actions"><button class="btn btn-small" id="sourceReset" type="button">重設</button></div>
+              </div>
+              <div class="source-list" id="sourceList"></div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card">
+              <h3>研究問題</h3>
+              <p style="margin-top:.4rem">1. 2021–2025 的大獎訊號，和可公開核對的玩家／市場數據，呈現什麼關係？</p>
+              <p style="margin-top:.4rem">2. 哪些「成功」是獎項看得到的，哪些只看得到長線營運或平台效應？</p>
+              <p style="margin-top:.4rem">3. 當數據缺失時，我們應該留白，還是用模型補洞？本 Wiki 的選擇是：留白，並在模擬器重新分配權重。</p>
+            </div>
+            <div class="card">
+              <h3>研究邊界</h3>
+              <dl class="kv" style="margin-top:.5rem">
+                <dt>期間</dt><dd>2021-01-01–2025-12-31；2026 僅補充</dd>
+                <dt>獎項</dt><dd>TGA 為核心；BAFTA／GJ／DICE／GDC 作機制對照</dd>
+                <dt>市場</dt><dd>官方／可核對數據優先；缺失標 N/A</dd>
+                <dt>遊戲</dt><dd>18 款，涵蓋 MOBA、FPS、MMORPG、BR、Survival、Sandbox／UGC、Online RPG</dd>
+                <dt>推論</dt><dd>不做因果推論；樣本小，不計算誤導性的相關係數</dd>
+              </dl>
+            </div>
+            <div class="callout info">
+              <strong>為什麼要 Wiki？</strong> 因為簡報只是最後一層。真正可重用的是：來源卡、主張、口徑、檢查規則與圖譜。HTML 只是把 Wiki 投影成可操作的介面。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch3">
+        <div class="section-head">
+          <div class="kicker">Deliverable 3 · Awards</div>
+          <h2>獎項不是單一分數：先拆機制，再談權重</h2>
+          <p class="lead">TGA 的 GOTY 由評審 90%＋公眾 10% 決定；Players' Voice 則是 100% 公眾投票。BAFTA、DICE、GDC 偏同業評審，Golden Joystick 偏公眾。把它們等權相加，會把不同機制誤讀成同一種「品質」。</p>
+        </div>
+
+        <div class="grid grid-2" style="margin-bottom:1rem">
+          <div class="card">
+            <h3>TGA GOTY 2021–2025</h3>
+            <div id="tgaTimeline" class="stack" style="margin-top:.6rem"></div>
+          </div>
+          <div class="stack">
+            <div class="card">
+              <h3>Award Index 公式（教學模型）</h3>
+              <div class="table-wrap" style="margin-top:.6rem">
+                <table>
+                  <thead><tr><th>訊號</th><th class="num">得獎</th><th class="num">入圍</th><th>備註</th></tr></thead>
+                  <tbody>
+                    <tr><td>TGA GOTY</td><td class="num">40</td><td class="num">15</td><td>核心大獎</td></tr>
+                    <tr><td>TGA 其他獎</td><td class="num">6</td><td class="num">0</td><td>合計上限 24</td></tr>
+                    <tr><td>BAFTA Best Game</td><td class="num">20</td><td class="num">6</td><td>同業評審</td></tr>
+                    <tr><td>Golden Joystick Ultimate GOTY</td><td class="num">10</td><td class="num">0</td><td>公眾投票</td></tr>
+                    <tr><td>DICE GOTY</td><td class="num">8</td><td class="num">0</td><td>同業評審</td></tr>
+                    <tr><td>GDC GOTY</td><td class="num">8</td><td class="num">0</td><td>開發者評審</td></tr>
+                    <tr><td colspan="2"><strong>上限</strong></td><td class="num"><strong>110</strong></td><td>不是客觀滿分</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>修正紀錄：</strong> FFXIV 原本記為 18 分，只列 3 勝；重新核對 TGA 2021／2022 後，確認 Best Ongoing 與 Best Community Support 各兩次，共 4 勝，修正為 24 分。這是「獎項帳本」最典型的年度邊界與重複計分錯誤。
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="chart-title"><strong>Award Index：18 款案例</strong><span>點長條看詳情 · 0 分只代表本期大獎訊號缺失</span></div>
+          <div class="chart" id="awardChart" role="img" aria-label="18 款遊戲的 Award Index 長條圖"></div>
+          <div class="legend"><span><i style="background:#5eead4"></i>GOTY 級訊號</span><span><i style="background:#fbbf24"></i>分類獎／入圍</span><span><i style="background:#3b4d61"></i>0 分</span></div>
+          <div class="note" style="margin-top:.5rem">Award Index 只捕捉「2021–2025 的 TGA／BAFTA／GJ／DICE／GDC 大獎訊號」，不衡量遊戲品質、玩家滿意度或電競生態。2025 年遊戲的 2026 BAFTA／DICE／GDC 不計入，避免年度邊界混算。</div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch4">
+        <div class="section-head">
+          <div class="kicker">Deliverable 4 · Market Context</div>
+          <h2>市場軸：用「證據等級」代替假精準</h2>
+          <p class="lead">全球市場預測只能當背景，不能拿來推單一遊戲。個別遊戲的市場軸採 0–5 的 Audience Evidence Tier：它是一個 ordinal 教學 rubric，混合註冊、DAU、銷量與 CCU 等不同證據型態，不是全球市場規模。</p>
+        </div>
+
+        <div class="grid grid-3" style="margin-bottom:1rem">
+          <div class="card">
+            <div class="kicker tiny faint">2026F · 僅背景</div>
+            <div class="stat"><div class="num">$213.9B</div><div class="lbl">全球遊戲市場預測 · +6.1%</div></div>
+            <p style="margin-top:.4rem">Newzoo 2026 預測；不是 2021–2025 實際值，也不可推單一遊戲。</p>
+          </div>
+          <div class="card">
+            <div class="kicker tiny faint">2026F · 僅背景</div>
+            <div class="stat"><div class="num">3.70B</div><div class="lbl">全球玩家預測 · +4.4%</div></div>
+            <p style="margin-top:.4rem">Mobile $121.1B／57%、Console $46.9B／22%、PC $45.9B／21%。</p>
+          </div>
+          <div class="card">
+            <div class="kicker tiny faint">2026F · 僅背景</div>
+            <div class="stat"><div class="num">APAC 47%</div><div class="lbl">區域結構</div></div>
+            <p style="margin-top:.4rem">NA 27%、Europe 18%、LatAm 4%、MEA 4%；皆為預測值。</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="card">
+            <h3>Audience Evidence Tier 0–5</h3>
+            <div class="table-wrap" style="margin-top:.6rem">
+              <table>
+                <thead><tr><th>Tier</th><th>規則（任一）</th><th>意義</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="tier-badge tier-5">5</span></td><td>≥100M active／registered 或 ≥300M copies</td><td>最大量級證據</td></tr>
+                  <tr><td><span class="tier-badge tier-4">4</span></td><td>20–99.9M 或 ≥500k Steam CCU</td><td>大型量級</td></tr>
+                  <tr><td><span class="tier-badge tier-3">3</span></td><td>5–19.9M 或 200–499k CCU</td><td>中大型</td></tr>
+                  <tr><td><span class="tier-badge tier-2">2</span></td><td>1–4.9M 或 50–199k CCU</td><td>中型</td></tr>
+                  <tr><td><span class="tier-badge tier-1">1</span></td><td>&lt;1M 或 &lt;50k CCU</td><td>小型</td></tr>
+                  <tr><td><span class="tier-badge tier-0">0</span></td><td>無公開可比較數據</td><td>留白，不是 0 玩家</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note" style="margin-top:.5rem">Tier 4 同時容納「20M 銷量」與「≥500k CCU」；這兩種量體不可互換。Tier 0 不是「很小」，而是「沒有可公開比較的口徑」。</div>
+          </div>
+          <div class="stack">
+            <div class="chart" id="tierChart" role="img" aria-label="18 款遊戲的市場證據等級分布"></div>
+            <div class="callout info">
+              <strong>Steam 快照：</strong> 2026-11-25 的 CS2 1,191,632、PUBG 751,352、Dota 2 709,916、Apex 236,918、Rust 72,087、Elden Ring 25,283、BG3 30,580、Helldivers 2 26,721。只作補充，不是 2021–2025 同期比較。
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>市場證據表</h3>
+          <div class="table-wrap" style="margin-top:.6rem" id="marketTable"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch5">
+        <div class="section-head">
+          <div class="kicker">Deliverable 3 · Knowledge Base</div>
+          <h2>18 款案例資料庫：把「成功」拆成可檢查的欄位</h2>
+          <p class="lead">每張卡都有獎項、市場證據、長線營運、來源與 caveat。你可以搜尋、篩選、排序，最多選 3 款放進比較器；所有缺失值都會顯示 N/A，而不是被默默補成 0。</p>
+        </div>
+
+        <div class="controls" aria-label="案例篩選">
+          <div class="control"><label for="gameSearch">搜尋案例</label><input id="gameSearch" type="search" placeholder="名稱、類型、標籤、開發商…"></div>
+          <div class="control"><label for="genreFilter">類型</label><select id="genreFilter"><option value="all">全部類型</option></select></div>
+          <div class="control"><label for="platformFilter">平台</label><select id="platformFilter"><option value="all">全部平台</option></select></div>
+          <div class="control"><label for="sortSelect">排序</label><select id="sortSelect"><option value="award-desc">Award Index 高→低</option><option value="tier-desc">Market Tier 高→低</option><option value="year-desc">年份新→舊</option><option value="longevity-desc">壽命長→短</option><option value="name-asc">名稱 A→Z</option></select></div>
+          <label class="control check"><input id="awardOnly" type="checkbox"> 只看有獎</label>
+          <label class="control check"><input id="liveOnly" type="checkbox"> 只看服務型</label>
+          <div class="control-actions"><button class="btn btn-small" id="resetFilters" type="button">重設</button></div>
+        </div>
+        <div class="result-count" id="gameCount" aria-live="polite"></div>
+
+        <div class="game-grid" id="gameGrid"></div>
+
+        <div class="comparator" id="comparatorSection">
+          <div class="comparator-head">
+            <div>
+              <h3>比較器 <span class="faint small" id="comparatorCount">0 / 3</span></h3>
+              <div class="note">最多 3 款。比較的是欄位與證據，不是頒獎。</div>
+            </div>
+            <button class="btn btn-small" id="clearCompare" type="button">清空比較</button>
+          </div>
+          <div id="comparator"></div>
+        </div>
+
+        <details class="card" style="margin-top:1rem">
+          <summary style="cursor:pointer;font-weight:700;font-size:.9rem">表格檢視（適合列印與快速掃描）</summary>
+          <div class="table-wrap" style="margin-top:.7rem" id="gameTable"></div>
+        </details>
+      </section>
+
+      <section class="chapter" id="ch6">
+        <div class="section-head">
+          <div class="kicker">Deliverable 4 · Data Analysis</div>
+          <h2>獎項 × 市場：四個觀察，沒有一個是因果</h2>
+          <p class="lead">如果把「得獎」和「賣得好」畫成散點圖，會看到同向的例子，也會看到反例。這正是為什麼本 Wiki 不做單一成功分數，而是把獎項、玩家證據、商業數據與長線營運分開。</p>
+        </div>
+
+        <div class="grid grid-4" style="margin-bottom:1rem">
+          <div class="card card-tight"><div class="kicker tiny faint">Observation 01</div><h3>GOTY 與銷量常同向</h3><p>BG3 110／20M、Elden Ring 90／30M；但 Astro Bot 94／1.5M 說明獎項與量體不必同步。</p></div>
+          <div class="card card-tight"><div class="kicker tiny faint">Observation 02</div><h3>服務型遊戲獎項少、壽命長</h3><p>LoL、Fortnite、WoW 的 Award Index 低或 0，但長線營運與文化影響力遠超單一年度。</p></div>
+          <div class="card card-tight"><div class="kicker tiny faint">Observation 03</div><h3>平台與商業模式改變量體</h3><p>Roblox 是平台 127M DAU；Minecraft 300M copies。兩者都不是「單一遊戲營收」。</p></div>
+          <div class="card card-tight"><div class="kicker tiny faint">Observation 04</div><h3>缺值不是 0</h3><p>LoL、Fortnite、Genshin、HSR、WoW 的市場軸留白；模擬器會重新分配權重，而不是補 0。</p></div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="chart-title"><strong>Award Index × Market Tier</strong><span>點圓點看詳情</span></div>
+            <div class="chart" id="scatterChart" role="img" aria-label="Award Index 與 Market Tier 散點圖"></div>
+            <div class="legend"><span><i style="background:#5eead4"></i>Tier 2–5</span><span><i style="background:#6f8297"></i>Tier 0（留白）</span><span>圓點大小＝長線年數</span></div>
+          </div>
+          <div class="card">
+            <div class="chart-title"><strong>類型 × 平均 Award Index</strong><span>樣本小，只看形狀</span></div>
+            <div class="chart" id="genreChart" role="img" aria-label="各類型平均 Award Index"></div>
+            <div class="note" style="margin-top:.5rem">平均值只描述這 18 款案例，不代表整個類型。單一案例的類型（例如 Platformer 只有 Astro Bot）不應外推。</div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:1rem">
+          <div class="card">
+            <h3>2×2 訊號矩陣</h3>
+            <div class="table-wrap" style="margin-top:.6rem">
+              <table>
+                <thead><tr><th></th><th>Award Index ≥ 40</th><th>Award Index &lt; 40</th></tr></thead>
+                <tbody>
+                  <tr><th>Tier ≥ 4</th><td><strong>雙強：</strong>Elden Ring（90／4）、BG3（110／4）</td><td><strong>市場強、獎項弱：</strong>Dota 2、PUBG、Minecraft、Roblox、FFXIV</td></tr>
+                  <tr><th>Tier ≤ 3 或 0</th><td><strong>獎項強、量體較小：</strong>Astro Bot（94／2）、Clair Obscur（74／3）</td><td><strong>其他：</strong>LoL、Fortnite、WoW、Genshin、HSR、CS2、Apex、Rust、Helldivers 2</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note" style="margin-top:.5rem">Helldivers 2 的 Award Index 18、Tier 3，落在右下；FFXIV 的 Award Index 24、Tier 4，落在左下。矩陣是描述工具，不是評價。</div>
+          </div>
+          <div class="card">
+            <h3>為什麼不給一個「成功分數」？</h3>
+            <p style="margin-top:.4rem">因為「成功」至少有四種不同問題：作品有沒有被同業肯定？有多少人真的在玩？商業上是否成立？能不能長期營運？</p>
+            <p style="margin-top:.4rem">把這四題壓成一個數字，會製造虛假精準。本 Wiki 的做法是：分開展示，必要時才用<strong>可調權重</strong>做教學模擬，並公開公式、缺值處理與敏感度。</p>
+            <div class="callout good" style="margin-top:.6rem"><strong>分析結論：</strong>獎項與市場有重疊，但沒有穩定的一對一關係。最值得追問的不是「誰最成功」，而是「你用哪一種成功在衡量」。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch7">
+        <div class="section-head">
+          <div class="kicker">Deliverable 5 · Knowledge Graph</div>
+          <h2>Knowledge Graph：遊戲、類型、獎項、來源的平台</h2>
+          <p class="lead">這張圖不是因果圖，而是索引圖。點節點看它的鄰居；用類型篩選或搜尋，觀察哪些遊戲被同一組獎項與來源連在一起。</p>
+        </div>
+        <div class="graph-controls">
+          <label class="sr-only" for="graphType">節點類型</label>
+          <select id="graphType"><option value="all">全部節點</option><option value="game">遊戲</option><option value="genre">類型</option><option value="award">獎項</option><option value="source">來源</option><option value="platform">平台</option></select>
+          <label class="sr-only" for="graphSearch">搜尋圖譜</label>
+          <input id="graphSearch" type="search" placeholder="搜尋節點…" autocomplete="off">
+          <button class="btn btn-small" id="graphReset" type="button">重設</button>
+          <span class="note" id="graphStats"></span>
+        </div>
+        <div class="graph-wrap">
+          <div class="graph-canvas">
+            <svg id="graphSvg" viewBox="0 0 1200 800" role="img" aria-label="遊戲、類型、獎項、來源與平台的互動知識圖譜"></svg>
+          </div>
+          <aside class="graph-detail" id="graphDetail" aria-live="polite">
+            <h4>點一個節點</h4>
+            <p>節點會顯示它的類型、連線數與相鄰節點。遊戲節點可以直接打開詳情。</p>
+            <p class="note">提示：Tab 鍵可在節點間移動，Enter／Space 選取。拖曳節點可調整位置。</p>
+          </aside>
+        </div>
+        <div class="graph-legend" aria-hidden="true">
+          <span><i style="background:#fbbf24"></i>中心</span>
+          <span><i style="background:#5eead4"></i>類型</span>
+          <span><i style="background:#e8eef6"></i>遊戲</span>
+          <span><i style="background:#fbbf24"></i>獎項</span>
+          <span><i style="background:#60a5fa"></i>來源</span>
+          <span><i style="background:#c084fc"></i>平台</span>
+        </div>
+        <div class="note" style="margin-top:.5rem">圖譜由 <code>data/edges.json</code> 與遊戲資料生成；邊的類型包括 genre、platform、award、source。中心節點只是視覺錨點，不是資料實體。</div>
+      </section>
+
+      <section class="chapter" id="ch8">
+        <div class="section-head">
+          <div class="kicker">Interactive Model · Not a Verdict</div>
+          <h2>成功權重模擬器：讓你的假設被看見</h2>
+          <p class="lead">四個維度：Critical／Award、Player Reach、Commercial、Long-term。調整權重，看排名如何改變。這不是預測，也不是投資建議；它是一個把「你重視什麼」變成可檢查數字的教學模型。</p>
+        </div>
+
+        <div class="sim-layout">
+          <div class="card">
+            <h3>權重</h3>
+            <div class="sim-controls" style="margin-top:.7rem">
+              <div class="weight"><label for="wAward">Critical／Award <strong id="vAward">35</strong></label><input id="wAward" type="range" min="0" max="100" value="35" step="5"></div>
+              <div class="weight"><label for="wReach">Player Reach <strong id="vReach">25</strong></label><input id="wReach" type="range" min="0" max="100" value="25" step="5"></div>
+              <div class="weight"><label for="wCommercial">Commercial <strong id="vCommercial">20</strong></label><input id="wCommercial" type="range" min="0" max="100" value="20" step="5"></div>
+              <div class="weight"><label for="wLongevity">Long-term <strong id="vLongevity">20</strong></label><input id="wLongevity" type="range" min="0" max="100" value="20" step="5"></div>
+            </div>
+            <div class="preset-row" style="margin-top:.7rem">
+              <button class="btn btn-small" data-preset="balanced" type="button">平衡</button>
+              <button class="btn btn-small" data-preset="award" type="button">獎項優先</button>
+              <button class="btn btn-small" data-preset="reach" type="button">市場優先</button>
+              <button class="btn btn-small" data-preset="longevity" type="button">長線優先</button>
+            </div>
+            <div class="callout info" style="margin-top:.8rem;font-size:.76rem"><strong>缺值處理：</strong>每個遊戲只在自己可用的維度上重新分配權重。若 Commercial 缺失，該遊戲的分數由其他維度按比例重算，不會補 0。表格的「覆蓋」欄顯示用了幾維。</div>
+          </div>
+
+          <div class="stack">
+            <div class="card">
+              <div class="chart-title"><strong>公式</strong><span>公開、可重算</span></div>
+              <p class="mono" style="font-size:.82rem;color:#bffcf2;line-height:1.9">Score = Σ(w<sub>d</sub> × s<sub>d</sub>) / Σw<sub>d</sub><br>只對 available 的 d 求和</p>
+              <div class="table-wrap" style="margin-top:.6rem">
+                <table>
+                  <thead><tr><th>維度</th><th>分數 s<sub>d</sub></th><th>缺值</th></tr></thead>
+                  <tbody>
+                    <tr><td>Critical／Award</td><td>min(100, Award Index / 110 × 100)</td><td>不缺失；0 分代表本期無大獎訊號</td></tr>
+                    <tr><td>Player Reach</td><td>Tier × 20</td><td>Tier 0 → 缺失，重新分配</td></tr>
+                    <tr><td>Commercial</td><td>log<sub>10</sub>(copies) / log<sub>10</sub>(300) × 100</td><td>無銷量／營收 → 缺失</td></tr>
+                    <tr><td>Long-term</td><td>min(70, years/20×70) + support（30／15／0）</td><td>不缺失；2025 新作可能接近 0</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="note" style="margin-top:.5rem">Roblox 的 Commercial 以平台 bookings 計算，僅為教學展示，不能與單一遊戲銷量直接比較。</div>
+            </div>
+            <div class="chart" id="simChart" role="img" aria-label="模擬器前五名分數"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <div class="comparator-head">
+            <div><h3>即時排名</h3><div class="note" id="simCoverage"></div></div>
+            <div class="note">分數 0–100；不是市場預測</div>
+          </div>
+          <div class="table-wrap" id="simTable"></div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>敏感度：換一組權重，前五名會不會變？</h3>
+          <div class="table-wrap" style="margin-top:.6rem" id="sensitivity"></div>
+          <div class="note" style="margin-top:.5rem">敏感度只用四組預設權重，不是連續掃描。它的用途是提醒你：排名對權重選擇很敏感，尤其是獎項與市場的權重。</div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch9">
+        <div class="section-head">
+          <div class="kicker">Deliverable 6 · Loop / Graph</div>
+          <h2>從資料到簡報：不是直線，是會回頭的圖</h2>
+          <p class="lead">真正的工作流不是「抓資料 → 寫簡報」一條線，而是「取得資料 → 查詢 Wiki → 整理 → 檢查 → 產生簡報」的循環。檢查會把錯誤送回上游；QA 會把問題送回渲染；反思會改寫 Wiki 的規則。</p>
+        </div>
+
+        <div class="card" style="padding:.8rem">
+          <svg viewBox="0 0 1000 430" role="img" aria-label="從取得資料到產生簡報的循環工作流圖" style="width:100%;height:auto">
+            <defs>
+              <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#5eead4"/></marker>
+              <marker id="arrowFeedback" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#fb7185"/></marker>
+            </defs>
+            <g font-family="Segoe UI, Noto Sans TC, sans-serif">
+              <rect x="35" y="45" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="112" y="72" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">1. 取得資料</text>
+              <text x="112" y="91" text-anchor="middle" fill="#8fa7b9" font-size="11">來源卡・URL・日期</text>
+
+              <rect x="230" y="45" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="307" y="72" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">2. 查詢 Wiki</text>
+              <text x="307" y="91" text-anchor="middle" fill="#8fa7b9" font-size="11">實體・口徑・缺口</text>
+
+              <rect x="425" y="45" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="502" y="72" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">3. 整理／正規化</text>
+              <text x="502" y="91" text-anchor="middle" fill="#8fa7b9" font-size="11">schema・單位・年度</text>
+
+              <rect x="620" y="45" width="155" height="62" rx="12" fill="#2a2416" stroke="#8a6a22"/>
+              <text x="697" y="72" text-anchor="middle" fill="#ffe6a6" font-size="14" font-weight="700">4. 檢查</text>
+              <text x="697" y="91" text-anchor="middle" fill="#c9b47a" font-size="11">JSON・加總・邊界</text>
+
+              <rect x="815" y="45" width="150" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="890" y="72" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">5. 產生簡報</text>
+              <text x="890" y="91" text-anchor="middle" fill="#8fa7b9" font-size="11">HTML・圖表・互動</text>
+
+              <rect x="815" y="245" width="150" height="62" rx="12" fill="#1d1828" stroke="#6b4b8a"/>
+              <text x="890" y="272" text-anchor="middle" fill="#eed8ff" font-size="14" font-weight="700">6. QA</text>
+              <text x="890" y="291" text-anchor="middle" fill="#bda5cf" font-size="11">瀏覽器・鍵盤・手機</text>
+
+              <rect x="620" y="245" width="155" height="62" rx="12" fill="#1d1828" stroke="#6b4b8a"/>
+              <text x="697" y="272" text-anchor="middle" fill="#eed8ff" font-size="14" font-weight="700">7. 反思</text>
+              <text x="697" y="291" text-anchor="middle" fill="#bda5cf" font-size="11">錯誤・規則・限制</text>
+
+              <rect x="425" y="245" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="502" y="272" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">8. 分析／建模</text>
+              <text x="502" y="291" text-anchor="middle" fill="#8fa7b9" font-size="11">Index・Tier・敏感度</text>
+
+              <rect x="230" y="245" width="155" height="62" rx="12" fill="#10202a" stroke="#2f5a58"/>
+              <text x="307" y="272" text-anchor="middle" fill="#e8eef6" font-size="14" font-weight="700">9. 圖譜／索引</text>
+              <text x="307" y="291" text-anchor="middle" fill="#8fa7b9" font-size="11">節點・邊・可追溯</text>
+
+              <path d="M190 76 L225 76" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M385 76 L420 76" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M580 76 L615 76" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M775 76 L810 76" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M890 107 L890 240" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M815 276 L780 276" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M620 276 L585 276" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M425 276 L390 276" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+              <path d="M307 245 L307 112" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+
+              <path d="M697 107 C697 160, 190 150, 190 107" fill="none" stroke="#fb7185" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arrowFeedback)"/>
+              <text x="440" y="166" text-anchor="middle" fill="#fb7185" font-size="11">檢查失敗 → 回來源補證／改 schema</text>
+
+              <path d="M965 276 C1010 276, 1010 76, 970 76" fill="none" stroke="#fb7185" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arrowFeedback)"/>
+              <text x="1015" y="180" text-anchor="middle" fill="#fb7185" font-size="11" transform="rotate(90 1015 180)">QA 失敗 → 回渲染</text>
+
+              <path d="M697 307 C697 350, 502 350, 502 312" fill="none" stroke="#fb7185" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arrowFeedback)"/>
+              <text x="600" y="352" text-anchor="middle" fill="#fb7185" font-size="11">反思 → 更新分析與 Wiki 規則</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:1rem">
+          <div class="card">
+            <h3>哪些步驟會重複？</h3>
+            <div class="table-wrap" style="margin-top:.6rem">
+              <table>
+                <thead><tr><th>步驟</th><th>重複原因</th><th>典型次數</th></tr></thead>
+                <tbody>
+                  <tr><td>取得資料</td><td>新來源、官方公告更新、403 後改替代路徑</td><td>每個來源 1–3 次</td></tr>
+                  <tr><td>查詢 Wiki</td><td>實體別名、年度邊界、同一遊戲多版本</td><td>每款案例 2–4 次</td></tr>
+                  <tr><td>整理／正規化</td><td>單位、欄位、編碼、重複獎項</td><td>每批資料 2 次以上</td></tr>
+                  <tr><td>檢查</td><td>JSON、加總、來源 ID、年度、缺值</td><td>每次寫入後</td></tr>
+                  <tr><td>QA</td><td>桌面／手機、鍵盤、console、圖表</td><td>每次渲染後</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h3>檢查點放在哪裡？</h3>
+            <div class="table-wrap" style="margin-top:.6rem">
+              <table>
+                <thead><tr><th>檢查點</th><th>檢查什麼</th><th>失敗時</th></tr></thead>
+                <tbody>
+                  <tr><td>來源卡</td><td>URL、發布日、擷取日、限制</td><td>不讓它進 ingest</td></tr>
+                  <tr><td>主張層</td><td>每個數字是否有來源 ID</td><td>標 N/A 或補來源</td></tr>
+                  <tr><td>Schema</td><td>必填欄位、型別、單位</td><td>build 直接失敗</td></tr>
+                  <tr><td>獎項帳本</td><td>得獎／入圍、年度、加總</td><td>修正 breakdown</td></tr>
+                  <tr><td>渲染</td><td>資料綁定、空值、HTML escape</td><td>回修 render</td></tr>
+                  <tr><td>QA</td><td>導覽、搜尋、篩選、圖表、鍵盤</td><td>回修 UI</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout good" style="margin-top:1rem">
+          <strong>為什麼這樣設計？</strong> 因為最便宜的修正點在最上游。與其在簡報裡改一個錯字，不如讓 schema 在寫入時就拒絕錯誤的單位；與其在圖表上發現加總不對，不如讓 build 在獎項 breakdown 不等於 Award Index 時直接失敗。
+        </div>
+      </section>
+
+      <section class="chapter" id="ch10">
+        <div class="section-head">
+          <div class="kicker">Deliverable 7 · Execution Log</div>
+          <h2>實際執行與修正紀錄：錯誤不是附註，是方法的一部分</h2>
+          <p class="lead">以下是這次真實發生的 loop：資料落地、JSON 失敗、獎項重算、來源受阻、HTML 渲染與 QA。每一次修正都改變了下一次檢查的位置。</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item"><div class="when">2026-11-25 · 09:55</div><h4>建立資料與 Wiki 目錄</h4><p>先建立 <code>data/</code> 與 <code>wiki/</code>，把「可重用的資料」與「最後的簡報」分開。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 09:56</div><h4>22 個來源卡</h4><p>包含 Newzoo、Roblox 10-K、PMC 論文、TGA 2021–2025、BAFTA、GJ、Steam 官方 API、SteamDB 方法論，以及 7 個遊戲 Wikipedia 交叉核對。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 09:58</div><h4>18 款案例初稿</h4><p>建立 awardIndex、marketTier、來源與 caveat。此時還沒有 HTML，先確保資料可以被驗證。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 10:00</div><h4 class="fix">JSON 失敗：BOM＋編碼損壞</h4><p>PowerShell 的 <code>Get-Content -Raw</code>／<code>Set-Content -Encoding UTF8</code> 把中文與引號弄壞，<code>ConvertFrom-Json</code> 回報 invalid JSON。改為用 write tool 重建、Python <code>utf-8-sig</code> 讀取、<code>json.load</code> 驗證，並在 build 加上 schema gate。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 10:10</div><h4 class="fix">獎項重算：FFXIV 18 → 24</h4><p>初稿只列 3 勝。重新核對 TGA 2021／2022 後，確認 Best Ongoing 與 Best Community Support 各兩次，共 4 勝；修正 breakdown 並讓 build 檢查加總。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 10:20</div><h4>SteamDB 403：停止爬取</h4><p>站方明示禁止爬取且回 403。停止請求，只引用 FAQ 方法論；CCU 改用 Steam 官方 API 快照，並標記為 2026 補充。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 10:30</div><h4>TGA 官方 FAQ 403</h4><p>官方頁面訪問受限；改用 Wikipedia 轉述＋官方 URL 標註，報告中明確標記「官方頁面訪問受限」，不把轉述當官方原文。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 11:00</div><h4>單一 HTML 建置</h4><p>以 <code>src/</code> 分檔維護 CSS、HTML、JS，build 時合併成單一 <code>index.html</code>；資料以 JSON 內嵌，離線可用。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 11:30</div><h4>Browser QA</h4><p>檢查 console、導覽、搜尋、篩選、比較器、圖表、graph、模擬器、quiz、手機寬度、鍵盤操作與列印樣式。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 14:53</div><h4>Build 通過</h4><p><code>py tools/build.py</code> exit 0：210,073 bytes、18 games、22 sources、5 ceremonies、133 edges。至此資料層與渲染層第一次同時就緒。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 14:55</div><h4 class="fix">繁簡掃描：3 處簡體字</h4><p>以簡體字集掃描 <code>src/</code>，找到 3 處簡體字（「於」「徑」誤用簡體字形）；修正後重建，殘留 0。這道檢查已列入交付前清單。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 14:56</div><h4 class="fix">比較器：勾選後焦點消失</h4><p>連續勾選 3 款時，<code>renderGameGrid()</code> 重建整個 grid，把剛勾選的 checkbox 銷毀，鍵盤焦點掉回 body。改為只同步 checkbox 狀態與計數。</p></div>
+          <div class="timeline-item"><div class="when">2026-11-25 · 14:57</div><h4 class="fix">375px：頁面横向溢出</h4><p>375px 下 <code>scrollWidth</code> 為 857，主因是 grid 用 <code>1fr</code> 被 560px 寬的表格撐開。改為 <code>minmax(0,1fr)</code>＋子項 <code>min-width:0</code>；修正後 360 ≤ 375。</p></div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>錯誤 → 偵測 → 修正 → 預防</h3>
+          <div class="table-wrap" style="margin-top:.6rem">
+            <table>
+              <thead><tr><th>錯誤</th><th>偵測方式</th><th>修正</th><th>預防（把檢查往前移）</th></tr></thead>
+              <tbody>
+                <tr><td>UTF-8 BOM／中文亂碼</td><td><code>json.load</code> 回報 BOM 或 invalid control character</td><td>用 write tool 重建；Python 以 utf-8 寫入</td><td>build 讀 <code>utf-8-sig</code>；JSON parse gate；禁止 PowerShell 改中文</td></tr>
+                <tr><td>FFXIV 獎項少計</td><td>awardIndex 與 breakdown 加總不一致</td><td>補上 2021 Best Community Support</td><td>每個獎項列 event／category／result／points；build 驗證加總</td></tr>
+                <tr><td>SteamDB 403</td><td>HTTP 403／站方禁止爬取</td><td>停止請求，改用 Steam API</td><td>來源卡先記 status 與限制；不把 blocked 來源當數據</td></tr>
+                <tr><td>TGA FAQ 403</td><td>HTTP 403</td><td>用 Wikipedia 轉述＋官方 URL</td><td>來源卡標 <code>blocked-403</code>；報告揭露</td></tr>
+                <tr><td>年度邊界混算</td><td>2025 遊戲出現 2026 BAFTA／DICE／GDC</td><td>排除 2026 獎項與 8M 等後續數據</td><td>schema 加 period／asOf；build 檢查 2021–2025</td></tr>
+                <tr><td>簡體字混用</td><td>交付前以簡體字集掃描 <code>src/</code></td><td>「於」「徑」共 3 處誤用簡體字形，已改為繁體</td><td>把繁簡掃描列為交付前必要檢查</td></tr>
+                <tr><td>比較器勾選後焦點消失</td><td>連續勾選 3 款後檢查 <code>document.activeElement</code></td><td>改為 <code>syncCompareCheckboxes()</code>，只同步狀態、不重建 grid</td><td>狀態更新不得重建整個清單</td></tr>
+                <tr><td>375px 頁面横向溢出</td><td><code>scrollWidth</code> 857 &gt; <code>innerWidth</code> 375</td><td>grid 軌道改 <code>minmax(0,1fr)</code>、子項加 <code>min-width:0</code></td><td>每次改版面都量 375px 的 scrollWidth</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>QA 清單</h3>
+          <div class="table-wrap" style="margin-top:.6rem">
+            <table>
+              <thead><tr><th>項目</th><th>檢查</th><th>狀態</th></tr></thead>
+              <tbody>
+                <tr><td>Console</td><td>無 uncaught error；資料載入與圖表渲染正常</td><td><span class="chip accent">通過</span> 0 error／0 failed request</td></tr>
+                <tr><td>導覽</td><td>12 章 anchor、active 狀態、手機選單</td><td><span class="chip accent">通過</span> 12 sections；375px 抽屜可開</td></tr>
+                <tr><td>搜尋</td><td>遊戲／來源／獎項；Ctrl+K；Esc 關閉</td><td><span class="chip accent">通過</span> 輸入 Elden 得 6 筆</td></tr>
+                <tr><td>篩選</td><td>類型、平台、排序、有獎、服務型</td><td><span class="chip accent">通過</span> MMORPG → 2 款；重設正常</td></tr>
+                <tr><td>圖表</td><td>Award、Tier、Scatter、Genre、Sim</td><td><span class="chip accent">通過</span> 18／6／18／12／5 列</td></tr>
+                <tr><td>Graph</td><td>節點可點、可拖、可鍵盤選取、filter</td><td><span class="chip accent">通過</span> 72 nodes／145 edges；點擊顯示 5 條連線</td></tr>
+                <tr><td>模擬器</td><td>權重、preset、缺值重分配、敏感度</td><td><span class="chip accent">通過</span> 市場優先：Roblox 82.0；覆蓋 7／6／5 款</td></tr>
+                <tr><td>Quiz</td><td>選答、計分、解釋、重設</td><td><span class="chip accent">通過</span> 1 題作答 → 1/8、8 題解釋全顯示</td></tr>
+                <tr><td>手機</td><td>375px 寬度、横向溢出、觸控目標</td><td><span class="chip accent">通過</span> 修正後 scrollWidth 360 ≤ 375</td></tr>
+                <tr><td>鍵盤／無障礙</td><td>skip link、focus、aria-live、對比</td><td><span class="chip accent">通過</span> 比較器勾選後焦點保留、來源 chip 可聚焦</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch11">
+        <div class="section-head">
+          <div class="kicker">Check Your Understanding</div>
+          <h2>測驗：你有沒有把口徑分開？</h2>
+          <p class="lead">八題，重點不是背數字，而是辨認「這個數字能不能這樣用」。</p>
+        </div>
+        <form class="quiz" id="quiz" aria-label="遊戲獎項與市場數據測驗"></form>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem">
+          <button class="btn btn-primary" id="quizSubmit" type="button">提交答案</button>
+          <button class="btn" id="quizReset" type="button">重設</button>
+          <div class="quiz-result" id="quizResult" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch12">
+        <div class="section-head">
+          <div class="kicker">Limits · Reflection · Sources</div>
+          <h2>限制、反思與來源追溯</h2>
+          <p class="lead">一份好的 Wiki 不是「什麼都知道」，而是「知道自己不知道什麼」。以下是本專案的主要限制，以及這次 loop 最常出錯的節點。</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card"><h3>選擇偏差</h3><p>18 款案例是 purposive sample，不是隨機抽樣；不能推論全體遊戲或全體玩家。</p></div>
+          <div class="card"><h3>權重是任意的</h3><p>Award Index 與模擬器權重是教學選擇，不是自然定律；換一組權重，排名會變。</p></div>
+          <div class="card"><h3>Ordinal 不是基數</h3><p>Market Tier 0–5 是證據等級，不是全球市場規模；Tier 4 不等於某個固定營收。</p></div>
+          <div class="card"><h3>平台數據不可混用</h3><p>Roblox 是平台層級；Steam CCU 只涵蓋 PC；註冊帳號不是活躍玩家。</p></div>
+          <div class="card"><h3>年度邊界</h3><p>2025 遊戲的 2026 BAFTA／DICE／GDC 與後續銷量不計入，避免與未完成年度混算。</p></div>
+          <div class="card"><h3>二手來源</h3><p>部分獎項與銷量以 Wikipedia 轉述交叉核對；官方頁面 403 時已明確標記。</p></div>
+        </div>
+
+        <div class="callout" style="margin-top:1rem">
+          <strong>哪個節點最常出錯？</strong> 不是圖表，也不是 CSS，而是<strong>「來源 → schema 的落地層」</strong>：編碼、單位、年度、獎項重複計分、平台口徑。這些錯誤一旦進到資料，後面每個畫面都會被污染。第二常錯的是<strong>獎項帳本的年度邊界</strong>，因為同一個遊戲會跨年度、跨典禮、跨「得獎／入圍」。
+        </div>
+
+        <div class="grid grid-2" style="margin-top:1rem">
+          <div class="card">
+            <h3>如何把檢查往前移？</h3>
+            <ol style="margin-top:.5rem;color:var(--muted);font-size:.82rem;line-height:1.9">
+              <li>來源卡先要求 URL、發布日、擷取日、status、限制；缺一不進 ingest。</li>
+              <li>每個數字都要有 source ID；沒有就標 N/A，不寫「據估計」。</li>
+              <li>schema 用 enum 管單位與口徑；build 驗證 awardIndex＝breakdown 加總。</li>
+              <li>年度與 asOf 寫進資料，而不是寫在簡報註解。</li>
+              <li>渲染前先跑資料檢查；QA 只負責互動與視覺，不負責抓資料錯。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>如果重做，我會改什麼？</h3>
+            <ol style="margin-top:.5rem;color:var(--muted);font-size:.82rem;line-height:1.9">
+              <li>先做 schema 與 validation，再抓資料；不要先寫 HTML。</li>
+              <li>把獎項 ledger 做成獨立表，每個 event／category／result 一列。</li>
+              <li>為每個來源加「可引用欄位」與「不可引用欄位」，減少誤用。</li>
+              <li>用官方 API 抓可重現快照，並記錄抓取時間與參數。</li>
+              <li>把 QA 自動化：console、連結、表格加總、手機寬度、鍵盤焦點。</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>來源追溯表</h3>
+          <div class="table-wrap" style="margin-top:.6rem" id="sourceTable"></div>
+        </div>
+
+        <div class="callout info" style="margin-top:1rem">
+          <strong>最後一句：</strong> 這份 Wiki 的價值不在於告訴你「哪款遊戲最成功」，而在於讓你能夠反駁它：指出哪個權重不合理、哪個口徑被混用、哪個年度不該算。能被打斷的模型，比看起來很準的模型誠實。
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div><strong>全球遊戲獎項、玩家表現與市場成功</strong> · 2021–2025 LLM Wiki</div>
+        <div>資料截止 2025-12-31 · 補充快照 2026-11-25 · <span id="buildMetaFooter"></span></div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-backdrop" data-close="1"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" type="button" data-close="1" aria-label="關閉詳情">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="chart-tooltip" id="chartTooltip" role="tooltip"></div>
+
+<script>
+/* ============================================================
+   1. Data and core helpers
+   ============================================================ */
+const GAMES = [{"id":"lol","name":"League of Legends","zh":"英雄聯盟","year":2009,"genre":"MOBA","subgenres":["MOBA","Esports","F2P"],"platforms":["PC"],"businessModel":"Free-to-play + 造型／戰鬥通行證","developer":"Riot Games","publisher":"Riot Games","awardIndex":6,"awardBreakdown":[{"event":"TGA 2021","category":"Best Esports Game","result":"win","points":6}],"awardNote":"TGA 2021 Best Esports Game。2021–2025 期間未見 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 紀錄；Award Index 只捕捉大獎訊號，不代表遊戲品質或電競生態。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":0,"marketMetric":"無公開可比較的全球活躍／註冊／銷量數據","marketValue":null,"marketUnit":"","marketAsOf":"N/A","marketNote":"Riot 不公開可核對的全球 MAU／DAU；第三方估算不納入主表。Steam 無 LoL。","longevityYears":16,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"D","sources":["S04","S21"],"summary":"2009 年推出的 MOBA 長青樹，以 F2P、電競生態與持續改版維持影響力。TGA 2021 拿下 Best Esports Game；但 Riot 未公開可核對的全球 MAU／DAU，因此市場軸標為 Tier 0，不把第三方估算當事實。","caveat":"市場軸留白，不代表玩家少；只代表缺少可公開比較的口徑。Award Index 6 只反映一座 TGA 電競獎。","tags":["MOBA","F2P","Esports","現象級","長青"]},{"id":"dota2","name":"Dota 2","zh":"Dota 2","year":2013,"genre":"MOBA","subgenres":["MOBA","Esports","F2P"],"platforms":["PC"],"businessModel":"Free-to-play + Battle Pass／造型","developer":"Valve","publisher":"Valve","awardIndex":0,"awardBreakdown":[],"awardNote":"2021–2025 期間未見 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 得獎或入圍紀錄；Award Index 0 只表示本期大獎訊號缺失。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":709916,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":4,"marketMetric":"Steam 同時在線（僅 PC）","marketValue":709916,"marketUnit":"CCU","marketAsOf":"2026-11-25","marketNote":"Steam 官方快照；不是歷史峰值，也不是全球玩家數。CCU 不可當 DAU／MAU。","longevityYears":12,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"A","sources":["S11","S12"],"summary":"Valve 的硬核 MOBA，TI 與工作坊生態構成獨特的社群循環。2026-11-25 Steam 同時在線 709,916，屬補充快照；這不是 2021–2025 的歷史峰值，也不是全球玩家數。","caveat":"Steam CCU 是 2026 補充數據，不能和 2021–2025 的年度獎項或銷量直接混算。","tags":["MOBA","F2P","Esports","Steam","長青"]},{"id":"cs2","name":"Counter-Strike 2","zh":"絕對武力 2","year":2023,"genre":"FPS","subgenres":["FPS","Tactical Shooter","Esports"],"platforms":["PC"],"businessModel":"Free-to-play + 造型／箱子","developer":"Valve","publisher":"Valve","awardIndex":0,"awardBreakdown":[],"awardNote":"CS2 於 2023 年接替 CS:GO；本期未見 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 得獎或入圍紀錄。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":1191632,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":4,"marketMetric":"Steam 同時在線（僅 PC）","marketValue":1191632,"marketUnit":"CCU","marketAsOf":"2026-11-25","marketNote":"Steam 官方快照。Tier 4 是 CCU 門檻的上限類別，不表示與 20M 銷量等值。","longevityYears":2,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"A","sources":["S11","S12"],"summary":"CS:GO 於 2023 年過渡到 CS2，結合戰術射擊、皮膚經濟與龐大電競生態。Steam 快照 1,191,632 CCU 顯示 PC 平台熱度，但 Tier 4 只代表證據級別，不能換算成全球銷量或營收。","caveat":"CS2 年份短，Long-term 分數不宜與 2009／2004 年長青作品直接比較；CCU 也不是全球跨平台玩家數。","tags":["FPS","Tactical","F2P","Esports","Steam"]},{"id":"fortnite","name":"Fortnite","zh":"要塞英雄","year":2017,"genre":"Battle Royale","subgenres":["Battle Royale","UGC","F2P"],"platforms":["PC","Console","Mobile"],"businessModel":"Free-to-play + V-Bucks／造型","developer":"Epic Games","publisher":"Epic Games","awardIndex":0,"awardBreakdown":[],"awardNote":"2021–2025 期間未見 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 得獎；入圍不計分。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":0,"marketMetric":"無公開可比較的全球活躍／註冊／銷量數據","marketValue":null,"marketUnit":"","marketAsOf":"N/A","marketNote":"Epic 未提供可核對的全球 DAU／MAU；註冊數不等於活躍玩家，第三方估算不納入主表。","longevityYears":8,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"D","sources":["S21"],"summary":"以 Battle Royale 起家，後擴張為 UGC、品牌聯動與虛擬演唱會的平台型遊戲。Epic 未提供可核對的全球 DAU／MAU；本表不把第三方估算或註冊數當活躍玩家。","caveat":"不能用註冊數、活動參與數或第三方估算替代 DAU／MAU；市場軸留白。","tags":["Battle Royale","UGC","F2P","現象級","平台化"]},{"id":"pubg","name":"PUBG: Battlegrounds","zh":"絕地求生","year":2017,"genre":"Battle Royale","subgenres":["Battle Royale","FPS","F2P"],"platforms":["PC","Console"],"businessModel":"2022 起 Free-to-play + 造型／通行證","developer":"PUBG Studios","publisher":"Krafton","awardIndex":0,"awardBreakdown":[],"awardNote":"2021–2025 期間未見 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 得獎；Award Index 0 不代表沒有影響力。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":751352,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":4,"marketMetric":"Steam 同時在線（僅 PC）","marketValue":751352,"marketUnit":"CCU","marketAsOf":"2026-11-25","marketNote":"Steam PC 快照，不含 mobile 與中國特供版；CCU 不是全球玩家總數。","longevityYears":8,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"A","sources":["S11","S12"],"summary":"Battle Royale 商業化先驅之一，2022 年轉為 F2P 後仍維持 PC 熱度。Steam 751,352 CCU 僅涵蓋 PC，不能代表手機版或全球跨平台玩家。","caveat":"Steam CCU 只反映 PC 同時在線；mobile 與中國市場不在同一口徑。","tags":["Battle Royale","FPS","F2P","Steam","現象級"]},{"id":"apex","name":"Apex Legends","zh":"Apex 英雄","year":2019,"genre":"Battle Royale","subgenres":["Battle Royale","Hero Shooter","F2P"],"platforms":["PC","Console"],"businessModel":"Free-to-play + 造型／通行證","developer":"Respawn Entertainment","publisher":"Electronic Arts","awardIndex":0,"awardBreakdown":[],"awardNote":"2021–2025 期間曾入圍 TGA Best Ongoing，但未獲 GOTY 類大獎；入圍不計分。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":236918,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":3,"marketMetric":"Steam 同時在線（僅 PC）","marketValue":236918,"marketUnit":"CCU","marketAsOf":"2026-11-25","marketNote":"Steam 官方快照；不含主機玩家。CCU 不可當 DAU。","longevityYears":6,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"A","sources":["S11","S12","S04"],"summary":"以英雄技能與小隊節奏差異化的 Battle Royale，長期以賽季與造型營運。TGA 2024 入圍 Best Ongoing 但未獲獎；Steam CCU 只反映 PC 同步在線。","caveat":"入圍與得獎分開看；Steam CCU 只涵蓋 PC，不能代表主機或全球玩家。","tags":["Battle Royale","Hero Shooter","F2P","Steam"]},{"id":"roblox","name":"Roblox","zh":"Roblox","year":2006,"genre":"Sandbox / UGC","subgenres":["UGC Platform","Sandbox","Social"],"platforms":["PC","Console","Mobile","VR"],"businessModel":"Free-to-play + Robux + 創作者分潤","developer":"Roblox Corporation","publisher":"Roblox Corporation","awardIndex":0,"awardBreakdown":[],"awardNote":"平台型產品，未見本期 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 得獎；Award Index 0 只表示大獎訊號缺失。","salesCopies":null,"registeredPlayers":null,"dau":127,"ccu":null,"revenueB":4.890551,"bookingsB":6.78843,"netLossB":1.071618,"marketTier":5,"marketMetric":"2025 年平均 DAU（平台層級）","marketValue":127,"marketUnit":"M DAU","marketAsOf":"2025","marketNote":"平台層級 DAU；revenue $4.891B 與 bookings $6.788B 不可互換；net loss $1.072B。","longevityYears":19,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"A","sources":["S02"],"summary":"UGC 平台而非單一遊戲：2025 年平均 DAU 127M、bookings $6.79B、revenue $4.89B，但淨損 $1.07B。平台數據不可與單一遊戲銷量或營收混用。","caveat":"平台層級數據，不能當成單一遊戲的 DAU、營收或成功；bookings 與 revenue 是不同會計概念。","tags":["UGC","Sandbox","Social","F2P","平台化","現象級"]},{"id":"minecraft","name":"Minecraft","zh":"Minecraft","year":2011,"genre":"Sandbox / Survival","subgenres":["Sandbox","Survival","UGC"],"platforms":["PC","Console","Mobile"],"businessModel":"買斷 + Marketplace／Realms","developer":"Mojang Studios","publisher":"Mojang Studios / Microsoft","awardIndex":0,"awardBreakdown":[],"awardNote":"2021–2025 期間未見 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 得獎；長青影響力不靠本期大獎反映。","salesCopies":300,"registeredPlayers":null,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":5,"marketMetric":"累計銷量（copies，2023 官方里程碑）","marketValue":300,"marketUnit":"M copies","marketAsOf":"2023","marketNote":"主表採 300M；400M 的後續說法不納入，避免與 2021–2025 期間混算。累計銷量不是活躍玩家。","longevityYears":14,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"B","sources":["S19"],"summary":"沙盒／生存與 UGC 的長青基準，2023 年官方里程碑 300M copies。累計銷量不是活躍玩家；400M 的後續說法不納入 2021–2025 主分析。","caveat":"300M 是 2023 里程碑；400M 後續說法不在主表。累計銷量不可當 MAU。","tags":["Sandbox","Survival","UGC","現象級","長青"]},{"id":"rust","name":"Rust","zh":"Rust","year":2018,"genre":"Survival","subgenres":["Survival","PvP","Sandbox"],"platforms":["PC","Console"],"businessModel":"買斷 + 造型／伺服器","developer":"Facepunch Studios","publisher":"Facepunch Studios","awardIndex":0,"awardBreakdown":[],"awardNote":"2021–2025 期間未見 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 得獎或入圍紀錄。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":72087,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":2,"marketMetric":"Steam 同時在線（僅 PC）","marketValue":72087,"marketUnit":"CCU","marketAsOf":"2026-11-25","marketNote":"Steam 官方快照；只反映 PC 同時在線。CCU 不可當銷量或活躍玩家。","longevityYears":7,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"A","sources":["S11","S12"],"summary":"硬派 PvP 生存沙盒，以 wipe 週期與玩家社群維持高強度循環。Steam 72,087 CCU 屬 2026 補充快照，不能當 2021–2025 同期成長率。","caveat":"CCU 快照只代表當下 Steam PC 熱度；不是銷量，也不是全球玩家數。","tags":["Survival","PvP","Sandbox","Steam"]},{"id":"wow","name":"World of Warcraft","zh":"魔獸世界","year":2004,"genre":"MMORPG","subgenres":["MMORPG","Subscription","Raid"],"platforms":["PC"],"businessModel":"訂閱 + 資料片 + 商城","developer":"Blizzard Entertainment","publisher":"Blizzard Entertainment","awardIndex":0,"awardBreakdown":[],"awardNote":"2021–2025 期間未見 TGA GOTY、BAFTA Best Game、GJ Ultimate GOTY、DICE／GDC GOTY 得獎；Award Index 0 只表示本期大獎訊號缺失。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":0,"marketMetric":"無公開可比較的全球活躍／註冊／銷量數據","marketValue":null,"marketUnit":"","marketAsOf":"N/A","marketNote":"Blizzard 自 2015 年後不再公布訂閱數；不以第三方估算替代。","longevityYears":21,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"D","sources":["S21"],"summary":"2004 年推出的 MMORPG 基準，訂閱、資料片與 raid 生態影響深遠。Blizzard 自 2015 年後不再公布訂閱數，因此市場軸留白，不以第三方估算替代。","caveat":"訂閱數與活躍玩家數均為 N/A；不能把資料片銷量或第三方估算當全球訂閱數。","tags":["MMORPG","Subscription","Raid","長青","現象級"]},{"id":"ffxiv","name":"Final Fantasy XIV","zh":"Final Fantasy XIV","year":2013,"genre":"MMORPG","subgenres":["MMORPG","Subscription","Story"],"platforms":["PC","Console"],"businessModel":"訂閱 + 資料片 + 商城","developer":"Square Enix","publisher":"Square Enix","awardIndex":24,"awardBreakdown":[{"event":"TGA 2021","category":"Best Ongoing Game","result":"win","points":6},{"event":"TGA 2021","category":"Best Community Support","result":"win","points":6},{"event":"TGA 2022","category":"Best Ongoing Game","result":"win","points":6},{"event":"TGA 2022","category":"Best Community Support","result":"win","points":6}],"awardNote":"TGA 2021／2022 共 4 勝：Best Ongoing 與 Best Community Support 各兩次；TGA 其他獎項合計上限 24。2023–2025 未再獲同類獎。","salesCopies":null,"registeredPlayers":24,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":4,"marketMetric":"累計註冊帳號（2021 官方口徑）","marketValue":24,"marketUnit":"M registered","marketAsOf":"2021-10","marketNote":"registered accounts ≠ active subscribers；不可當 MAU／DAU，也不可與銷量直接比較。","longevityYears":12,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"B","sources":["S20","S04","S05"],"summary":"從 1.0 失敗到 A Realm Reborn 的 turnaround 案例，以故事、raid 與社群經營著稱。2021 年 10 月官方口徑 24M registered accounts；registered ≠ 活躍訂閱，且 TGA 2021／2022 共 4 座 Best Ongoing／Community Support。","caveat":"24M 是註冊帳號，不是活躍訂閱；TGA 獎項為 2021／2022 年度，不能外推 2025 仍在成長。","tags":["MMORPG","Subscription","Story","長青","服務型"]},{"id":"genshin","name":"Genshin Impact","zh":"原神","year":2020,"genre":"Online RPG","subgenres":["Open-world RPG","Gacha","F2P"],"platforms":["PC","Console","Mobile"],"businessModel":"Free-to-play + Gacha／通行證","developer":"miHoYo / HoYoverse","publisher":"miHoYo / HoYoverse","awardIndex":12,"awardBreakdown":[{"event":"TGA 2021","category":"Best Mobile Game","result":"win","points":6},{"event":"TGA 2022","category":"Players' Voice","result":"win","points":6}],"awardNote":"TGA 2021 Best Mobile Game；TGA 2022 Players' Voice。Players' Voice 為 100% 公眾投票，與評審獎不同機制，本指數仍以 6 分記錄，但解讀時不可等權。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":0,"marketMetric":"無公開可比較的全球活躍／註冊／銷量數據","marketValue":null,"marketUnit":"","marketAsOf":"N/A","marketNote":"HoYoverse 未公開可核對的 MAU／DAU 或營收；第三方估算不納入主表。","longevityYears":5,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"D","sources":["S04","S05","S21"],"summary":"開放世界抽卡 RPG，跨 PC／主機／手機的內容更新與角色經濟。HoYoverse 未公開可核對的 MAU／DAU；TGA 2021 Best Mobile 與 2022 Players' Voice 是不同投票機制，不能等權解讀。","caveat":"無公開全球玩家／營收數據；Players' Voice 是公眾投票，不能當評審品質分數。","tags":["Online RPG","Gacha","F2P","跨平台","服務型"]},{"id":"hsr","name":"Honkai: Star Rail","zh":"崩壞：星穹鐵道","year":2023,"genre":"Online RPG","subgenres":["Turn-based RPG","Gacha","F2P"],"platforms":["PC","Console","Mobile"],"businessModel":"Free-to-play + Gacha／通行證","developer":"miHoYo / HoYoverse","publisher":"miHoYo / HoYoverse","awardIndex":6,"awardBreakdown":[{"event":"TGA 2023","category":"Best Mobile Game","result":"win","points":6}],"awardNote":"TGA 2023 Best Mobile Game。Award Index 只反映本期一座 TGA 分類獎，不代表整體品質或市場規模。","salesCopies":null,"registeredPlayers":null,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":0,"marketMetric":"無公開可比較的全球活躍／註冊／銷量數據","marketValue":null,"marketUnit":"","marketAsOf":"N/A","marketNote":"HoYoverse 未公開可核對的 MAU／DAU 或營收；第三方估算不納入主表。","longevityYears":2,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"D","sources":["S06","S21"],"summary":"回合制抽卡 RPG，以角色敘事與版本更新延續 Genshin 以來的服務型模式。TGA 2023 Best Mobile Game；沒有公開全球玩家／營收數據，市場軸留白。","caveat":"玩家與營收數據 N/A；僅 2023 年度獎項，長期表現尚未沉澱。","tags":["Online RPG","Turn-based","Gacha","F2P","服務型"]},{"id":"eldenring","name":"Elden Ring","zh":"艾爾登法環","year":2022,"genre":"Action RPG","subgenres":["Action RPG","Open World","Soulslike"],"platforms":["PC","Console"],"businessModel":"買斷 + DLC","developer":"FromSoftware","publisher":"Bandai Namco Entertainment","awardIndex":90,"awardBreakdown":[{"event":"TGA 2022","category":"Game of the Year","result":"win","points":40},{"event":"TGA 2022","category":"其他 3 勝（Game Direction／Art Direction／RPG）","result":"win","points":18},{"event":"BAFTA 2023","category":"Best Game","result":"nominee","points":6},{"event":"Golden Joystick 2022","category":"Ultimate Game of the Year","result":"win","points":10},{"event":"DICE 2023","category":"Game of the Year","result":"win","points":8},{"event":"GDC 2023","category":"Game of the Year","result":"win","points":8}],"awardNote":"TGA 2022 4 勝、BAFTA 2023 Best Game 入圍、GJ 2022、DICE 2023、GDC 2023 GOTY；Award Index 90／110。","salesCopies":30,"registeredPlayers":null,"dau":null,"ccu":25283,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":4,"marketMetric":"累計銷量（copies，2025-03 官方里程碑）","marketValue":30,"marketUnit":"M copies","marketAsOf":"2025-03","marketNote":"30M copies by March 2025；Steam CCU 25,283 是 2026 補充快照，兩者不可互換。","longevityYears":3,"liveService":false,"postLaunchSupport":"moderate","evidenceGrade":"B","sources":["S14","S05","S09","S10","S12"],"summary":"FromSoftware 的開放世界 Soulslike，2022 年 TGA GOTY 並在 2025 年 3 月達到 30M copies。獎項與銷量雙強，但 CCU 與銷量是不同量體，不可互換。","caveat":"30M 是累計銷量；CCU 是 2026 即時快照。BAFTA 2023 為入圍，不是得獎。","tags":["Action RPG","Open World","Soulslike","GOTY","買斷"]},{"id":"bg3","name":"Baldur's Gate 3","zh":"柏德之門 3","year":2023,"genre":"RPG","subgenres":["CRPG","Co-op","Narrative"],"platforms":["PC","Console"],"businessModel":"買斷","developer":"Larian Studios","publisher":"Larian Studios","awardIndex":110,"awardBreakdown":[{"event":"TGA 2023","category":"Game of the Year","result":"win","points":40},{"event":"TGA 2023","category":"其他 5 勝（RPG／Multiplayer／Community／Performance／Players' Voice）","result":"win","points":24},{"event":"BAFTA 2024","category":"Best Game","result":"win","points":20},{"event":"Golden Joystick 2023","category":"Ultimate Game of the Year","result":"win","points":10},{"event":"DICE 2024","category":"Game of the Year","result":"win","points":8},{"event":"GDC 2024","category":"Game of the Year","result":"win","points":8}],"awardNote":"TGA 2023 6 勝；BAFTA 2024、DICE 2024、GDC 2024、GJ 2023 GOTY；Award Index 110／110，為本表上限案例。","salesCopies":20,"registeredPlayers":null,"dau":null,"ccu":30580,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":4,"marketMetric":"累計銷量（copies，2025 年底二手整理）","marketValue":20,"marketUnit":"M copies","marketAsOf":"2025-12","marketNote":"20M by end-2025（二手整理）；另保留 2024 年 15M 的較保守觀測。Steam CCU 30,580 是 2026 快照。","longevityYears":2,"liveService":false,"postLaunchSupport":"strong","evidenceGrade":"B","sources":["S15","S06","S09","S10","S12"],"summary":"Larian 的 CRPG，2023 年 TGA 6 勝、2024 年 BAFTA Best Game，並橫掃 DICE／GDC／GJ。2025 年底二手整理稱 20M copies；另保留 2024 年 15M 的較保守觀測。","caveat":"20M 與 15M 是不同時間點觀測；主表採 20M，但保留保守值。Award Index 110 是加權上限，不是客觀滿分。","tags":["CRPG","Narrative","GOTY","買斷","現象級"]},{"id":"astrobot","name":"Astro Bot","zh":"Astro Bot","year":2024,"genre":"Platformer","subgenres":["3D Platformer","Family","Single-player"],"platforms":["PS5"],"businessModel":"買斷","developer":"Team Asobi","publisher":"Sony Interactive Entertainment","awardIndex":94,"awardBreakdown":[{"event":"TGA 2024","category":"Game of the Year","result":"win","points":40},{"event":"TGA 2024","category":"其他 3 勝（Direction／Action-Adventure／Family）","result":"win","points":18},{"event":"BAFTA 2025","category":"Best Game","result":"win","points":20},{"event":"DICE 2025","category":"Game of the Year","result":"win","points":8},{"event":"GDC 2025","category":"Game of the Year","result":"win","points":8}],"awardNote":"TGA 2024 4 勝、BAFTA 2025、DICE 2025、GDC 2025 GOTY；GJ 2024 未獲 Ultimate GOTY。Award Index 94／110。","salesCopies":1.5,"registeredPlayers":null,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":2,"marketMetric":"累計銷量（copies，2024-11 官方口徑）","marketValue":1.5,"marketUnit":"M copies","marketAsOf":"2024-11","marketNote":"1.5M as of Nov 3, 2024；2026 年 4.3M 說法超出研究截止，不納入。","longevityYears":1,"liveService":false,"postLaunchSupport":"moderate","evidenceGrade":"B","sources":["S18","S07","S09"],"summary":"Team Asobi 的 3D 平台遊戲，2024 年 TGA GOTY、2025 年 BAFTA／DICE／GDC Best Game。2024 年 11 月 1.5M copies；2026 年的 4.3M 說法不納入本期。","caveat":"1.5M 是 2024 官方口徑；2026 年的 4.3M 不納入。單平台獨佔，市場軸不可與跨平台作品直接比較。","tags":["Platformer","Family","GOTY","買斷","單機"]},{"id":"clair","name":"Clair Obscur: Expedition 33","zh":"光與影：33 號遠征隊","year":2025,"genre":"RPG","subgenres":["Turn-based RPG","Narrative","Single-player"],"platforms":["PC","PS5","Xbox Series"],"businessModel":"買斷 + Game Pass","developer":"Sandfall Interactive","publisher":"Kepler Interactive","awardIndex":74,"awardBreakdown":[{"event":"TGA 2025","category":"Game of the Year","result":"win","points":40},{"event":"TGA 2025","category":"其他 8 勝","result":"win","points":24},{"event":"Golden Joystick 2025","category":"Ultimate Game of the Year","result":"win","points":10}],"awardNote":"TGA 2025 9 勝、GJ 2025 Ultimate GOTY；BAFTA／DICE／GDC 2026 超出研究截止，不計入。Award Index 74／110。","salesCopies":5,"registeredPlayers":null,"dau":null,"ccu":null,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":3,"marketMetric":"累計銷量（copies，2025-10 官方口徑）","marketValue":5,"marketUnit":"M copies","marketAsOf":"2025-10","marketNote":"5M in early Oct 2025；2026 年 8M 說法超出研究截止，不納入。","longevityYears":0,"liveService":false,"postLaunchSupport":"moderate","evidenceGrade":"B","sources":["S17","S08","S10"],"summary":"Sandfall 的回合制敘事 RPG，2025 年 TGA 9 勝與 GJ Ultimate GOTY，是年度大獎集中案例。2025 年 10 月 5M copies；2026 年 BAFTA／DICE／GDC 與 8M 說法不計入。","caveat":"2025 年作品，Long-term 為 0 年；2026 年獎項與 8M 銷量不納入，避免年度邊界混算。","tags":["Turn-based RPG","Narrative","GOTY","買斷","單機"]},{"id":"helldivers2","name":"Helldivers 2","zh":"絕地戰兵 2","year":2024,"genre":"Third-person Shooter","subgenres":["Co-op Shooter","Live Service","PvE"],"platforms":["PC","PS5","Xbox Series"],"businessModel":"買斷 + Warbond／裝飾","developer":"Arrowhead Game Studios","publisher":"Sony Interactive Entertainment","awardIndex":18,"awardBreakdown":[{"event":"TGA 2024","category":"Best Ongoing Game","result":"win","points":6},{"event":"TGA 2024","category":"Best Multiplayer Game","result":"win","points":6},{"event":"BAFTA 2025","category":"Best Game","result":"nominee","points":6}],"awardNote":"TGA 2024 Best Ongoing／Best Multiplayer；BAFTA 2025 Best Game 入圍。Award Index 18／110。","salesCopies":15,"registeredPlayers":null,"dau":null,"ccu":26721,"revenueB":null,"bookingsB":null,"netLossB":null,"marketTier":3,"marketMetric":"累計銷量（copies，2024-11 官方口徑）","marketValue":15,"marketUnit":"M copies","marketAsOf":"2024-11","marketNote":"15M by Nov 2024；Steam CCU 26,721 是 2026 快照。2026 年第三方 20M／$700M 估算不納入。","longevityYears":1,"liveService":true,"postLaunchSupport":"strong","evidenceGrade":"B","sources":["S16","S07","S09","S12"],"summary":"Arrowhead 的協力 PvE 射擊，2024 年 TGA Best Ongoing／Best Multiplayer 與 2025 BAFTA Best Game 入圍。2024 年 11 月 15M copies；2026 年第三方 20M／$700M 估算不納入主表。","caveat":"15M 是 2024 官方口徑；2026 年第三方 20M／$700M 不納入。CCU 與銷量不可互換。","tags":["Co-op Shooter","Live Service","PvE","買斷","服務型"]}];
+const SOURCES = [{"id":"S01","title":"Newzoo Global Games Market Report 2026","publisher":"Newzoo","url":"https://newzoo.com/resources/trend-reports","published":"2026-08-13","accessed":"2026-11-25","type":"industry forecast","period":"2026F","status":"used-as-context-only","usedFor":"全球市場規模、平台結構、區域結構之宏觀背景","limitations":"2026 年為預測值，不是已完成年度；不可與 2021–2025 實際得獎/玩家資料混算，也不可當成個別遊戲營收。"},{"id":"S02","title":"Roblox Corporation 2025 Form 10-K","publisher":"Roblox Corporation / U.S. SEC","url":"https://www.sec.gov/edgar/browse/?CIK=1315098","published":"2026-02","accessed":"2026-11-25","type":"official financial filing","period":"2025-01-01–2025-12-31","status":"verified-primary","usedFor":"Roblox 2025 平均 DAU、bookings、revenue、net loss","limitations":"平台層級數據，不是單一遊戲；bookings 與 revenue 不可互換；DAU 不可當成 MAU。"},{"id":"S03","title":"Flawless victory! Investigating search and experience qualities as antecedent predictors of video game success","publisher":"Electronic Markets / PMC","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC10197035/","published":"2023-05-19","accessed":"2026-11-25","type":"peer-reviewed study","period":"2010–2015 歐洲樣本","status":"verified-primary","usedFor":" reviews、awards、brand、multiplayer 與銷售的關聯；研究設計限制","limitations":"351 款歐洲遊戲、銷售為依變數；不可直接推論全球線上遊戲、F2P 或 2021–2025 市場。"},{"id":"S04","title":"The Game Awards 2021 winners and nominees","publisher":"The Game Awards / Wikipedia 轉述","url":"https://en.wikipedia.org/wiki/The_Game_Awards_2021","officialUrl":"https://thegameawards.com/nominees/2021","published":"2021-12-09","accessed":"2026-11-25","type":"awards record (secondary transcription)","period":"2021","status":"verified-secondary","usedFor":"TGA 2021 GOTY、Best Ongoing、Best Mobile、Best Esports 等得主","limitations":"官方 FAQ/部分頁面對自動抓取回 403；以 Wikipedia 轉述與官方 URL 交叉標註，不把轉述當官方原文。"},{"id":"S05","title":"The Game Awards 2022 winners and nominees","publisher":"The Game Awards / Wikipedia 轉述","url":"https://en.wikipedia.org/wiki/The_Game_Awards_2022","officialUrl":"https://thegameawards.com/nominees/2022","published":"2022-12-08","accessed":"2026-11-25","type":"awards record (secondary transcription)","period":"2022","status":"verified-secondary","usedFor":"TGA 2022 GOTY、Best Ongoing、Best Community Support、Players' Voice 等","limitations":"同上；公眾投票與評審投票混合，不能把單一獎項當成客觀品質分數。"},{"id":"S06","title":"The Game Awards 2023 winners and nominees","publisher":"The Game Awards / Wikipedia 轉述","url":"https://en.wikipedia.org/wiki/The_Game_Awards_2023","officialUrl":"https://thegameawards.com/nominees/2023","published":"2023-12-07","accessed":"2026-11-25","type":"awards record (secondary transcription)","period":"2023","status":"verified-secondary","usedFor":"TGA 2023 GOTY、Best Mobile、Best Ongoing 等","limitations":"同上；2023 年 GOTY 競爭者與 2024 DLC 入圍規則不同，需分年處理。"},{"id":"S07","title":"The Game Awards 2024 winners and nominees","publisher":"The Game Awards / Wikipedia 轉述","url":"https://en.wikipedia.org/wiki/The_Game_Awards_2024","officialUrl":"https://thegameawards.com/nominees/2024","published":"2024-12-12","accessed":"2026-11-25","type":"awards record (secondary transcription)","period":"2024","status":"verified-secondary","usedFor":"TGA 2024 GOTY、Best Ongoing、Best Multiplayer 等","limitations":"同上；DLC 可入圍 GOTY 的制度使『作品』與『資料片』邊界需標註。"},{"id":"S08","title":"The Game Awards 2025 winners and nominees","publisher":"The Game Awards / Wikipedia 轉述","url":"https://en.wikipedia.org/wiki/The_Game_Awards_2025","officialUrl":"https://thegameawards.com/nominees/2025","published":"2025-12-11","accessed":"2026-11-25","type":"awards record (secondary transcription)","period":"2025","status":"verified-secondary","usedFor":"TGA 2025 GOTY、Clair Obscur 9 勝、154 家媒體、90/10 評審結構、171M streams、123M votes","limitations":"2025 年 BAFTA/DICE/GDC 多在 2026 舉行，超出研究截止，故不計入 2025 遊戲的 Award Index。"},{"id":"S09","title":"BAFTA Games Awards winners","publisher":"BAFTA","url":"https://www.bafta.org/games/awards","published":"2025-04","accessed":"2026-11-25","type":"awards record","period":"2021–2025","status":"verified-primary-landing","usedFor":"BAFTA Best Game 2024 Baldur's Gate 3、2025 Astro Bot；Elden Ring/Helldivers 2 入圍","limitations":"BAFTA 年度與 TGA 年度邊界不同；2026 年典禮不納入 2021–2025 主分析。"},{"id":"S10","title":"Golden Joystick Awards","publisher":"GamesRadar+ / Golden Joystick Awards","url":"https://www.gamesradar.com/golden-joystick-awards/","published":"2025-11","accessed":"2026-11-25","type":"awards record","period":"2021–2025","status":"verified-secondary","usedFor":"Ultimate Game of the Year 2022 Elden Ring、2023 Baldur's Gate 3、2025 Clair Obscur","limitations":"以公眾投票為主，與 TGA 的 90% 評審制不同；不能與 TGA 獎項等權相加。"},{"id":"S11","title":"Steam Most Played / official charts","publisher":"Valve","url":"https://store.steampowered.com/charts/mostplayed","published":"2026-11-25","accessed":"2026-11-25","type":"platform snapshot","period":"2026-11-25","status":"supplement-only","usedFor":"Steam 同時在線快照之交叉核對","limitations":"只涵蓋 Steam PC；不是全球跨平台玩家數，也不是 2021–2025 同期比較。"},{"id":"S12","title":"Steam Web API: GetNumberOfCurrentPlayers","publisher":"Valve","url":"https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=730","published":"2026-11-25","accessed":"2026-11-25","type":"official API snapshot","period":"2026-11-25","status":"supplement-only","usedFor":"CS2、Dota 2、PUBG、Apex、Rust、Elden Ring、BG3、Helldivers 2 的 Steam 同時在線","limitations":"即時快照，不是歷史峰值；不可把 CCU 當 DAU/MAU；不含主機、手機、中國特供版。"},{"id":"S13","title":"SteamDB FAQ","publisher":"SteamDB","url":"https://steamdb.info/faq/","published":"N/A","accessed":"2026-11-25","type":"methodology reference","period":"N/A","status":"methodology-only","usedFor":"理解 CCU 由 Steam API 取得、更新頻率與非全球代表性","limitations":"站方明示禁止爬取且無公開 API；本專案不抓取其歷史峰值頁，只引用方法論。"},{"id":"S14","title":"Elden Ring sales and awards","publisher":"Wikipedia / FromSoftware, Bandai Namco, PC Gamer","url":"https://en.wikipedia.org/wiki/Elden_Ring","published":"2025-04-29","accessed":"2026-11-25","type":"secondary cross-check","period":"2022–2025","status":"verified-secondary","usedFor":"30M copies by March 2025、TGA 2022 4 勝、BAFTA 2023 入圍、GJ 2022、DICE/GDC 2023 GOTY","limitations":"條目為二手整理；數字以官方/業界公告轉述為準，未直接取得 Bandai Namco 原始新聞稿。"},{"id":"S15","title":"Baldur's Gate 3 sales and awards","publisher":"Wikipedia / Larian Studios, Hasbro","url":"https://en.wikipedia.org/wiki/Baldur%27s_Gate_3","published":"2025-12-31","accessed":"2026-11-25","type":"secondary cross-check","period":"2023–2025","status":"verified-secondary","usedFor":"20M copies by end-2025（保守記錄 15M @2024）、TGA 2023 6 勝、BAFTA 2024、GJ 2023、DICE/GDC 2024 GOTY","limitations":"Larian 未持續公布精確銷售；20M 為二手整理，另保留 15M 的較保守觀測。"},{"id":"S16","title":"Helldivers 2 sales and awards","publisher":"Wikipedia / Arrowhead, Sony Interactive Entertainment","url":"https://en.wikipedia.org/wiki/Helldivers_2","published":"2025-10-23","accessed":"2026-11-25","type":"secondary cross-check","period":"2024–2025","status":"verified-secondary","usedFor":"15M copies by Nov 2024、TGA 2024 Best Ongoing + Best Multiplayer、BAFTA 2025 入圍","limitations":"2026 年 Alinea Analytics 的 20M/$700M 為第三方估算，未納入主表。"},{"id":"S17","title":"Clair Obscur: Expedition 33 sales and awards","publisher":"Wikipedia / Sandfall Interactive, Kepler Interactive","url":"https://en.wikipedia.org/wiki/Clair_Obscur:_Expedition_33","published":"2025-10","accessed":"2026-11-25","type":"secondary cross-check","period":"2025","status":"verified-secondary","usedFor":"5M copies in early Oct 2025、TGA 2025 9 勝、GJ 2025 Ultimate GOTY","limitations":"2026 年 BAFTA/DICE/GDC 與 8M copies 超出研究截止，不計入主分析。"},{"id":"S18","title":"Astro Bot sales and awards","publisher":"Wikipedia / Team Asobi, Sony Interactive Entertainment","url":"https://en.wikipedia.org/wiki/Astro_Bot","published":"2024-11-08","accessed":"2026-11-25","type":"secondary cross-check","period":"2024–2025","status":"verified-secondary","usedFor":"1.5M copies as of Nov 2024、TGA 2024 4 勝、BAFTA 2025 Best Game、DICE/GDC 2025","limitations":"2026 年 4.3M/$250M 超出研究截止，不計入。"},{"id":"S19","title":"Minecraft sales","publisher":"Wikipedia / Mojang Studios, Microsoft","url":"https://en.wikipedia.org/wiki/Minecraft","published":"2023-10","accessed":"2026-11-25","type":"secondary cross-check","period":"2023","status":"verified-secondary","usedFor":"300M copies（2023 官方里程碑）；另註 400M 的後續說法","limitations":"400M 說法出現在研究期後段/之後，為主表避免混算仍採 300M；累計銷量不是活躍玩家。"},{"id":"S20","title":"Final Fantasy XIV registered players","publisher":"Wikipedia / Square Enix","url":"https://en.wikipedia.org/wiki/Final_Fantasy_XIV","published":"2021-10","accessed":"2026-11-25","type":"secondary cross-check","period":"2021","status":"verified-secondary","usedFor":"24M registered players by Oct 2021、TGA 2021/2022 Best Ongoing、2022 Best Community Support","limitations":"registered accounts ≠ active subscribers；不可當 MAU/DAU，也不可與銷量直接比較。"},{"id":"S21","title":"The Game Awards FAQ (attempted)","publisher":"The Game Awards","url":"https://thegameawards.com/faq","published":"N/A","accessed":"2026-11-25","type":"official methodology page","period":"N/A","status":"blocked-403","usedFor":"原擬核對評審比例、資格截止、DLC 規則","limitations":"自動抓取回 403；改用 Wikipedia 轉述與官方 URL 標註，報告中明確標記訪問受限。"},{"id":"S22","title":"SteamDB charts (attempted)","publisher":"SteamDB","url":"https://steamdb.info/charts/","published":"N/A","accessed":"2026-11-25","type":"third-party tracker","period":"N/A","status":"blocked-and-disallowed","usedFor":"原擬取得歷史峰值","limitations":"站方禁止爬取且回 403；依站方意願停止請求，改用 Steam 官方 API 即時快照。"}];
+const AWARDS = [{"id":"tga2021","event":"The Game Awards","year":2021,"date":"2021-12-09","goty":"It Takes Two","juryWeight":0.9,"publicWeight":0.1,"mediaOutlets":103,"streamsM":85,"votesM":23.2,"eligibility":"2021-11-19 前發行","note":"評審 90%＋公眾 10%；Players' Voice 為 100% 公眾投票。FFXIV 同年拿下 Best Ongoing 與 Best Community Support。","source":"S04"},{"id":"tga2022","event":"The Game Awards","year":2022,"date":"2022-12-08","goty":"Elden Ring","juryWeight":0.9,"publicWeight":0.1,"mediaOutlets":117,"streamsM":103,"votesM":55,"eligibility":"2022-11-18 前發行","note":"FFXIV 連續第二年拿下 Best Ongoing 與 Best Community Support；Genshin 拿下 Players' Voice。","source":"S05"},{"id":"tga2023","event":"The Game Awards","year":2023,"date":"2023-12-07","goty":"Baldur's Gate 3","juryWeight":0.9,"publicWeight":0.1,"mediaOutlets":null,"streamsM":null,"votesM":null,"eligibility":"2023 年資格截止日","note":"BG3 6 勝；Honkai: Star Rail 拿下 Best Mobile Game。","source":"S06"},{"id":"tga2024","event":"The Game Awards","year":2024,"date":"2024-12-12","goty":"Astro Bot","juryWeight":0.9,"publicWeight":0.1,"mediaOutlets":null,"streamsM":null,"votesM":null,"eligibility":"2024 年資格截止日；DLC／重製可入圍","note":"Astro Bot 4 勝；Helldivers 2 拿下 Best Ongoing 與 Best Multiplayer。","source":"S07"},{"id":"tga2025","event":"The Game Awards","year":2025,"date":"2025-12-11","goty":"Clair Obscur: Expedition 33","juryWeight":0.9,"publicWeight":0.1,"mediaOutlets":154,"streamsM":171,"votesM":123,"eligibility":"2025-11-21 前發行","note":"Clair Obscur 9 勝；No Man's Sky 拿下 Best Ongoing。2025 年 BAFTA／DICE／GDC 多在 2026 舉行，超出研究截止。","source":"S08"}];
+const EDGES = [{"source":"game:lol","target":"genre:MOBA","type":"genre","label":"MOBA","weight":1},{"source":"game:lol","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:lol","target":"source:S04","type":"source","label":"S04","weight":1},{"source":"game:lol","target":"source:S21","type":"source","label":"S21","weight":1},{"source":"game:lol","target":"award:tga2021","type":"award","label":"Best Esports Game","weight":6},{"source":"game:dota2","target":"genre:MOBA","type":"genre","label":"MOBA","weight":1},{"source":"game:dota2","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:dota2","target":"source:S11","type":"source","label":"S11","weight":1},{"source":"game:dota2","target":"source:S12","type":"source","label":"S12","weight":1},{"source":"game:cs2","target":"genre:FPS","type":"genre","label":"FPS","weight":1},{"source":"game:cs2","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:cs2","target":"source:S11","type":"source","label":"S11","weight":1},{"source":"game:cs2","target":"source:S12","type":"source","label":"S12","weight":1},{"source":"game:fortnite","target":"genre:Battle Royale","type":"genre","label":"Battle Royale","weight":1},{"source":"game:fortnite","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:fortnite","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:fortnite","target":"platform:Mobile","type":"platform","label":"Mobile","weight":1},{"source":"game:fortnite","target":"source:S21","type":"source","label":"S21","weight":1},{"source":"game:pubg","target":"genre:Battle Royale","type":"genre","label":"Battle Royale","weight":1},{"source":"game:pubg","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:pubg","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:pubg","target":"source:S11","type":"source","label":"S11","weight":1},{"source":"game:pubg","target":"source:S12","type":"source","label":"S12","weight":1},{"source":"game:apex","target":"genre:Battle Royale","type":"genre","label":"Battle Royale","weight":1},{"source":"game:apex","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:apex","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:apex","target":"source:S11","type":"source","label":"S11","weight":1},{"source":"game:apex","target":"source:S12","type":"source","label":"S12","weight":1},{"source":"game:apex","target":"source:S04","type":"source","label":"S04","weight":1},{"source":"game:roblox","target":"genre:Sandbox / UGC","type":"genre","label":"Sandbox / UGC","weight":1},{"source":"game:roblox","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:roblox","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:roblox","target":"platform:Mobile","type":"platform","label":"Mobile","weight":1},{"source":"game:roblox","target":"platform:VR","type":"platform","label":"VR","weight":1},{"source":"game:roblox","target":"source:S02","type":"source","label":"S02","weight":1},{"source":"game:minecraft","target":"genre:Sandbox / Survival","type":"genre","label":"Sandbox / Survival","weight":1},{"source":"game:minecraft","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:minecraft","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:minecraft","target":"platform:Mobile","type":"platform","label":"Mobile","weight":1},{"source":"game:minecraft","target":"source:S19","type":"source","label":"S19","weight":1},{"source":"game:rust","target":"genre:Survival","type":"genre","label":"Survival","weight":1},{"source":"game:rust","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:rust","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:rust","target":"source:S11","type":"source","label":"S11","weight":1},{"source":"game:rust","target":"source:S12","type":"source","label":"S12","weight":1},{"source":"game:wow","target":"genre:MMORPG","type":"genre","label":"MMORPG","weight":1},{"source":"game:wow","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:wow","target":"source:S21","type":"source","label":"S21","weight":1},{"source":"game:ffxiv","target":"genre:MMORPG","type":"genre","label":"MMORPG","weight":1},{"source":"game:ffxiv","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:ffxiv","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:ffxiv","target":"source:S20","type":"source","label":"S20","weight":1},{"source":"game:ffxiv","target":"source:S04","type":"source","label":"S04","weight":1},{"source":"game:ffxiv","target":"source:S05","type":"source","label":"S05","weight":1},{"source":"game:ffxiv","target":"award:tga2021","type":"award","label":"Best Ongoing Game","weight":6},{"source":"game:ffxiv","target":"award:tga2021","type":"award","label":"Best Community Support","weight":6},{"source":"game:ffxiv","target":"award:tga2022","type":"award","label":"Best Ongoing Game","weight":6},{"source":"game:ffxiv","target":"award:tga2022","type":"award","label":"Best Community Support","weight":6},{"source":"game:genshin","target":"genre:Online RPG","type":"genre","label":"Online RPG","weight":1},{"source":"game:genshin","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:genshin","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:genshin","target":"platform:Mobile","type":"platform","label":"Mobile","weight":1},{"source":"game:genshin","target":"source:S04","type":"source","label":"S04","weight":1},{"source":"game:genshin","target":"source:S05","type":"source","label":"S05","weight":1},{"source":"game:genshin","target":"source:S21","type":"source","label":"S21","weight":1},{"source":"game:genshin","target":"award:tga2021","type":"award","label":"Best Mobile Game","weight":6},{"source":"game:genshin","target":"award:tga2022","type":"award","label":"Players' Voice","weight":6},{"source":"game:hsr","target":"genre:Online RPG","type":"genre","label":"Online RPG","weight":1},{"source":"game:hsr","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:hsr","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:hsr","target":"platform:Mobile","type":"platform","label":"Mobile","weight":1},{"source":"game:hsr","target":"source:S06","type":"source","label":"S06","weight":1},{"source":"game:hsr","target":"source:S21","type":"source","label":"S21","weight":1},{"source":"game:hsr","target":"award:tga2023","type":"award","label":"Best Mobile Game","weight":6},{"source":"game:eldenring","target":"genre:Action RPG","type":"genre","label":"Action RPG","weight":1},{"source":"game:eldenring","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:eldenring","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:eldenring","target":"source:S14","type":"source","label":"S14","weight":1},{"source":"game:eldenring","target":"source:S05","type":"source","label":"S05","weight":1},{"source":"game:eldenring","target":"source:S09","type":"source","label":"S09","weight":1},{"source":"game:eldenring","target":"source:S10","type":"source","label":"S10","weight":1},{"source":"game:eldenring","target":"source:S12","type":"source","label":"S12","weight":1},{"source":"game:eldenring","target":"award:tga2022","type":"award","label":"Game of the Year","weight":40},{"source":"game:eldenring","target":"award:tga2022","type":"award","label":"其他 3 勝（Game Direction／Art Direction／RPG）","weight":18},{"source":"game:eldenring","target":"award:bafta2023","type":"award","label":"Best Game","weight":6},{"source":"game:eldenring","target":"award:goldenjoystick2022","type":"award","label":"Ultimate Game of the Year","weight":10},{"source":"game:eldenring","target":"award:dice2023","type":"award","label":"Game of the Year","weight":8},{"source":"game:eldenring","target":"award:gdc2023","type":"award","label":"Game of the Year","weight":8},{"source":"game:bg3","target":"genre:RPG","type":"genre","label":"RPG","weight":1},{"source":"game:bg3","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:bg3","target":"platform:Console","type":"platform","label":"Console","weight":1},{"source":"game:bg3","target":"source:S15","type":"source","label":"S15","weight":1},{"source":"game:bg3","target":"source:S06","type":"source","label":"S06","weight":1},{"source":"game:bg3","target":"source:S09","type":"source","label":"S09","weight":1},{"source":"game:bg3","target":"source:S10","type":"source","label":"S10","weight":1},{"source":"game:bg3","target":"source:S12","type":"source","label":"S12","weight":1},{"source":"game:bg3","target":"award:tga2023","type":"award","label":"Game of the Year","weight":40},{"source":"game:bg3","target":"award:tga2023","type":"award","label":"其他 5 勝（RPG／Multiplayer／Community／Performance／Players' Voice）","weight":24},{"source":"game:bg3","target":"award:bafta2024","type":"award","label":"Best Game","weight":20},{"source":"game:bg3","target":"award:goldenjoystick2023","type":"award","label":"Ultimate Game of the Year","weight":10},{"source":"game:bg3","target":"award:dice2024","type":"award","label":"Game of the Year","weight":8},{"source":"game:bg3","target":"award:gdc2024","type":"award","label":"Game of the Year","weight":8},{"source":"game:astrobot","target":"genre:Platformer","type":"genre","label":"Platformer","weight":1},{"source":"game:astrobot","target":"platform:PS5","type":"platform","label":"PS5","weight":1},{"source":"game:astrobot","target":"source:S18","type":"source","label":"S18","weight":1},{"source":"game:astrobot","target":"source:S07","type":"source","label":"S07","weight":1},{"source":"game:astrobot","target":"source:S09","type":"source","label":"S09","weight":1},{"source":"game:astrobot","target":"award:tga2024","type":"award","label":"Game of the Year","weight":40},{"source":"game:astrobot","target":"award:tga2024","type":"award","label":"其他 3 勝（Direction／Action-Adventure／Family）","weight":18},{"source":"game:astrobot","target":"award:bafta2025","type":"award","label":"Best Game","weight":20},{"source":"game:astrobot","target":"award:dice2025","type":"award","label":"Game of the Year","weight":8},{"source":"game:astrobot","target":"award:gdc2025","type":"award","label":"Game of the Year","weight":8},{"source":"game:clair","target":"genre:RPG","type":"genre","label":"RPG","weight":1},{"source":"game:clair","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:clair","target":"platform:PS5","type":"platform","label":"PS5","weight":1},{"source":"game:clair","target":"platform:Xbox Series","type":"platform","label":"Xbox Series","weight":1},{"source":"game:clair","target":"source:S17","type":"source","label":"S17","weight":1},{"source":"game:clair","target":"source:S08","type":"source","label":"S08","weight":1},{"source":"game:clair","target":"source:S10","type":"source","label":"S10","weight":1},{"source":"game:clair","target":"award:tga2025","type":"award","label":"Game of the Year","weight":40},{"source":"game:clair","target":"award:tga2025","type":"award","label":"其他 8 勝","weight":24},{"source":"game:clair","target":"award:goldenjoystick2025","type":"award","label":"Ultimate Game of the Year","weight":10},{"source":"game:helldivers2","target":"genre:Third-person Shooter","type":"genre","label":"Third-person Shooter","weight":1},{"source":"game:helldivers2","target":"platform:PC","type":"platform","label":"PC","weight":1},{"source":"game:helldivers2","target":"platform:PS5","type":"platform","label":"PS5","weight":1},{"source":"game:helldivers2","target":"platform:Xbox Series","type":"platform","label":"Xbox Series","weight":1},{"source":"game:helldivers2","target":"source:S16","type":"source","label":"S16","weight":1},{"source":"game:helldivers2","target":"source:S07","type":"source","label":"S07","weight":1},{"source":"game:helldivers2","target":"source:S09","type":"source","label":"S09","weight":1},{"source":"game:helldivers2","target":"source:S12","type":"source","label":"S12","weight":1},{"source":"game:helldivers2","target":"award:tga2024","type":"award","label":"Best Ongoing Game","weight":6},{"source":"game:helldivers2","target":"award:tga2024","type":"award","label":"Best Multiplayer Game","weight":6},{"source":"game:helldivers2","target":"award:bafta2025","type":"award","label":"Best Game","weight":6}];
+const BUILD_META = {"built":"2026-11-25T15:06:53Z","games":18,"sources":22,"awards":5,"edges":133,"researchPeriod":"2021-2025","supplementSnapshot":"2026-11-25"};
+
+const GAME_BY_ID = new Map(GAMES.map(g => [g.id, g]));
+const SOURCE_BY_ID = new Map(SOURCES.map(s => [s.id, s]));
+
+const TIER_LABELS = {
+  0: "Tier 0 · 無公開可比數據",
+  1: "Tier 1 · <1M / <50k CCU",
+  2: "Tier 2 · 1–4.9M / 50–199k CCU",
+  3: "Tier 3 · 5–19.9M / 200–499k CCU",
+  4: "Tier 4 · 20–99.9M / ≥500k CCU",
+  5: "Tier 5 · ≥100M active / ≥300M copies"
+};
+
+const STATUS_MAP = {
+  "verified-primary": { label: "官方／主要", cls: "primary" },
+  "verified-primary-landing": { label: "官方／主要", cls: "primary" },
+  "verified-secondary": { label: "二手核對", cls: "secondary" },
+  "used-as-context-only": { label: "背景", cls: "context" },
+  "supplement-only": { label: "補充", cls: "supplement" },
+  "methodology-only": { label: "方法論", cls: "method" },
+  "blocked-403": { label: "403 受限", cls: "blocked" },
+  "blocked-and-disallowed": { label: "禁止爬取", cls: "blocked" }
+};
+
+const EVIDENCE_LABEL = { A: "A · 官方", B: "B · 二手核對", C: "C · 第三方估算", D: "D · 無可比數據" };
+const DEFAULT_WEIGHTS = { award: 35, reach: 25, commercial: 20, longevity: 20 };
+
+const state = {
+  compare: [],
+  gameQuery: "",
+  genre: "all",
+  platform: "all",
+  sort: "award-desc",
+  awardOnly: false,
+  liveOnly: false,
+  sourceQuery: "",
+  sourceStatus: "all",
+  graphType: "all",
+  graphQuery: "",
+  graphSelected: null,
+  weights: { ...DEFAULT_WEIGHTS },
+  lastFocus: null
+};
+
+function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
+function round(n) { return Math.round(n); }
+function pct(n, max = 110) { return clamp((n / max) * 100, 0, 100); }
+function fmt(n) { return new Intl.NumberFormat("zh-Hant").format(n); }
+function fmtOne(n) { return new Intl.NumberFormat("zh-Hant", { maximumFractionDigits: 1 }).format(n); }
+function fmtMoneyB(n) { return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 3 }).format(n)}B`; }
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[ch]));
+}
+function tierClass(t) { return `tier-${t}`; }
+function tierShort(t) { return t === 0 ? "Tier 0" : `Tier ${t}`; }
+function sourceChip(id) {
+  return `<a class="source-chip" href="#source-${escapeHTML(id)}" data-source="${escapeHTML(id)}" title="跳到來源 ${escapeHTML(id)}">${escapeHTML(id)}</a>`;
+}
+function sourceLinks(ids) { return (ids || []).map(sourceChip).join(" "); }
+function statusInfo(status) {
+  return STATUS_MAP[status] || { label: status || "N/A", cls: "method" };
+}
+function evidenceChip(grade) {
+  const cls = grade === "A" ? "accent" : grade === "B" ? "blue" : grade === "C" ? "amber" : "pink";
+  return `<span class="chip ${cls}">${escapeHTML(EVIDENCE_LABEL[grade] || grade)}</span>`;
+}
+function postLaunchLabel(v) {
+  return v === "strong" ? "強" : v === "moderate" ? "中" : v === "none" ? "無" : "N/A";
+}
+function marketValueText(g) {
+  if (g.marketValue == null) return "N/A";
+  if (g.marketUnit === "CCU") return `${fmt(g.marketValue)} CCU`;
+  if (g.marketUnit === "M DAU") return `${fmt(g.marketValue)}M DAU`;
+  if (g.marketUnit === "M copies") return `${fmtOne(g.marketValue)}M copies`;
+  if (g.marketUnit === "M registered") return `${fmt(g.marketValue)}M registered`;
+  return `${fmt(g.marketValue)} ${g.marketUnit || ""}`.trim();
+}
+function commercialBasis(g) {
+  if (g.salesCopies != null) return "累計銷量";
+  if (g.bookingsB != null) return "平台 bookings";
+  if (g.revenueB != null) return "平台 revenue";
+  return null;
+}
+function awardScore(g) { return clamp((g.awardIndex / 110) * 100, 0, 100); }
+function reachScore(g) { return g.marketTier > 0 ? g.marketTier * 20 : null; }
+function commercialScore(g) {
+  if (g.salesCopies != null) return clamp((Math.log10(g.salesCopies) / Math.log10(300)) * 100, 0, 100);
+  if (g.bookingsB != null) return clamp((Math.log10(g.bookingsB) / Math.log10(10)) * 100, 0, 100);
+  if (g.revenueB != null) return clamp((Math.log10(g.revenueB) / Math.log10(10)) * 100, 0, 100);
+  return null;
+}
+function longevityScore(g) {
+  const base = Math.min(1, Math.max(0, g.longevityYears) / 20) * 70;
+  const support = g.postLaunchSupport === "strong" ? 30 : g.postLaunchSupport === "moderate" ? 15 : 0;
+  return clamp(base + support, 0, 100);
+}
+function dimensions(g) {
+  return {
+    award: awardScore(g),
+    reach: reachScore(g),
+    commercial: commercialScore(g),
+    longevity: longevityScore(g)
+  };
+}
+function weightedScore(g, weights = state.weights) {
+  const dims = dimensions(g);
+  const keys = ["award", "reach", "commercial", "longevity"];
+  let total = 0, wsum = 0;
+  const used = [];
+  const effective = {};
+  for (const key of keys) {
+    const w = Number(weights[key]) || 0;
+    if (w > 0 && dims[key] != null) {
+      total += w * dims[key];
+      wsum += w;
+      used.push(key);
+      effective[key] = w;
+    }
+  }
+  return {
+    game: g,
+    dims,
+    score: wsum > 0 ? total / wsum : 0,
+    coverage: used.length,
+    used,
+    effective,
+    wsum
+  };
+}
+function sortedSim(weights = state.weights) {
+  return GAMES.map(g => weightedScore(g, weights)).sort((a, b) => b.score - a.score || a.game.zh.localeCompare(b.game.zh, "zh-Hant"));
+}
+function debounce(fn, wait = 120) {
+  let timer = null;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), wait);
+  };
+}
+function hashString(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return Math.abs(h);
+}
+function toast(message) {
+  const el = document.getElementById("toast");
+  if (!el) return;
+  el.textContent = message;
+  el.classList.add("show");
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => el.classList.remove("show"), 2600);
+}
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+function make(tag, attrs = {}, html = "") {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") el.className = v;
+    else if (k === "dataset") Object.assign(el.dataset, v);
+    else if (k.startsWith("on") && typeof v === "function") el.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) el.setAttribute(k, v);
+  }
+  if (html) el.innerHTML = html;
+  return el;
+}
+
+/* ============================================================
+   2. Static views: sources, awards, market
+   ============================================================ */
+function renderBuildMeta() {
+  const text = `build ${BUILD_META.built} · ${BUILD_META.games} games · ${BUILD_META.sources} sources · ${BUILD_META.edges} edges`;
+  setText("buildMetaSide", text);
+  setText("buildMetaFooter", text);
+}
+
+function barChartHTML(items, opts = {}) {
+  const width = 900;
+  const rowH = opts.rowH || 30;
+  const labelW = opts.labelW || 185;
+  const valueW = opts.valueW || 62;
+  const max = opts.max || Math.max(1, ...items.map(d => d.value));
+  const height = 18 + items.length * rowH + 8;
+  const barW = width - labelW - valueW - 14;
+  const rows = items.map((d, i) => {
+    const y = 18 + i * rowH;
+    const w = clamp((d.value / max) * barW, d.value > 0 ? 3 : 0, barW);
+    const color = d.color || "#5eead4";
+    const gid = d.gameId ? ` data-game="${escapeHTML(d.gameId)}"` : "";
+    const role = d.gameId ? ` tabindex="0" role="button" aria-label="${escapeHTML(d.label)}：${escapeHTML(d.value)}"` : "";
+    return `<g class="chart-row"${gid}${role}>
+      <title>${escapeHTML(d.title || `${d.label}：${d.value}${opts.valueSuffix || ""}`)}</title>
+      <text x="0" y="${y + 12}" fill="#c6d2df" font-size="11">${escapeHTML(d.label)}</text>
+      <rect x="${labelW}" y="${y + 2}" width="${barW}" height="14" rx="7" fill="#16222f"></rect>
+      <rect class="bar" x="${labelW}" y="${y + 2}" width="${w}" height="14" rx="7" fill="${color}"></rect>
+      <text x="${width - 8}" y="${y + 13}" text-anchor="end" fill="#9aacbf" font-size="11">${escapeHTML(d.value)}${escapeHTML(opts.valueSuffix || "")}</text>
+      ${d.sub ? `<text x="${labelW + 6}" y="${y + 27}" fill="#6f8297" font-size="9">${escapeHTML(d.sub)}</text>` : ""}
+    </g>`;
+  }).join("");
+  return `<svg viewBox="0 0 ${width} ${height}" width="100%" height="${height}" aria-hidden="true">${rows}</svg>`;
+}
+
+function attachChartRows(container) {
+  container.querySelectorAll(".chart-row[data-game]").forEach(row => {
+    const open = () => openGame(row.dataset.game);
+    row.addEventListener("click", open);
+    row.addEventListener("keydown", ev => {
+      if (ev.key === "Enter" || ev.key === " ") {
+        ev.preventDefault();
+        open();
+      }
+    });
+  });
+}
+
+function renderAwardChart() {
+  const el = document.getElementById("awardChart");
+  if (!el) return;
+  const items = [...GAMES].sort((a, b) => b.awardIndex - a.awardIndex || a.zh.localeCompare(b.zh, "zh-Hant")).map(g => ({
+    label: g.zh,
+    value: g.awardIndex,
+    gameId: g.id,
+    color: g.awardIndex >= 40 ? "#5eead4" : g.awardIndex > 0 ? "#fbbf24" : "#3b4d61",
+    title: `${g.zh}／${g.name}：Award Index ${g.awardIndex}／110`
+  }));
+  el.innerHTML = barChartHTML(items, { max: 110, valueSuffix: "" });
+  attachChartRows(el);
+}
+
+function renderTgaTimeline() {
+  const el = document.getElementById("tgaTimeline");
+  if (!el) return;
+  el.innerHTML = AWARDS.map(a => {
+    const extras = [
+      a.mediaOutlets ? `${a.mediaOutlets} 家媒體` : null,
+      a.streamsM ? `${a.streamsM}M streams` : null,
+      a.votesM ? `${a.votesM}M votes` : null
+    ].filter(Boolean).join(" · ");
+    return `<div class="timeline-item">
+      <div class="when">${escapeHTML(a.date)} · ${escapeHTML(a.event)}</div>
+      <h4>${a.year} GOTY：${escapeHTML(a.goty)}</h4>
+      <p>評審 ${round(a.juryWeight * 100)}%＋公眾 ${round(a.publicWeight * 100)}%${extras ? " · " + escapeHTML(extras) : ""}</p>
+      <p class="note" style="margin-top:.25rem">${escapeHTML(a.note)}</p>
+      <div style="margin-top:.35rem">${sourceChip(a.source)}</div>
+    </div>`;
+  }).join("");
+}
+
+function renderTierChart() {
+  const el = document.getElementById("tierChart");
+  if (!el) return;
+  const counts = [0, 0, 0, 0, 0, 0];
+  GAMES.forEach(g => counts[g.marketTier]++);
+  const colors = ["#6f8297", "#60a5fa", "#5eead4", "#fbbf24", "#fb7185", "#c084fc"];
+  const items = counts.map((count, tier) => ({
+    label: tier === 0 ? "Tier 0 · 留白" : `Tier ${tier}`,
+    value: count,
+    color: colors[tier],
+    title: `${TIER_LABELS[tier]}：${count} 款`
+  }));
+  const max = Math.max(1, ...counts);
+  el.innerHTML = `<div class="chart-title"><strong>18 款案例的 Tier 分布</strong><span>點數不是玩家數</span></div>${barChartHTML(items, { max, valueSuffix: " 款", rowH: 34 })}`;
+}
+
+function renderMarketTable() {
+  const el = document.getElementById("marketTable");
+  if (!el) return;
+  const rows = [...GAMES].sort((a, b) => b.marketTier - a.marketTier || (b.marketValue || 0) - (a.marketValue || 0)).map(g => `
+    <tr>
+      <td><button type="button" data-open="${escapeHTML(g.id)}" style="background:none;border:0;color:var(--accent);padding:0;font:inherit;cursor:pointer;text-align:left">${escapeHTML(g.zh)}</button><div class="faint tiny">${escapeHTML(g.name)}</div></td>
+      <td><span class="tier-badge ${tierClass(g.marketTier)}">${tierShort(g.marketTier)}</span></td>
+      <td>${escapeHTML(g.marketMetric)}</td>
+      <td class="num">${escapeHTML(marketValueText(g))}</td>
+      <td class="nowrap">${escapeHTML(g.marketAsOf)}</td>
+      <td>${evidenceChip(g.evidenceGrade)}</td>
+      <td class="small">${escapeHTML(g.marketNote)}</td>
+    </tr>`).join("");
+  el.innerHTML = `<table><caption>市場軸只描述證據等級與口徑，不是全球市場規模。</caption><thead><tr><th>遊戲</th><th>Tier</th><th>指標</th><th class="num">數值</th><th>截止</th><th>證據</th><th>備註</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function sourceMatches(s) {
+  const q = state.sourceQuery.trim().toLowerCase();
+  if (q) {
+    const hay = [s.id, s.title, s.publisher, s.usedFor, s.limitations, s.type, s.period].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  const st = state.sourceStatus;
+  if (st === "all") return true;
+  if (st === "primary") return s.status.startsWith("verified-primary");
+  if (st === "secondary") return s.status === "verified-secondary";
+  if (st === "context") return ["used-as-context-only", "supplement-only", "methodology-only"].includes(s.status);
+  if (st === "blocked") return s.status.startsWith("blocked");
+  return true;
+}
+
+function renderSources() {
+  const el = document.getElementById("sourceList");
+  if (!el) return;
+  const filtered = SOURCES.filter(sourceMatches);
+  setText("sourceCount", `${filtered.length} / ${SOURCES.length}`);
+  if (!filtered.length) {
+    el.innerHTML = `<div class="empty">沒有符合條件的來源。試試清空搜尋或切換狀態。</div>`;
+    return;
+  }
+  el.innerHTML = filtered.map(s => {
+    const st = statusInfo(s.status);
+    return `<details class="source-card" id="source-${escapeHTML(s.id)}">
+      <summary>
+        <span class="sid">${escapeHTML(s.id)}</span>
+        <span class="stitle">${escapeHTML(s.title)}</span>
+        <span class="status ${st.cls}" style="margin-left:auto">${escapeHTML(st.label)}</span>
+      </summary>
+      <div class="sbody">
+        <p><span class="label">Publisher</span>${escapeHTML(s.publisher)}</p>
+        <p><span class="label">URL</span><a href="${escapeHTML(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(s.url)}</a></p>
+        <p><span class="label">Published</span>${escapeHTML(s.published)} <span class="label" style="margin-left:.8rem">Accessed</span>${escapeHTML(s.accessed)}</p>
+        <p><span class="label">Type</span>${escapeHTML(s.type)} <span class="label" style="margin-left:.8rem">Period</span>${escapeHTML(s.period)}</p>
+        <p><span class="label">Used for</span>${escapeHTML(s.usedFor)}</p>
+        <p><span class="label">Limitations</span>${escapeHTML(s.limitations)}</p>
+      </div>
+    </details>`;
+  }).join("");
+}
+
+function scrollToSource(id) {
+  if (!SOURCE_BY_ID.has(id)) return;
+  state.sourceQuery = "";
+  state.sourceStatus = "all";
+  const search = document.getElementById("sourceSearch");
+  const status = document.getElementById("sourceStatus");
+  if (search) search.value = "";
+  if (status) status.value = "all";
+  renderSources();
+  const card = document.getElementById("source-" + id);
+  if (!card) return;
+  card.open = true;
+  card.classList.add("highlight");
+  card.scrollIntoView({ behavior: "smooth", block: "center" });
+  const summary = card.querySelector("summary");
+  if (summary) summary.focus({ preventScroll: true });
+  setTimeout(() => card.classList.remove("highlight"), 2600);
+}
+
+function renderSourceTable() {
+  const el = document.getElementById("sourceTable");
+  if (!el) return;
+  const rows = SOURCES.map(s => {
+    const st = statusInfo(s.status);
+    return `<tr>
+      <td class="mono">${escapeHTML(s.id)}</td>
+      <td><a href="${escapeHTML(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(s.title)}</a><div class="faint tiny">${escapeHTML(s.publisher)}</div></td>
+      <td class="nowrap">${escapeHTML(s.published)}</td>
+      <td><span class="status ${st.cls}">${escapeHTML(st.label)}</span></td>
+      <td class="small">${escapeHTML(s.usedFor)}</td>
+      <td class="small">${escapeHTML(s.limitations)}</td>
+    </tr>`;
+  }).join("");
+  el.innerHTML = `<table><caption>22 個來源；所有遊戲卡上的 Sxx 都可回到這張表。</caption><thead><tr><th>ID</th><th>來源</th><th>發布日</th><th>狀態</th><th>用途</th><th>限制</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+/* ============================================================
+   3. Game database, comparator, modal, analysis charts
+   ============================================================ */
+function populateFilters() {
+  const genreSelect = document.getElementById("genreFilter");
+  const platformSelect = document.getElementById("platformFilter");
+  if (genreSelect && genreSelect.options.length === 1) {
+    [...new Set(GAMES.map(g => g.genre))].sort((a, b) => a.localeCompare(b, "zh-Hant")).forEach(genre => {
+      genreSelect.add(new Option(genre, genre));
+    });
+  }
+  if (platformSelect && platformSelect.options.length === 1) {
+    [...new Set(GAMES.flatMap(g => g.platforms))].sort().forEach(platform => {
+      platformSelect.add(new Option(platform, platform));
+    });
+  }
+}
+
+function filteredGames() {
+  const q = state.gameQuery.trim().toLowerCase();
+  let list = GAMES.filter(g => {
+    if (q) {
+      const hay = [g.zh, g.name, g.genre, g.developer, g.publisher, g.summary, g.caveat, g.tags.join(" ")].join(" ").toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    if (state.genre !== "all" && g.genre !== state.genre) return false;
+    if (state.platform !== "all" && !g.platforms.includes(state.platform)) return false;
+    if (state.awardOnly && g.awardIndex <= 0) return false;
+    if (state.liveOnly && !g.liveService) return false;
+    return true;
+  });
+  switch (state.sort) {
+    case "tier-desc":
+      list.sort((a, b) => b.marketTier - a.marketTier || b.awardIndex - a.awardIndex);
+      break;
+    case "year-desc":
+      list.sort((a, b) => b.year - a.year || b.awardIndex - a.awardIndex);
+      break;
+    case "longevity-desc":
+      list.sort((a, b) => b.longevityYears - a.longevityYears || b.awardIndex - a.awardIndex);
+      break;
+    case "name-asc":
+      list.sort((a, b) => a.zh.localeCompare(b.zh, "zh-Hant"));
+      break;
+    default:
+      list.sort((a, b) => b.awardIndex - a.awardIndex || b.marketTier - a.marketTier);
+  }
+  return list;
+}
+
+function gameCardHTML(g) {
+  const checked = state.compare.includes(g.id) ? "checked" : "";
+  return `<article class="game-card" id="game-card-${escapeHTML(g.id)}" data-id="${escapeHTML(g.id)}">
+    <div class="top">
+      <div>
+        <h3>${escapeHTML(g.zh)}<span>${escapeHTML(g.name)}</span></h3>
+        <div class="meta">${g.year} · ${escapeHTML(g.genre)} · ${escapeHTML(g.platforms.join(" / "))}</div>
+      </div>
+      <span class="tier-badge ${tierClass(g.marketTier)}">${tierShort(g.marketTier)}</span>
+    </div>
+    <p>${escapeHTML(g.summary)}</p>
+    <div class="award-mini"><strong>${g.awardIndex}</strong><div class="meter"><i style="width:${pct(g.awardIndex, 110)}%"></i></div><span>/110</span></div>
+    <div class="tag-row">${g.tags.slice(0, 4).map(t => `<span class="chip">${escapeHTML(t)}</span>`).join("")}</div>
+    <div class="actions">
+      <button class="btn btn-small" type="button" data-open="${escapeHTML(g.id)}">詳情</button>
+      <label class="compare"><input type="checkbox" data-compare="${escapeHTML(g.id)}" ${checked}> 比較</label>
+    </div>
+  </article>`;
+}
+
+function renderGameGrid() {
+  const el = document.getElementById("gameGrid");
+  if (!el) return;
+  const list = filteredGames();
+  setText("gameCount", `顯示 ${list.length} / ${GAMES.length} 款 · 比較 ${state.compare.length} / 3`);
+  if (!list.length) {
+    el.innerHTML = `<div class="empty" style="grid-column:1/-1">沒有符合條件的案例。試試重設篩選，或改用「MOBA」「MMORPG」等關鍵字。</div>`;
+    return;
+  }
+  el.innerHTML = list.map(gameCardHTML).join("");
+}
+
+function renderGameTable() {
+  const el = document.getElementById("gameTable");
+  if (!el) return;
+  const list = filteredGames();
+  const rows = list.map(g => `<tr>
+    <td><button type="button" data-open="${escapeHTML(g.id)}" style="background:none;border:0;color:var(--accent);padding:0;font:inherit;cursor:pointer;text-align:left">${escapeHTML(g.zh)}</button><div class="faint tiny">${escapeHTML(g.name)}</div></td>
+    <td class="num">${g.year}</td>
+    <td>${escapeHTML(g.genre)}</td>
+    <td class="num">${g.awardIndex}</td>
+    <td><span class="tier-badge ${tierClass(g.marketTier)}">${tierShort(g.marketTier)}</span></td>
+    <td class="num">${escapeHTML(marketValueText(g))}</td>
+    <td class="num">${g.longevityYears}</td>
+    <td>${g.liveService ? "是" : "否"}</td>
+    <td>${evidenceChip(g.evidenceGrade)}</td>
+    <td>${sourceLinks(g.sources)}</td>
+  </tr>`).join("");
+  el.innerHTML = `<table><caption>與上方篩選同步；表格適合快速掃描與列印。</caption><thead><tr><th>遊戲</th><th class="num">年</th><th>類型</th><th class="num">Award</th><th>Tier</th><th class="num">市場值</th><th class="num">壽命</th><th>服務型</th><th>證據</th><th>來源</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function compareValue(g, key) {
+  switch (key) {
+    case "award": return `${g.awardIndex} / 110`;
+    case "tier": return `${tierShort(g.marketTier)} · ${TIER_LABELS[g.marketTier]}`;
+    case "market": return `${marketValueText(g)}（${g.marketAsOf}）`;
+    case "sales": return g.salesCopies != null ? `${fmtOne(g.salesCopies)}M copies` : "N/A";
+    case "registered": return g.registeredPlayers != null ? `${fmt(g.registeredPlayers)}M registered` : "N/A";
+    case "dau": return g.dau != null ? `${fmt(g.dau)}M DAU` : "N/A";
+    case "ccu": return g.ccu != null ? `${fmt(g.ccu)} CCU` : "N/A";
+    case "commercial": return g.bookingsB != null ? `bookings ${fmtMoneyB(g.bookingsB)} / revenue ${fmtMoneyB(g.revenueB)}` : (g.revenueB != null ? `revenue ${fmtMoneyB(g.revenueB)}` : "N/A");
+    case "longevity": return `${g.longevityYears} 年 · 支援 ${postLaunchLabel(g.postLaunchSupport)}`;
+    case "live": return g.liveService ? "是" : "否";
+    case "evidence": return EVIDENCE_LABEL[g.evidenceGrade] || g.evidenceGrade;
+    case "sources": return g.sources.join("、");
+    default: return "";
+  }
+}
+
+function renderComparator() {
+  const el = document.getElementById("comparator");
+  const count = document.getElementById("comparatorCount");
+  if (!el) return;
+  if (count) count.textContent = `${state.compare.length} / 3`;
+  const games = state.compare.map(id => GAME_BY_ID.get(id)).filter(Boolean);
+  if (!games.length) {
+    el.innerHTML = `<div class="compare-empty">尚未選擇。從上方卡片勾選 2–3 款，這裡會並排顯示獎項、市場口徑、商業數據與四個維度。</div>`;
+    return;
+  }
+  const rows = [
+    ["原名", g => escapeHTML(g.name)],
+    ["年份／類型", g => `${g.year} · ${escapeHTML(g.genre)}`],
+    ["平台", g => escapeHTML(g.platforms.join(" / "))],
+    ["Award Index", g => compareValue(g, "award")],
+    ["Market Tier", g => compareValue(g, "tier")],
+    ["市場指標", g => escapeHTML(g.marketMetric)],
+    ["市場值", g => compareValue(g, "market")],
+    ["銷量", g => compareValue(g, "sales")],
+    ["註冊", g => compareValue(g, "registered")],
+    ["DAU", g => compareValue(g, "dau")],
+    ["CCU", g => compareValue(g, "ccu")],
+    ["商業數據", g => compareValue(g, "commercial")],
+    ["長線", g => compareValue(g, "longevity")],
+    ["服務型", g => compareValue(g, "live")],
+    ["證據", g => compareValue(g, "evidence")],
+    ["Critical／Award", g => `${round(awardScore(g))} / 100`],
+    ["Player Reach", g => reachScore(g) == null ? "N/A" : `${round(reachScore(g))} / 100`],
+    ["Commercial", g => commercialScore(g) == null ? "N/A" : `${round(commercialScore(g))} / 100`],
+    ["Long-term", g => `${round(longevityScore(g))} / 100`],
+    ["來源", g => sourceLinks(g.sources)]
+  ];
+  el.innerHTML = `<div class="table-wrap"><table class="compare-table">
+    <thead><tr><th>欄位</th>${games.map(g => `<th>${escapeHTML(g.zh)}<div class="faint tiny">${escapeHTML(g.name)}</div><button class="btn btn-small" type="button" data-remove="${escapeHTML(g.id)}" style="margin-top:.3rem">移除</button></th>`).join("")}</tr></thead>
+    <tbody>${rows.map(([label, fn]) => `<tr><td>${label}</td>${games.map(g => `<td>${fn(g)}</td>`).join("")}</tr>`).join("")}</tbody>
+  </table></div>`;
+}
+
+function toggleCompare(id, checked) {
+  if (!GAME_BY_ID.has(id)) return;
+  if (checked) {
+    if (state.compare.includes(id)) return;
+    if (state.compare.length >= 3) {
+      toast("最多比較 3 款；先移除一款。");
+      const box = document.querySelector(`[data-compare="${id}"]`);
+      if (box) box.checked = false;
+      return;
+    }
+    state.compare.push(id);
+  } else {
+    state.compare = state.compare.filter(x => x !== id);
+  }
+  renderComparator();
+  syncCompareCheckboxes();
+}
+
+function syncCompareCheckboxes() {
+  document.querySelectorAll("[data-compare]").forEach(box => {
+    box.checked = state.compare.includes(box.dataset.compare);
+  });
+  const count = document.getElementById("gameCount");
+  if (count) count.textContent = `顯示 ${filteredGames().length} / ${GAMES.length} 款 · 比較 ${state.compare.length} / 3`;
+}
+
+function dimensionBlock(label, value, note) {
+  const v = value == null ? "N/A" : round(value);
+  const w = value == null ? 0 : value;
+  return `<div class="dim"><div class="k">${escapeHTML(label)}</div><div class="v">${v}${value == null ? "" : " / 100"}</div><div class="meter"><i style="width:${w}%"></i></div>${note ? `<div class="faint tiny" style="margin-top:.25rem">${escapeHTML(note)}</div>` : ""}</div>`;
+}
+
+function openGame(id) {
+  const g = GAME_BY_ID.get(id);
+  if (!g) return;
+  state.lastFocus = document.activeElement;
+  const modal = document.getElementById("modal");
+  const body = document.getElementById("modalBody");
+  if (!modal || !body) return;
+  const dims = dimensions(g);
+  const awardRows = g.awardBreakdown.length
+    ? g.awardBreakdown.map(a => `<tr><td>${escapeHTML(a.event)}</td><td>${escapeHTML(a.category)}</td><td>${a.result === "win" ? "得獎" : "入圍"}</td><td class="num">${a.points}</td></tr>`).join("")
+    : `<tr><td colspan="4" class="faint">本期未見 TGA／BAFTA／GJ／DICE／GDC 大獎得獎或入圍紀錄。</td></tr>`;
+  const isCompared = state.compare.includes(g.id);
+  body.innerHTML = `
+    <h3 id="modalTitle">${escapeHTML(g.zh)} <span class="faint" style="font-size:.7em;font-weight:500">${escapeHTML(g.name)}</span></h3>
+    <div class="modal-sub">${g.year} · ${escapeHTML(g.genre)} · ${escapeHTML(g.platforms.join(" / "))} · ${escapeHTML(g.developer)}</div>
+    <div class="tag-row" style="margin-top:.6rem">
+      <span class="chip accent">Award ${g.awardIndex}/110</span>
+      <span class="tier-badge ${tierClass(g.marketTier)}">${tierShort(g.marketTier)}</span>
+      ${evidenceChip(g.evidenceGrade)}
+      <span class="chip">${g.liveService ? "服務型" : "買斷／單機"}</span>
+    </div>
+    <div class="modal-section"><h4>摘要</h4><p>${escapeHTML(g.summary)}</p></div>
+    <div class="modal-section"><h4>四個維度</h4><div class="dim-grid">
+      ${dimensionBlock("Critical／Award", dims.award, "Award Index / 110")}
+      ${dimensionBlock("Player Reach", dims.reach, dims.reach == null ? "Tier 0：無公開可比數據" : `Tier ${g.marketTier} × 20`)}
+      ${dimensionBlock("Commercial", dims.commercial, commercialBasis(g) ? `${commercialBasis(g)} 的對數尺度` : "無銷量／營收數據")}
+      ${dimensionBlock("Long-term", dims.longevity, `${g.longevityYears} 年 · 支援 ${postLaunchLabel(g.postLaunchSupport)}`)}
+    </div></div>
+    <div class="modal-section"><h4>獎項帳本</h4>
+      <div class="table-wrap"><table><thead><tr><th>Event</th><th>Category</th><th>結果</th><th class="num">Points</th></tr></thead><tbody>${awardRows}</tbody></table></div>
+      <p class="note" style="margin-top:.45rem">${escapeHTML(g.awardNote)}</p>
+    </div>
+    <div class="modal-section"><h4>市場口徑</h4>
+      <p><strong>${escapeHTML(g.marketMetric)}</strong>：${escapeHTML(marketValueText(g))} <span class="faint">（${escapeHTML(g.marketAsOf)}）</span></p>
+      <p class="note">${escapeHTML(g.marketNote)}</p>
+    </div>
+    <div class="modal-section"><h4>Caveat</h4><p>${escapeHTML(g.caveat)}</p></div>
+    <div class="modal-section"><h4>來源</h4><div class="tag-row">${sourceLinks(g.sources)}</div></div>
+    <div class="modal-section" style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <button class="btn ${isCompared ? "" : "btn-primary"}" type="button" data-compare-modal="${escapeHTML(g.id)}">${isCompared ? "移出比較" : "加入比較"}</button>
+      <button class="btn" type="button" data-close="1">關閉</button>
+    </div>`;
+  modal.hidden = false;
+  document.body.style.overflow = "hidden";
+  const close = modal.querySelector(".modal-close");
+  if (close) close.focus();
+}
+
+function closeModal() {
+  const modal = document.getElementById("modal");
+  if (!modal || modal.hidden) return;
+  modal.hidden = true;
+  document.body.style.overflow = "";
+  if (state.lastFocus && typeof state.lastFocus.focus === "function") {
+    state.lastFocus.focus({ preventScroll: true });
+  }
+  state.lastFocus = null;
+}
+
+function renderScatterChart() {
+  const el = document.getElementById("scatterChart");
+  if (!el) return;
+  const W = 900, H = 430, padL = 64, padR = 26, padT = 26, padB = 54;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const x = a => padL + (clamp(a, 0, 110) / 110) * plotW;
+  const y = t => padT + plotH - (clamp(t, 0, 5) / 5) * plotH;
+  const grid = [];
+  for (let t = 0; t <= 5; t++) {
+    grid.push(`<line class="axis" x1="${padL}" y1="${y(t)}" x2="${W - padR}" y2="${y(t)}" opacity=".65"/>`);
+    grid.push(`<text class="axis-label" x="${padL - 10}" y="${y(t) + 4}" text-anchor="end">Tier ${t}</text>`);
+  }
+  for (let a = 0; a <= 100; a += 20) {
+    grid.push(`<line class="axis" x1="${x(a)}" y1="${padT}" x2="${x(a)}" y2="${padT + plotH}" opacity=".4"/>`);
+    grid.push(`<text class="axis-label" x="${x(a)}" y="${H - 24}" text-anchor="middle">${a}</text>`);
+  }
+  grid.push(`<text class="axis-title" x="${padL + plotW / 2}" y="${H - 6}" text-anchor="middle">Award Index</text>`);
+  grid.push(`<text class="axis-title" x="16" y="${padT + plotH / 2}" text-anchor="middle" transform="rotate(-90 16 ${padT + plotH / 2})">Market Tier</text>`);
+  const colors = ["#6f8297", "#60a5fa", "#5eead4", "#fbbf24", "#fb7185", "#c084fc"];
+  const points = GAMES.map(g => {
+    const h = hashString(g.id);
+    const jx = ((h % 13) - 6) * 1.8;
+    const jy = ((Math.floor(h / 13) % 13) - 6) * 1.5;
+    const cx = x(g.awardIndex) + jx;
+    const cy = y(g.marketTier) + jy;
+    const r = 6 + Math.min(6, g.longevityYears / 3.5);
+    const fill = colors[g.marketTier];
+    return `<g class="chart-row" data-game="${escapeHTML(g.id)}" tabindex="0" role="button" aria-label="${escapeHTML(g.zh)}：Award ${g.awardIndex}，Tier ${g.marketTier}">
+      <title>${escapeHTML(g.zh)}：Award ${g.awardIndex}／110，Tier ${g.marketTier}，${g.longevityYears} 年</title>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" fill-opacity=".88" stroke="#0a1119" stroke-width="2"/>
+      <text x="${cx + r + 3}" y="${cy + 3}" fill="#c6d2df" font-size="10" paint-order="stroke" stroke="#0a1119" stroke-width="3" stroke-linejoin="round">${escapeHTML(g.zh)}</text>
+    </g>`;
+  }).join("");
+  el.innerHTML = `<div class="chart-title"><strong>獎項與市場證據</strong><span>18 款 · 圓點大小＝長線年數</span></div><svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" aria-hidden="true">${grid.join("")}${points}</svg>`;
+  attachChartRows(el);
+}
+
+function renderGenreChart() {
+  const el = document.getElementById("genreChart");
+  if (!el) return;
+  const map = new Map();
+  GAMES.forEach(g => {
+    if (!map.has(g.genre)) map.set(g.genre, { count: 0, award: 0, tier: 0, tierCount: 0 });
+    const m = map.get(g.genre);
+    m.count++;
+    m.award += g.awardIndex;
+    if (g.marketTier > 0) { m.tier += g.marketTier; m.tierCount++; }
+  });
+  const items = [...map.entries()].map(([genre, m]) => ({
+    label: genre,
+    value: round(m.award / m.count),
+    color: "#60a5fa",
+    sub: `${m.count} 款 · 平均 Tier ${m.tierCount ? (m.tier / m.tierCount).toFixed(1) : "N/A"}`,
+    title: `${genre}：平均 Award ${round(m.award / m.count)}（${m.count} 款）`
+  })).sort((a, b) => b.value - a.value || a.label.localeCompare(b.label, "zh-Hant"));
+  el.innerHTML = `<svg viewBox="0 0 900 ${18 + items.length * 36 + 8}" width="100%" height="${18 + items.length * 36 + 8}" aria-hidden="true">${items.map((d, i) => {
+    const y = 18 + i * 36;
+    const w = clamp((d.value / 110) * 640, d.value > 0 ? 3 : 0, 640);
+    return `<g class="chart-row"><title>${escapeHTML(d.title)}</title>
+      <text x="0" y="${y + 12}" fill="#c6d2df" font-size="11">${escapeHTML(d.label)}</text>
+      <rect x="190" y="${y + 2}" width="640" height="14" rx="7" fill="#16222f"></rect>
+      <rect class="bar" x="190" y="${y + 2}" width="${w}" height="14" rx="7" fill="#60a5fa"></rect>
+      <text x="890" y="${y + 13}" text-anchor="end" fill="#9aacbf" font-size="11">${d.value}</text>
+      <text x="196" y="${y + 27}" fill="#6f8297" font-size="9">${escapeHTML(d.sub)}</text>
+    </g>`;
+  }).join("")}</svg>`;
+}
+
+function renderAnalysisCharts() {
+  renderScatterChart();
+  renderGenreChart();
+}
+
+function renderAllGameViews() {
+  renderGameGrid();
+  renderGameTable();
+  renderComparator();
+}
+
+/* ============================================================
+   4. Knowledge graph
+   ============================================================ */
+const GRAPH_COLORS = {
+  center: "#fbbf24",
+  genre: "#5eead4",
+  game: "#e8eef6",
+  award: "#fbbf24",
+  source: "#60a5fa",
+  platform: "#c084fc"
+};
+const GRAPH_RADII = { center: 27, genre: 15, game: 9, award: 8, source: 4.6, platform: 7 };
+const GRAPH_TYPE_LABEL = { center: "中心", genre: "類型", game: "遊戲", award: "獎項", source: "來源", platform: "平台" };
+
+const graphState = {
+  nodes: [],
+  edges: [],
+  nodeById: new Map(),
+  edgeLayer: null,
+  nodeLayer: null,
+  svg: null,
+  drag: null,
+  moved: false
+};
+
+function awardNodeId(event) {
+  return `award:${event.toLowerCase().replace(/ /g, "").replace(/'/g, "")}`;
+}
+
+function buildGraphData() {
+  const nodes = new Map();
+  const edges = [];
+  const addNode = (id, label, type, meta = {}) => {
+    if (!nodes.has(id)) nodes.set(id, { id, label, type, meta, x: 600, y: 400, r: GRAPH_RADII[type] || 8 });
+    return nodes.get(id);
+  };
+  addNode("center", "全球遊戲獎項 × 市場成功", "center");
+  GAMES.forEach(g => addNode(`game:${g.id}`, g.zh, "game", { gameId: g.id }));
+  const awardLabels = new Map();
+  GAMES.forEach(g => g.awardBreakdown.forEach(a => awardLabels.set(awardNodeId(a.event), a.event)));
+  awardLabels.forEach((label, id) => addNode(id, label, "award", { event: label }));
+  EDGES.forEach(e => {
+    if (e.type === "genre") addNode(e.target, e.target.replace(/^genre:/, ""), "genre");
+    if (e.type === "platform") addNode(e.target, e.target.replace(/^platform:/, ""), "platform");
+    if (e.type === "source") addNode(e.target, e.target.replace(/^source:/, ""), "source", { sourceId: e.target.replace(/^source:/, "") });
+    if (e.type === "award") addNode(e.target, awardLabels.get(e.target) || e.target.replace(/^award:/, ""), "award");
+    edges.push({ ...e });
+  });
+  const genreNodes = [...nodes.values()].filter(n => n.type === "genre");
+  genreNodes.forEach(n => edges.push({ source: "center", target: n.id, type: "hub", label: "index", weight: 1 }));
+  return { nodes: [...nodes.values()], edges };
+}
+
+function initialGraphLayout() {
+  const nodes = graphState.nodes;
+  const center = nodes.find(n => n.id === "center");
+  if (center) { center.x = 600; center.y = 400; }
+  const genres = nodes.filter(n => n.type === "genre");
+  const games = nodes.filter(n => n.type === "game");
+  const awards = nodes.filter(n => n.type === "award");
+  const platforms = nodes.filter(n => n.type === "platform");
+  const sources = nodes.filter(n => n.type === "source");
+  const genreAngles = new Map();
+  genres.forEach((n, i) => {
+    const angle = (i / Math.max(1, genres.length)) * Math.PI * 2 - Math.PI / 2;
+    genreAngles.set(n.id, angle);
+    n.x = 600 + Math.cos(angle) * 150;
+    n.y = 400 + Math.sin(angle) * 150;
+  });
+  const gamesByGenre = new Map();
+  games.forEach(n => {
+    const edge = graphState.edges.find(e => e.source === n.id && e.type === "genre");
+    const key = edge ? edge.target : "unknown";
+    if (!gamesByGenre.has(key)) gamesByGenre.set(key, []);
+    gamesByGenre.get(key).push(n);
+  });
+  gamesByGenre.forEach((list, genreId) => {
+    const base = genreAngles.get(genreId) ?? 0;
+    list.forEach((n, i) => {
+      const offset = (i - (list.length - 1) / 2) * 0.16;
+      const angle = base + offset;
+      const radius = 300 + (i % 2) * 34;
+      n.x = 600 + Math.cos(angle) * radius;
+      n.y = 400 + Math.sin(angle) * radius;
+    });
+  });
+  const ring = (list, radius, phase = 0) => list.forEach((n, i) => {
+    const angle = (i / Math.max(1, list.length)) * Math.PI * 2 + phase;
+    n.x = 600 + Math.cos(angle) * radius;
+    n.y = 400 + Math.sin(angle) * radius;
+  });
+  ring(awards, 220, 0.25);
+  ring(platforms, 360, 0.6);
+  ring(sources, 430, 0.1);
+  nodes.forEach(n => {
+    n.x = clamp(n.x, 50, 1150);
+    n.y = clamp(n.y, 50, 750);
+  });
+}
+
+function runGraphLayout() {
+  const nodes = graphState.nodes;
+  const edges = graphState.edges;
+  for (let iter = 0; iter < 220; iter++) {
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j];
+        let dx = b.x - a.x, dy = b.y - a.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 1) { dx = (i - j) * 0.7 + 0.1; dy = (j - i) * 0.5 + 0.1; d2 = dx * dx + dy * dy; }
+        const dist = Math.sqrt(d2);
+        const force = Math.min(9, 2100 / Math.max(24, d2));
+        const fx = (dx / dist) * force;
+        const fy = (dy / dist) * force;
+        a.x -= fx; a.y -= fy;
+        b.x += fx; b.y += fy;
+      }
+    }
+    edges.forEach(e => {
+      const a = graphState.nodeById.get(e.source);
+      const b = graphState.nodeById.get(e.target);
+      if (!a || !b) return;
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const dist = Math.max(1, Math.hypot(dx, dy));
+      const target = e.type === "hub" ? 170 : e.type === "source" ? 120 : 95;
+      const force = (dist - target) * 0.018;
+      const fx = (dx / dist) * force;
+      const fy = (dy / dist) * force;
+      a.x += fx; a.y += fy;
+      b.x -= fx; b.y -= fy;
+    });
+    nodes.forEach(n => {
+      n.x += (600 - n.x) * 0.0015;
+      n.y += (400 - n.y) * 0.0015;
+      n.x = clamp(n.x, 36, 1164);
+      n.y = clamp(n.y, 36, 764);
+    });
+  }
+  const minX = Math.min(...nodes.map(n => n.x - n.r)), maxX = Math.max(...nodes.map(n => n.x + n.r));
+  const minY = Math.min(...nodes.map(n => n.y - n.r)), maxY = Math.max(...nodes.map(n => n.y + n.r));
+  const scale = Math.min((1200 - 80) / Math.max(1, maxX - minX), (800 - 80) / Math.max(1, maxY - minY), 1.08);
+  nodes.forEach(n => {
+    n.x = 600 + (n.x - 600) * scale;
+    n.y = 400 + (n.y - 400) * scale;
+  });
+}
+
+function nodeTextOffset(node) {
+  if (node.type === "center") return 4;
+  return node.r + 12;
+}
+
+function renderGraph() {
+  const svg = document.getElementById("graphSvg");
+  if (!svg) return;
+  const data = buildGraphData();
+  graphState.nodes = data.nodes;
+  graphState.edges = data.edges;
+  graphState.nodeById = new Map(data.nodes.map(n => [n.id, n]));
+  graphState.svg = svg;
+  initialGraphLayout();
+  runGraphLayout();
+
+  const edgeLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  const nodeLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  graphState.edgeLayer = edgeLayer;
+  graphState.nodeLayer = nodeLayer;
+  svg.innerHTML = "";
+  svg.appendChild(edgeLayer);
+  svg.appendChild(nodeLayer);
+
+  data.edges.forEach(e => {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("class", `graph-edge ${e.type}`);
+    edgeLayer.appendChild(line);
+    e.el = line;
+  });
+
+  data.nodes.forEach(node => {
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("class", `graph-node ${node.type}`);
+    g.setAttribute("data-node", node.id);
+    g.setAttribute("tabindex", "0");
+    g.setAttribute("role", "button");
+    g.setAttribute("aria-label", `${node.label}，${GRAPH_TYPE_LABEL[node.type] || node.type}`);
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("r", node.r);
+    circle.setAttribute("fill", GRAPH_COLORS[node.type] || "#9aacbf");
+    if (node.type === "center") {
+      circle.setAttribute("fill-opacity", ".18");
+      circle.setAttribute("stroke", GRAPH_COLORS.center);
+      circle.setAttribute("stroke-width", "1.5");
+    }
+    const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    title.textContent = `${node.label} · ${GRAPH_TYPE_LABEL[node.type] || node.type}`;
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("y", nodeTextOffset(node));
+    text.textContent = node.type === "source" ? node.label : node.label.length > 18 ? node.label.slice(0, 17) + "…" : node.label;
+    g.appendChild(title);
+    g.appendChild(circle);
+    g.appendChild(text);
+    nodeLayer.appendChild(g);
+    node.el = g;
+    g.setAttribute("transform", `translate(${node.x},${node.y})`);
+
+    g.addEventListener("click", ev => {
+      if (graphState.moved) { graphState.moved = false; return; }
+      ev.stopPropagation();
+      selectGraphNode(node.id);
+    });
+    g.addEventListener("keydown", ev => {
+      if (ev.key === "Enter" || ev.key === " ") {
+        ev.preventDefault();
+        selectGraphNode(node.id);
+      }
+    });
+    g.addEventListener("pointerdown", ev => startGraphDrag(ev, node));
+  });
+
+  updateGraphEdges();
+  applyGraphFilter();
+  const stats = document.getElementById("graphStats");
+  if (stats) stats.textContent = `${data.nodes.length} nodes · ${data.edges.length} edges`;
+}
+
+function updateGraphEdges() {
+  graphState.edges.forEach(e => {
+    if (!e.el) return;
+    const a = graphState.nodeById.get(e.source);
+    const b = graphState.nodeById.get(e.target);
+    if (!a || !b) return;
+    e.el.setAttribute("x1", a.x);
+    e.el.setAttribute("y1", a.y);
+    e.el.setAttribute("x2", b.x);
+    e.el.setAttribute("y2", b.y);
+  });
+}
+
+function updateGraphNode(node) {
+  if (node.el) node.el.setAttribute("transform", `translate(${node.x},${node.y})`);
+}
+
+function svgPoint(evt) {
+  const svg = graphState.svg;
+  const pt = svg.createSVGPoint();
+  pt.x = evt.clientX;
+  pt.y = evt.clientY;
+  return pt.matrixTransform(svg.getScreenCTM().inverse());
+}
+
+function startGraphDrag(evt, node) {
+  if (evt.button !== 0) return;
+  evt.preventDefault();
+  const p = svgPoint(evt);
+  graphState.drag = { node, dx: node.x - p.x, dy: node.y - p.y };
+  graphState.moved = false;
+  node.el.setPointerCapture?.(evt.pointerId);
+  const move = e => {
+    if (!graphState.drag) return;
+    const q = svgPoint(e);
+    const n = graphState.drag.node;
+    n.x = clamp(q.x + graphState.drag.dx, 24, 1176);
+    n.y = clamp(q.y + graphState.drag.dy, 24, 776);
+    graphState.moved = true;
+    updateGraphNode(n);
+    updateGraphEdges();
+  };
+  const up = () => {
+    graphState.drag = null;
+    window.removeEventListener("pointermove", move);
+    window.removeEventListener("pointerup", up);
+    setTimeout(() => { graphState.moved = false; }, 0);
+  };
+  window.addEventListener("pointermove", move);
+  window.addEventListener("pointerup", up);
+}
+
+function graphNeighbors(node) {
+  const ids = new Set();
+  graphState.edges.forEach(e => {
+    if (e.source === node.id) ids.add(e.target);
+    if (e.target === node.id) ids.add(e.source);
+  });
+  return [...ids].map(id => graphState.nodeById.get(id)).filter(Boolean);
+}
+
+function selectGraphNode(id) {
+  const node = graphState.nodeById.get(id);
+  if (!node) return;
+  state.graphSelected = id;
+  graphState.nodes.forEach(n => n.el?.classList.toggle("selected", n.id === id));
+  const detail = document.getElementById("graphDetail");
+  if (!detail) return;
+  const neighbors = graphNeighbors(node);
+  const typeLabel = GRAPH_TYPE_LABEL[node.type] || node.type;
+  let body = `<h4>${escapeHTML(node.label)}</h4><p><span class="chip">${escapeHTML(typeLabel)}</span> <span class="chip">${neighbors.length} 條連線</span></p>`;
+  if (node.type === "game") {
+    const g = GAME_BY_ID.get(node.meta.gameId);
+    body += `<p>${escapeHTML(g.summary)}</p><p class="note">Award ${g.awardIndex}/110 · Tier ${g.marketTier} · ${g.year}</p><button class="btn btn-small" type="button" data-open="${escapeHTML(g.id)}">開啟完整詳情</button>`;
+  } else if (node.type === "source") {
+    const s = SOURCE_BY_ID.get(node.meta.sourceId);
+    const st = statusInfo(s.status);
+    body += `<p>${escapeHTML(s.title)}</p><p class="note">${escapeHTML(s.publisher)} · ${escapeHTML(s.published)} · <span class="status ${st.cls}">${escapeHTML(st.label)}</span></p><p class="note">${escapeHTML(s.usedFor)}</p><a class="btn btn-small" href="${escapeHTML(s.url)}" target="_blank" rel="noopener noreferrer">開啟來源</a>`;
+  } else if (node.type === "genre" || node.type === "platform" || node.type === "award") {
+    const games = neighbors.map(n => n.type === "game" ? GAME_BY_ID.get(n.meta.gameId) : null).filter(Boolean);
+    body += `<p class="note">連到的遊戲：</p><div class="conn">${games.map(g => `<button type="button" data-open="${escapeHTML(g.id)}">${escapeHTML(g.zh)}</button>`).join("") || `<span class="faint">無</span>`}</div>`;
+  } else {
+    body += `<p class="note">中心節點是視覺錨點；真正的資料實體是遊戲、類型、獎項、來源與平台。</p>`;
+  }
+  body += `<p class="note" style="margin-top:.7rem">相鄰節點</p><div class="conn">${neighbors.slice(0, 18).map(n => `<button type="button" data-graph-node="${escapeHTML(n.id)}">${escapeHTML(n.label)}</button>`).join("") || `<span class="faint">無</span>`}</div>`;
+  detail.innerHTML = body;
+}
+
+function applyGraphFilter() {
+  const type = state.graphType;
+  const q = state.graphQuery.trim().toLowerCase();
+  const visible = new Set();
+  graphState.nodes.forEach(n => {
+    const typeOk = type === "all" ? true : n.type === type;
+    const searchOk = !q || `${n.label} ${n.id}`.toLowerCase().includes(q);
+    const show = typeOk && searchOk;
+    n.el?.classList.toggle("hidden", !show);
+    n.el?.classList.toggle("match", !!q && searchOk);
+    n.el?.classList.toggle("dim", !!q && !searchOk);
+    if (show) visible.add(n.id);
+  });
+  let edgeCount = 0;
+  graphState.edges.forEach(e => {
+    const show = visible.has(e.source) && visible.has(e.target);
+    e.el?.classList.toggle("hidden", !show);
+    if (show) edgeCount++;
+  });
+  const stats = document.getElementById("graphStats");
+  if (stats) stats.textContent = `${visible.size} nodes · ${edgeCount} edges`;
+}
+
+/* ============================================================
+   5. Simulator and quiz
+   ============================================================ */
+const SIM_PRESETS = {
+  balanced: { award: 35, reach: 25, commercial: 20, longevity: 20 },
+  award: { award: 60, reach: 15, commercial: 15, longevity: 10 },
+  reach: { award: 15, reach: 55, commercial: 15, longevity: 15 },
+  commercial: { award: 15, reach: 15, commercial: 55, longevity: 15 },
+  longevity: { award: 15, reach: 15, commercial: 15, longevity: 55 }
+};
+
+function dimPill(label, value) {
+  return `<span class="dim-pill">${escapeHTML(label)} <b>${value == null ? "N/A" : round(value)}</b></span>`;
+}
+
+function syncWeightInputs() {
+  const pairs = [["wAward", "vAward", "award"], ["wReach", "vReach", "reach"], ["wCommercial", "vCommercial", "commercial"], ["wLongevity", "vLongevity", "longevity"]];
+  pairs.forEach(([inputId, valueId, key]) => {
+    const input = document.getElementById(inputId);
+    if (input) input.value = state.weights[key];
+    setText(valueId, state.weights[key]);
+  });
+}
+
+function renderSimulator() {
+  syncWeightInputs();
+  const results = sortedSim(state.weights);
+  const sumW = Object.values(state.weights).reduce((a, b) => a + b, 0);
+  const coverageCounts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  results.forEach(r => { coverageCounts[r.coverage] = (coverageCounts[r.coverage] || 0) + 1; });
+  setText("simCoverage", `權重合計 ${sumW} · 覆蓋 4 維 ${coverageCounts[4] || 0} 款／3 維 ${coverageCounts[3] || 0} 款／2 維 ${coverageCounts[2] || 0} 款`);
+  const table = document.getElementById("simTable");
+  if (table) {
+    if (sumW === 0) {
+      table.innerHTML = `<div class="empty">所有權重都是 0。請至少調整一個維度，否則無法計算。</div>`;
+    } else {
+      const rows = results.map((r, i) => {
+        const g = r.game;
+        return `<tr>
+          <td class="num">${i + 1}</td>
+          <td><button type="button" data-open="${escapeHTML(g.id)}" style="background:none;border:0;color:var(--accent);padding:0;font:inherit;cursor:pointer;text-align:left">${escapeHTML(g.zh)}</button><div class="faint tiny">${escapeHTML(g.name)}</div></td>
+          <td class="score-cell"><div class="score-line"><strong>${r.score.toFixed(1)}</strong><div class="meter"><i style="width:${clamp(r.score, 0, 100)}%"></i></div></div><div class="coverage">覆蓋 ${r.coverage}/4${r.coverage < 4 ? " · 缺值已重分配" : ""}</div></td>
+          <td>${dimPill("Award", r.dims.award)} ${dimPill("Reach", r.dims.reach)} ${dimPill("Comm.", r.dims.commercial)} ${dimPill("Long", r.dims.longevity)}</td>
+          <td class="tiny">${escapeHTML(g.marketMetric)}<div class="faint">${escapeHTML(marketValueText(g))}</div></td>
+        </tr>`;
+      }).join("");
+      table.innerHTML = `<table><caption>依目前權重即時計算；每個遊戲只在自己可用的維度上重新分配。</caption><thead><tr><th class="num">#</th><th>遊戲</th><th>分數／覆蓋</th><th>維度</th><th>市場口徑</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+  }
+  const chart = document.getElementById("simChart");
+  if (chart) {
+    const top = results.slice(0, 5);
+    const items = top.map((r, i) => ({
+      label: r.game.zh,
+      value: round(r.score),
+      gameId: r.game.id,
+      color: ["#5eead4", "#60a5fa", "#c084fc", "#fbbf24", "#fb7185"][i],
+      title: `${r.game.zh}：${r.score.toFixed(1)}／100（覆蓋 ${r.coverage}/4）`
+    }));
+    chart.innerHTML = `<div class="chart-title"><strong>目前前五名</strong><span>0–100 · 不是預測</span></div>${barChartHTML(items, { max: 100, valueSuffix: "" })}`;
+    attachChartRows(chart);
+  }
+  renderSensitivity();
+}
+
+function renderSensitivity() {
+  const el = document.getElementById("sensitivity");
+  if (!el) return;
+  const presets = [
+    ["平衡 35/25/20/20", SIM_PRESETS.balanced],
+    ["獎項優先 60/15/15/10", SIM_PRESETS.award],
+    ["市場優先 15/55/15/15", SIM_PRESETS.reach],
+    ["商業優先 15/15/55/15", SIM_PRESETS.commercial],
+    ["長線優先 15/15/15/55", SIM_PRESETS.longevity]
+  ];
+  const rows = presets.map(([label, weights]) => {
+    const top = sortedSim(weights).slice(0, 5);
+    return `<tr><td>${escapeHTML(label)}</td>${top.map(r => `<td>${escapeHTML(r.game.zh)} <span class="faint tiny">${r.score.toFixed(1)}</span></td>`).join("")}</tr>`;
+  }).join("");
+  el.innerHTML = `<table><caption>四組預設權重下的前五名；同一款遊戲在不同權重下的排名變化，就是敏感度。</caption><thead><tr><th>權重預設</th><th>#1</th><th>#2</th><th>#3</th><th>#4</th><th>#5</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function applyPreset(name) {
+  const preset = SIM_PRESETS[name];
+  if (!preset) return;
+  state.weights = { ...preset };
+  renderSimulator();
+  toast(`已套用預設：${name}`);
+}
+
+/* ------------------------------------------------------------ quiz */
+const QUIZ = [
+  {
+    q: "TGA 2025 的 Game of the Year 是哪一款？",
+    options: ["Astro Bot", "Clair Obscur: Expedition 33", "Baldur's Gate 3", "Elden Ring"],
+    answer: 1,
+    explain: "TGA 2025 GOTY 是 Clair Obscur: Expedition 33；同屆它共拿下 9 個獎項。"
+  },
+  {
+    q: "Steam 同時在線人數（CCU）可以直接當成什麼？",
+    options: ["全球 DAU", "全球 MAU", "PC 平台當下同時在線", "累計銷量"],
+    answer: 2,
+    explain: "CCU 只描述 Steam PC 平台當下的同時在線，不是 DAU／MAU，也不是銷量。"
+  },
+  {
+    q: "Roblox 2025 的 bookings 與 revenue，哪一個較大？",
+    options: ["revenue $4.89B", "bookings $6.79B", "兩者相等", "資料未公開"],
+    answer: 1,
+    explain: "2025 bookings 約 $6.79B，revenue 約 $4.89B；bookings 與 revenue 是不同會計概念，不可互換。"
+  },
+  {
+    q: "FFXIV 的 24M registered players 代表什麼？",
+    options: ["24M 同時在線", "24M 活躍訂閱", "24M 註冊帳號，不等於活躍玩家", "24M 銷量"],
+    answer: 2,
+    explain: "registered accounts ≠ active subscribers，也不等於 MAU／DAU。"
+  },
+  {
+    q: "本 Wiki 的 Award Index 上限 110，哪款案例達到上限？",
+    options: ["Elden Ring", "Baldur's Gate 3", "Astro Bot", "Clair Obscur"],
+    answer: 1,
+    explain: "BG3 為 110／110；Elden Ring 90、Astro Bot 94、Clair Obscur 74。上限是加權設計，不是客觀滿分。"
+  },
+  {
+    q: "哪一款遊戲的市場軸是 Tier 0，但影響力極大？",
+    options: ["Minecraft", "League of Legends", "Roblox", "Elden Ring"],
+    answer: 1,
+    explain: "LoL 的 Tier 0 代表沒有公開可比較的全球 MAU／DAU，不是玩家少。Minecraft、Roblox 為 Tier 5，Elden Ring 為 Tier 4。"
+  },
+  {
+    q: "模擬器遇到 Commercial 缺值時，正確做法是？",
+    options: ["補 0 分", "用市場 Tier 代替", "在可用維度上重新分配權重", "把該遊戲排除"],
+    answer: 2,
+    explain: "缺值不補 0，也不拿別的維度硬代；模型只在 available 的維度上重新分配權重，並顯示覆蓋率。"
+  },
+  {
+    q: "以下哪一個是年度邊界錯誤？",
+    options: ["把 2025 遊戲的 2026 BAFTA 計入 2021–2025 Award Index", "把 CCU 當 DAU", "把 bookings 當 revenue", "把註冊數當活躍玩家"],
+    answer: 0,
+    explain: "2025 遊戲的 2026 BAFTA／DICE／GDC 超出研究截止，不能計入 2021–2025 的 Award Index；其他三項則是口徑混用。"
+  }
+];
+
+function renderQuiz() {
+  const form = document.getElementById("quiz");
+  if (!form) return;
+  form.innerHTML = QUIZ.map((item, qi) => `<fieldset class="question" data-q="${qi}">
+    <legend>${qi + 1}. ${escapeHTML(item.q)}</legend>
+    <div class="options">${item.options.map((opt, oi) => `<label class="opt" data-opt="${oi}">
+      <input type="radio" name="q${qi}" value="${oi}">
+      <span>${escapeHTML(opt)}</span>
+    </label>`).join("")}</div>
+    <div class="quiz-explain" id="explain-${qi}">${escapeHTML(item.explain)}</div>
+  </fieldset>`).join("");
+}
+
+function checkQuiz() {
+  let score = 0;
+  QUIZ.forEach((item, qi) => {
+    const field = document.querySelector(`[data-q="${qi}"]`);
+    if (!field) return;
+    const chosen = field.querySelector(`input[name="q${qi}"]:checked`);
+    const labels = field.querySelectorAll(".opt");
+    labels.forEach(label => {
+      const oi = Number(label.dataset.opt);
+      label.classList.toggle("correct", oi === item.answer);
+      label.classList.toggle("wrong", !!chosen && Number(chosen.value) === oi && oi !== item.answer);
+    });
+    const explain = document.getElementById(`explain-${qi}`);
+    if (explain) explain.classList.add("show");
+    if (chosen && Number(chosen.value) === item.answer) score++;
+  });
+  const result = document.getElementById("quizResult");
+  if (result) result.textContent = `得分 ${score} / ${QUIZ.length}${score === QUIZ.length ? " · 口徑大師" : score >= 6 ? " · 很穩" : " · 再看一次來源卡"}`;
+  toast(`測驗完成：${score} / ${QUIZ.length}`);
+}
+
+function resetQuiz() {
+  const form = document.getElementById("quiz");
+  if (form) form.reset();
+  document.querySelectorAll(".question .opt").forEach(label => label.classList.remove("correct", "wrong"));
+  document.querySelectorAll(".quiz-explain").forEach(el => el.classList.remove("show"));
+  const result = document.getElementById("quizResult");
+  if (result) result.textContent = "";
+}
+
+/* ============================================================
+   6. Wiring and initialization
+   ============================================================ */
+function hideSearchResults() {
+  const box = document.getElementById("searchResults");
+  const input = document.getElementById("globalSearch");
+  if (box) { box.hidden = true; box.innerHTML = ""; }
+  if (input) input.setAttribute("aria-expanded", "false");
+}
+
+function globalSearchResults(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  const out = [];
+  GAMES.forEach(g => {
+    const hay = [g.zh, g.name, g.genre, g.developer, g.publisher, g.tags.join(" "), g.summary].join(" ").toLowerCase();
+    if (hay.includes(q)) out.push({ type: "遊戲", title: `${g.zh} · ${g.name}`, sub: `${g.year} · ${g.genre} · Award ${g.awardIndex} · Tier ${g.marketTier}`, action: () => openGame(g.id) });
+  });
+  SOURCES.forEach(s => {
+    const hay = [s.id, s.title, s.publisher, s.usedFor, s.limitations].join(" ").toLowerCase();
+    if (hay.includes(q)) out.push({ type: "來源", title: `${s.id} · ${s.title}`, sub: `${s.publisher} · ${s.published}`, action: () => scrollToSource(s.id) });
+  });
+  AWARDS.forEach(a => {
+    const hay = [a.year, a.goty, a.event, a.note].join(" ").toLowerCase();
+    if (hay.includes(q)) out.push({ type: "獎項", title: `TGA ${a.year} · ${a.goty}`, sub: `GOTY · ${a.date}`, action: () => { document.getElementById("ch3").scrollIntoView({ behavior: "smooth" }); toast(`TGA ${a.year} GOTY：${a.goty}`); } });
+  });
+  return out.slice(0, 12);
+}
+
+function renderGlobalSearch(query) {
+  const box = document.getElementById("searchResults");
+  const input = document.getElementById("globalSearch");
+  if (!box || !input) return;
+  if (!query.trim()) { hideSearchResults(); return; }
+  const results = globalSearchResults(query);
+  input.setAttribute("aria-expanded", "true");
+  box.hidden = false;
+  if (!results.length) {
+    box.innerHTML = `<div class="search-empty">找不到「${escapeHTML(query)}」。試試遊戲名稱、類型、來源 ID（S01）或 TGA 年份。</div>`;
+    return;
+  }
+  box.innerHTML = results.map((r, i) => `<button class="search-result" type="button" role="option" data-result="${i}">
+    <span class="sr-type">${escapeHTML(r.type)}</span>
+    <span class="sr-main"><span class="sr-title">${escapeHTML(r.title)}</span><span class="sr-sub">${escapeHTML(r.sub)}</span></span>
+  </button>`).join("");
+  box.querySelectorAll(".search-result").forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      hideSearchResults();
+      results[i].action();
+    });
+  });
+}
+
+function initGlobalSearch() {
+  const input = document.getElementById("globalSearch");
+  const box = document.getElementById("searchResults");
+  if (!input || !box) return;
+  const update = debounce(() => renderGlobalSearch(input.value), 90);
+  input.addEventListener("input", update);
+  input.addEventListener("focus", () => { if (input.value.trim()) renderGlobalSearch(input.value); });
+  input.addEventListener("keydown", ev => {
+    if (ev.key === "Escape") { hideSearchResults(); input.blur(); }
+    if (ev.key === "ArrowDown") {
+      const first = box.querySelector(".search-result");
+      if (first) { ev.preventDefault(); first.focus(); }
+    }
+  });
+  box.addEventListener("keydown", ev => {
+    const buttons = [...box.querySelectorAll(".search-result")];
+    const idx = buttons.indexOf(document.activeElement);
+    if (ev.key === "ArrowDown" && idx >= 0) { ev.preventDefault(); buttons[Math.min(buttons.length - 1, idx + 1)]?.focus(); }
+    if (ev.key === "ArrowUp" && idx >= 0) { ev.preventDefault(); (buttons[idx - 1] || input).focus(); }
+    if (ev.key === "Escape") { hideSearchResults(); input.focus(); }
+  });
+  document.addEventListener("click", ev => {
+    if (!ev.target.closest(".search-wrap") && !ev.target.closest("#searchResults")) hideSearchResults();
+  });
+  document.addEventListener("keydown", ev => {
+    if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "k") {
+      ev.preventDefault();
+      input.focus();
+      input.select();
+    }
+  });
+}
+
+function initNav() {
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+  if (menuBtn) {
+    menuBtn.addEventListener("click", () => {
+      const open = document.body.classList.toggle("nav-open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
+  }
+  sidebar?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    document.body.classList.remove("nav-open");
+    menuBtn?.setAttribute("aria-expanded", "false");
+  }));
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 980) {
+      document.body.classList.remove("nav-open");
+      menuBtn?.setAttribute("aria-expanded", "false");
+    }
+  });
+  const links = [...document.querySelectorAll(".chapter-nav a[data-chapter]")];
+  const sections = links.map(a => document.getElementById(a.dataset.chapter)).filter(Boolean);
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        links.forEach(a => a.classList.toggle("active", a.dataset.chapter === entry.target.id));
+      });
+    }, { rootMargin: "-40% 0px -52% 0px", threshold: 0 });
+    sections.forEach(s => observer.observe(s));
+  }
+}
+
+function initGameControls() {
+  const search = document.getElementById("gameSearch");
+  const genre = document.getElementById("genreFilter");
+  const platform = document.getElementById("platformFilter");
+  const sort = document.getElementById("sortSelect");
+  const awardOnly = document.getElementById("awardOnly");
+  const liveOnly = document.getElementById("liveOnly");
+  const reset = document.getElementById("resetFilters");
+  const refresh = () => { renderGameGrid(); renderGameTable(); };
+  const updateSearch = debounce(() => { state.gameQuery = search.value; refresh(); }, 90);
+  search?.addEventListener("input", updateSearch);
+  genre?.addEventListener("change", () => { state.genre = genre.value; refresh(); });
+  platform?.addEventListener("change", () => { state.platform = platform.value; refresh(); });
+  sort?.addEventListener("change", () => { state.sort = sort.value; refresh(); });
+  awardOnly?.addEventListener("change", () => { state.awardOnly = awardOnly.checked; refresh(); });
+  liveOnly?.addEventListener("change", () => { state.liveOnly = liveOnly.checked; refresh(); });
+  reset?.addEventListener("click", () => {
+    state.gameQuery = ""; state.genre = "all"; state.platform = "all"; state.sort = "award-desc"; state.awardOnly = false; state.liveOnly = false;
+    if (search) search.value = "";
+    if (genre) genre.value = "all";
+    if (platform) platform.value = "all";
+    if (sort) sort.value = "award-desc";
+    if (awardOnly) awardOnly.checked = false;
+    if (liveOnly) liveOnly.checked = false;
+    refresh();
+  });
+}
+
+function initSourceControls() {
+  const search = document.getElementById("sourceSearch");
+  const status = document.getElementById("sourceStatus");
+  const reset = document.getElementById("sourceReset");
+  const update = debounce(() => { state.sourceQuery = search.value; renderSources(); }, 90);
+  search?.addEventListener("input", update);
+  status?.addEventListener("change", () => { state.sourceStatus = status.value; renderSources(); });
+  reset?.addEventListener("click", () => {
+    state.sourceQuery = ""; state.sourceStatus = "all";
+    if (search) search.value = "";
+    if (status) status.value = "all";
+    renderSources();
+  });
+}
+
+function initGraphControls() {
+  const type = document.getElementById("graphType");
+  const search = document.getElementById("graphSearch");
+  const reset = document.getElementById("graphReset");
+  type?.addEventListener("change", () => { state.graphType = type.value; applyGraphFilter(); });
+  const update = debounce(() => { state.graphQuery = search.value; applyGraphFilter(); }, 90);
+  search?.addEventListener("input", update);
+  reset?.addEventListener("click", () => {
+    state.graphType = "all"; state.graphQuery = "";
+    if (type) type.value = "all";
+    if (search) search.value = "";
+    applyGraphFilter();
+    selectGraphNode("center");
+  });
+}
+
+function initSimControls() {
+  const map = [["wAward", "award"], ["wReach", "reach"], ["wCommercial", "commercial"], ["wLongevity", "longevity"]];
+  map.forEach(([id, key]) => {
+    const input = document.getElementById(id);
+    input?.addEventListener("input", () => {
+      state.weights[key] = Number(input.value);
+      renderSimulator();
+    });
+  });
+  document.querySelectorAll("[data-preset]").forEach(btn => {
+    btn.addEventListener("click", () => applyPreset(btn.dataset.preset));
+  });
+}
+
+function initQuizControls() {
+  document.getElementById("quizSubmit")?.addEventListener("click", checkQuiz);
+  document.getElementById("quizReset")?.addEventListener("click", resetQuiz);
+}
+
+function initModalControls() {
+  const modal = document.getElementById("modal");
+  if (!modal) return;
+  modal.addEventListener("click", ev => {
+    if (ev.target.closest("[data-close]")) closeModal();
+  });
+  document.addEventListener("keydown", ev => {
+    if (ev.key === "Escape") {
+      if (!modal.hidden) closeModal();
+      else if (document.body.classList.contains("nav-open")) {
+        document.body.classList.remove("nav-open");
+        document.getElementById("menuBtn")?.setAttribute("aria-expanded", "false");
+      }
+    }
+    if (ev.key === "Tab" && !modal.hidden) {
+      const focusables = [...modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled && el.offsetParent !== null);
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+      else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+    }
+  });
+}
+
+function initDelegatedActions() {
+  document.addEventListener("click", ev => {
+    const open = ev.target.closest("[data-open]");
+    if (open) { ev.preventDefault(); openGame(open.dataset.open); return; }
+    const source = ev.target.closest("[data-source]");
+    if (source) { ev.preventDefault(); scrollToSource(source.dataset.source); return; }
+    const close = ev.target.closest("[data-close]");
+    if (close) { ev.preventDefault(); closeModal(); return; }
+    const remove = ev.target.closest("[data-remove]");
+    if (remove) { ev.preventDefault(); toggleCompare(remove.dataset.remove, false); return; }
+    const compareModal = ev.target.closest("[data-compare-modal]");
+    if (compareModal) {
+      ev.preventDefault();
+      const id = compareModal.dataset.compareModal;
+      const willAdd = !state.compare.includes(id);
+      toggleCompare(id, willAdd);
+      closeModal();
+      document.getElementById("comparatorSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      toast(willAdd ? "已加入比較" : "已移出比較");
+      return;
+    }
+    const graphNode = ev.target.closest("[data-graph-node]");
+    if (graphNode) { ev.preventDefault(); selectGraphNode(graphNode.dataset.graphNode); }
+  });
+  document.addEventListener("change", ev => {
+    if (ev.target.matches("[data-compare]")) toggleCompare(ev.target.dataset.compare, ev.target.checked);
+  });
+}
+
+function initPrint() {
+  document.getElementById("printBtn")?.addEventListener("click", () => window.print());
+}
+
+function initScrollProgress() {
+  const bar = document.createElement("div");
+  bar.setAttribute("aria-hidden", "true");
+  bar.style.cssText = "position:fixed;left:0;top:0;height:2px;width:0;z-index:100;background:linear-gradient(90deg,#5eead4,#60a5fa);transition:width .08s linear;pointer-events:none";
+  document.body.appendChild(bar);
+  const update = () => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    bar.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}
+
+function init() {
+  renderBuildMeta();
+  populateFilters();
+  renderSources();
+  renderTgaTimeline();
+  renderAwardChart();
+  renderTierChart();
+  renderMarketTable();
+  renderAllGameViews();
+  renderAnalysisCharts();
+  renderGraph();
+  renderSimulator();
+  renderQuiz();
+  renderSourceTable();
+  initGlobalSearch();
+  initNav();
+  initGameControls();
+  initSourceControls();
+  initGraphControls();
+  initSimControls();
+  initQuizControls();
+  initModalControls();
+  initDelegatedActions();
+  initPrint();
+  initScrollProgress();
+  if (window.innerWidth > 980) {
+    const first = document.querySelector('.chapter-nav a[data-chapter="ch1"]');
+    if (first) first.classList.add("active");
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
+
+</script>
+</body>
+</html>

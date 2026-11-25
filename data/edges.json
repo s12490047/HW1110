@@ -1,0 +1,933 @@
+[
+  {
+    "source": "game:lol",
+    "target": "genre:MOBA",
+    "type": "genre",
+    "label": "MOBA",
+    "weight": 1
+  },
+  {
+    "source": "game:lol",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:lol",
+    "target": "source:S04",
+    "type": "source",
+    "label": "S04",
+    "weight": 1
+  },
+  {
+    "source": "game:lol",
+    "target": "source:S21",
+    "type": "source",
+    "label": "S21",
+    "weight": 1
+  },
+  {
+    "source": "game:lol",
+    "target": "award:tga2021",
+    "type": "award",
+    "label": "Best Esports Game",
+    "weight": 6
+  },
+  {
+    "source": "game:dota2",
+    "target": "genre:MOBA",
+    "type": "genre",
+    "label": "MOBA",
+    "weight": 1
+  },
+  {
+    "source": "game:dota2",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:dota2",
+    "target": "source:S11",
+    "type": "source",
+    "label": "S11",
+    "weight": 1
+  },
+  {
+    "source": "game:dota2",
+    "target": "source:S12",
+    "type": "source",
+    "label": "S12",
+    "weight": 1
+  },
+  {
+    "source": "game:cs2",
+    "target": "genre:FPS",
+    "type": "genre",
+    "label": "FPS",
+    "weight": 1
+  },
+  {
+    "source": "game:cs2",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:cs2",
+    "target": "source:S11",
+    "type": "source",
+    "label": "S11",
+    "weight": 1
+  },
+  {
+    "source": "game:cs2",
+    "target": "source:S12",
+    "type": "source",
+    "label": "S12",
+    "weight": 1
+  },
+  {
+    "source": "game:fortnite",
+    "target": "genre:Battle Royale",
+    "type": "genre",
+    "label": "Battle Royale",
+    "weight": 1
+  },
+  {
+    "source": "game:fortnite",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:fortnite",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:fortnite",
+    "target": "platform:Mobile",
+    "type": "platform",
+    "label": "Mobile",
+    "weight": 1
+  },
+  {
+    "source": "game:fortnite",
+    "target": "source:S21",
+    "type": "source",
+    "label": "S21",
+    "weight": 1
+  },
+  {
+    "source": "game:pubg",
+    "target": "genre:Battle Royale",
+    "type": "genre",
+    "label": "Battle Royale",
+    "weight": 1
+  },
+  {
+    "source": "game:pubg",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:pubg",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:pubg",
+    "target": "source:S11",
+    "type": "source",
+    "label": "S11",
+    "weight": 1
+  },
+  {
+    "source": "game:pubg",
+    "target": "source:S12",
+    "type": "source",
+    "label": "S12",
+    "weight": 1
+  },
+  {
+    "source": "game:apex",
+    "target": "genre:Battle Royale",
+    "type": "genre",
+    "label": "Battle Royale",
+    "weight": 1
+  },
+  {
+    "source": "game:apex",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:apex",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:apex",
+    "target": "source:S11",
+    "type": "source",
+    "label": "S11",
+    "weight": 1
+  },
+  {
+    "source": "game:apex",
+    "target": "source:S12",
+    "type": "source",
+    "label": "S12",
+    "weight": 1
+  },
+  {
+    "source": "game:apex",
+    "target": "source:S04",
+    "type": "source",
+    "label": "S04",
+    "weight": 1
+  },
+  {
+    "source": "game:roblox",
+    "target": "genre:Sandbox / UGC",
+    "type": "genre",
+    "label": "Sandbox / UGC",
+    "weight": 1
+  },
+  {
+    "source": "game:roblox",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:roblox",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:roblox",
+    "target": "platform:Mobile",
+    "type": "platform",
+    "label": "Mobile",
+    "weight": 1
+  },
+  {
+    "source": "game:roblox",
+    "target": "platform:VR",
+    "type": "platform",
+    "label": "VR",
+    "weight": 1
+  },
+  {
+    "source": "game:roblox",
+    "target": "source:S02",
+    "type": "source",
+    "label": "S02",
+    "weight": 1
+  },
+  {
+    "source": "game:minecraft",
+    "target": "genre:Sandbox / Survival",
+    "type": "genre",
+    "label": "Sandbox / Survival",
+    "weight": 1
+  },
+  {
+    "source": "game:minecraft",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:minecraft",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:minecraft",
+    "target": "platform:Mobile",
+    "type": "platform",
+    "label": "Mobile",
+    "weight": 1
+  },
+  {
+    "source": "game:minecraft",
+    "target": "source:S19",
+    "type": "source",
+    "label": "S19",
+    "weight": 1
+  },
+  {
+    "source": "game:rust",
+    "target": "genre:Survival",
+    "type": "genre",
+    "label": "Survival",
+    "weight": 1
+  },
+  {
+    "source": "game:rust",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:rust",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:rust",
+    "target": "source:S11",
+    "type": "source",
+    "label": "S11",
+    "weight": 1
+  },
+  {
+    "source": "game:rust",
+    "target": "source:S12",
+    "type": "source",
+    "label": "S12",
+    "weight": 1
+  },
+  {
+    "source": "game:wow",
+    "target": "genre:MMORPG",
+    "type": "genre",
+    "label": "MMORPG",
+    "weight": 1
+  },
+  {
+    "source": "game:wow",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:wow",
+    "target": "source:S21",
+    "type": "source",
+    "label": "S21",
+    "weight": 1
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "genre:MMORPG",
+    "type": "genre",
+    "label": "MMORPG",
+    "weight": 1
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "source:S20",
+    "type": "source",
+    "label": "S20",
+    "weight": 1
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "source:S04",
+    "type": "source",
+    "label": "S04",
+    "weight": 1
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "source:S05",
+    "type": "source",
+    "label": "S05",
+    "weight": 1
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "award:tga2021",
+    "type": "award",
+    "label": "Best Ongoing Game",
+    "weight": 6
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "award:tga2021",
+    "type": "award",
+    "label": "Best Community Support",
+    "weight": 6
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "award:tga2022",
+    "type": "award",
+    "label": "Best Ongoing Game",
+    "weight": 6
+  },
+  {
+    "source": "game:ffxiv",
+    "target": "award:tga2022",
+    "type": "award",
+    "label": "Best Community Support",
+    "weight": 6
+  },
+  {
+    "source": "game:genshin",
+    "target": "genre:Online RPG",
+    "type": "genre",
+    "label": "Online RPG",
+    "weight": 1
+  },
+  {
+    "source": "game:genshin",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:genshin",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:genshin",
+    "target": "platform:Mobile",
+    "type": "platform",
+    "label": "Mobile",
+    "weight": 1
+  },
+  {
+    "source": "game:genshin",
+    "target": "source:S04",
+    "type": "source",
+    "label": "S04",
+    "weight": 1
+  },
+  {
+    "source": "game:genshin",
+    "target": "source:S05",
+    "type": "source",
+    "label": "S05",
+    "weight": 1
+  },
+  {
+    "source": "game:genshin",
+    "target": "source:S21",
+    "type": "source",
+    "label": "S21",
+    "weight": 1
+  },
+  {
+    "source": "game:genshin",
+    "target": "award:tga2021",
+    "type": "award",
+    "label": "Best Mobile Game",
+    "weight": 6
+  },
+  {
+    "source": "game:genshin",
+    "target": "award:tga2022",
+    "type": "award",
+    "label": "Players' Voice",
+    "weight": 6
+  },
+  {
+    "source": "game:hsr",
+    "target": "genre:Online RPG",
+    "type": "genre",
+    "label": "Online RPG",
+    "weight": 1
+  },
+  {
+    "source": "game:hsr",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:hsr",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:hsr",
+    "target": "platform:Mobile",
+    "type": "platform",
+    "label": "Mobile",
+    "weight": 1
+  },
+  {
+    "source": "game:hsr",
+    "target": "source:S06",
+    "type": "source",
+    "label": "S06",
+    "weight": 1
+  },
+  {
+    "source": "game:hsr",
+    "target": "source:S21",
+    "type": "source",
+    "label": "S21",
+    "weight": 1
+  },
+  {
+    "source": "game:hsr",
+    "target": "award:tga2023",
+    "type": "award",
+    "label": "Best Mobile Game",
+    "weight": 6
+  },
+  {
+    "source": "game:eldenring",
+    "target": "genre:Action RPG",
+    "type": "genre",
+    "label": "Action RPG",
+    "weight": 1
+  },
+  {
+    "source": "game:eldenring",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:eldenring",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:eldenring",
+    "target": "source:S14",
+    "type": "source",
+    "label": "S14",
+    "weight": 1
+  },
+  {
+    "source": "game:eldenring",
+    "target": "source:S05",
+    "type": "source",
+    "label": "S05",
+    "weight": 1
+  },
+  {
+    "source": "game:eldenring",
+    "target": "source:S09",
+    "type": "source",
+    "label": "S09",
+    "weight": 1
+  },
+  {
+    "source": "game:eldenring",
+    "target": "source:S10",
+    "type": "source",
+    "label": "S10",
+    "weight": 1
+  },
+  {
+    "source": "game:eldenring",
+    "target": "source:S12",
+    "type": "source",
+    "label": "S12",
+    "weight": 1
+  },
+  {
+    "source": "game:eldenring",
+    "target": "award:tga2022",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 40
+  },
+  {
+    "source": "game:eldenring",
+    "target": "award:tga2022",
+    "type": "award",
+    "label": "其他 3 勝（Game Direction／Art Direction／RPG）",
+    "weight": 18
+  },
+  {
+    "source": "game:eldenring",
+    "target": "award:bafta2023",
+    "type": "award",
+    "label": "Best Game",
+    "weight": 6
+  },
+  {
+    "source": "game:eldenring",
+    "target": "award:goldenjoystick2022",
+    "type": "award",
+    "label": "Ultimate Game of the Year",
+    "weight": 10
+  },
+  {
+    "source": "game:eldenring",
+    "target": "award:dice2023",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 8
+  },
+  {
+    "source": "game:eldenring",
+    "target": "award:gdc2023",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 8
+  },
+  {
+    "source": "game:bg3",
+    "target": "genre:RPG",
+    "type": "genre",
+    "label": "RPG",
+    "weight": 1
+  },
+  {
+    "source": "game:bg3",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:bg3",
+    "target": "platform:Console",
+    "type": "platform",
+    "label": "Console",
+    "weight": 1
+  },
+  {
+    "source": "game:bg3",
+    "target": "source:S15",
+    "type": "source",
+    "label": "S15",
+    "weight": 1
+  },
+  {
+    "source": "game:bg3",
+    "target": "source:S06",
+    "type": "source",
+    "label": "S06",
+    "weight": 1
+  },
+  {
+    "source": "game:bg3",
+    "target": "source:S09",
+    "type": "source",
+    "label": "S09",
+    "weight": 1
+  },
+  {
+    "source": "game:bg3",
+    "target": "source:S10",
+    "type": "source",
+    "label": "S10",
+    "weight": 1
+  },
+  {
+    "source": "game:bg3",
+    "target": "source:S12",
+    "type": "source",
+    "label": "S12",
+    "weight": 1
+  },
+  {
+    "source": "game:bg3",
+    "target": "award:tga2023",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 40
+  },
+  {
+    "source": "game:bg3",
+    "target": "award:tga2023",
+    "type": "award",
+    "label": "其他 5 勝（RPG／Multiplayer／Community／Performance／Players' Voice）",
+    "weight": 24
+  },
+  {
+    "source": "game:bg3",
+    "target": "award:bafta2024",
+    "type": "award",
+    "label": "Best Game",
+    "weight": 20
+  },
+  {
+    "source": "game:bg3",
+    "target": "award:goldenjoystick2023",
+    "type": "award",
+    "label": "Ultimate Game of the Year",
+    "weight": 10
+  },
+  {
+    "source": "game:bg3",
+    "target": "award:dice2024",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 8
+  },
+  {
+    "source": "game:bg3",
+    "target": "award:gdc2024",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 8
+  },
+  {
+    "source": "game:astrobot",
+    "target": "genre:Platformer",
+    "type": "genre",
+    "label": "Platformer",
+    "weight": 1
+  },
+  {
+    "source": "game:astrobot",
+    "target": "platform:PS5",
+    "type": "platform",
+    "label": "PS5",
+    "weight": 1
+  },
+  {
+    "source": "game:astrobot",
+    "target": "source:S18",
+    "type": "source",
+    "label": "S18",
+    "weight": 1
+  },
+  {
+    "source": "game:astrobot",
+    "target": "source:S07",
+    "type": "source",
+    "label": "S07",
+    "weight": 1
+  },
+  {
+    "source": "game:astrobot",
+    "target": "source:S09",
+    "type": "source",
+    "label": "S09",
+    "weight": 1
+  },
+  {
+    "source": "game:astrobot",
+    "target": "award:tga2024",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 40
+  },
+  {
+    "source": "game:astrobot",
+    "target": "award:tga2024",
+    "type": "award",
+    "label": "其他 3 勝（Direction／Action-Adventure／Family）",
+    "weight": 18
+  },
+  {
+    "source": "game:astrobot",
+    "target": "award:bafta2025",
+    "type": "award",
+    "label": "Best Game",
+    "weight": 20
+  },
+  {
+    "source": "game:astrobot",
+    "target": "award:dice2025",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 8
+  },
+  {
+    "source": "game:astrobot",
+    "target": "award:gdc2025",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 8
+  },
+  {
+    "source": "game:clair",
+    "target": "genre:RPG",
+    "type": "genre",
+    "label": "RPG",
+    "weight": 1
+  },
+  {
+    "source": "game:clair",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:clair",
+    "target": "platform:PS5",
+    "type": "platform",
+    "label": "PS5",
+    "weight": 1
+  },
+  {
+    "source": "game:clair",
+    "target": "platform:Xbox Series",
+    "type": "platform",
+    "label": "Xbox Series",
+    "weight": 1
+  },
+  {
+    "source": "game:clair",
+    "target": "source:S17",
+    "type": "source",
+    "label": "S17",
+    "weight": 1
+  },
+  {
+    "source": "game:clair",
+    "target": "source:S08",
+    "type": "source",
+    "label": "S08",
+    "weight": 1
+  },
+  {
+    "source": "game:clair",
+    "target": "source:S10",
+    "type": "source",
+    "label": "S10",
+    "weight": 1
+  },
+  {
+    "source": "game:clair",
+    "target": "award:tga2025",
+    "type": "award",
+    "label": "Game of the Year",
+    "weight": 40
+  },
+  {
+    "source": "game:clair",
+    "target": "award:tga2025",
+    "type": "award",
+    "label": "其他 8 勝",
+    "weight": 24
+  },
+  {
+    "source": "game:clair",
+    "target": "award:goldenjoystick2025",
+    "type": "award",
+    "label": "Ultimate Game of the Year",
+    "weight": 10
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "genre:Third-person Shooter",
+    "type": "genre",
+    "label": "Third-person Shooter",
+    "weight": 1
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "platform:PC",
+    "type": "platform",
+    "label": "PC",
+    "weight": 1
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "platform:PS5",
+    "type": "platform",
+    "label": "PS5",
+    "weight": 1
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "platform:Xbox Series",
+    "type": "platform",
+    "label": "Xbox Series",
+    "weight": 1
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "source:S16",
+    "type": "source",
+    "label": "S16",
+    "weight": 1
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "source:S07",
+    "type": "source",
+    "label": "S07",
+    "weight": 1
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "source:S09",
+    "type": "source",
+    "label": "S09",
+    "weight": 1
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "source:S12",
+    "type": "source",
+    "label": "S12",
+    "weight": 1
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "award:tga2024",
+    "type": "award",
+    "label": "Best Ongoing Game",
+    "weight": 6
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "award:tga2024",
+    "type": "award",
+    "label": "Best Multiplayer Game",
+    "weight": 6
+  },
+  {
+    "source": "game:helldivers2",
+    "target": "award:bafta2025",
+    "type": "award",
+    "label": "Best Game",
+    "weight": 6
+  }
+]

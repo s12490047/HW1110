@@ -1,0 +1,182 @@
+      <section class="chapter" id="ch5">
+        <div class="section-head">
+          <div class="kicker">Deliverable 3 · Knowledge Base</div>
+          <h2>18 款案例資料庫：把「成功」拆成可檢查的欄位</h2>
+          <p class="lead">每張卡都有獎項、市場證據、長線營運、來源與 caveat。你可以搜尋、篩選、排序，最多選 3 款放進比較器；所有缺失值都會顯示 N/A，而不是被默默補成 0。</p>
+        </div>
+
+        <div class="controls" aria-label="案例篩選">
+          <div class="control"><label for="gameSearch">搜尋案例</label><input id="gameSearch" type="search" placeholder="名稱、類型、標籤、開發商…"></div>
+          <div class="control"><label for="genreFilter">類型</label><select id="genreFilter"><option value="all">全部類型</option></select></div>
+          <div class="control"><label for="platformFilter">平台</label><select id="platformFilter"><option value="all">全部平台</option></select></div>
+          <div class="control"><label for="sortSelect">排序</label><select id="sortSelect"><option value="award-desc">Award Index 高→低</option><option value="tier-desc">Market Tier 高→低</option><option value="year-desc">年份新→舊</option><option value="longevity-desc">壽命長→短</option><option value="name-asc">名稱 A→Z</option></select></div>
+          <label class="control check"><input id="awardOnly" type="checkbox"> 只看有獎</label>
+          <label class="control check"><input id="liveOnly" type="checkbox"> 只看服務型</label>
+          <div class="control-actions"><button class="btn btn-small" id="resetFilters" type="button">重設</button></div>
+        </div>
+        <div class="result-count" id="gameCount" aria-live="polite"></div>
+
+        <div class="game-grid" id="gameGrid"></div>
+
+        <div class="comparator" id="comparatorSection">
+          <div class="comparator-head">
+            <div>
+              <h3>比較器 <span class="faint small" id="comparatorCount">0 / 3</span></h3>
+              <div class="note">最多 3 款。比較的是欄位與證據，不是頒獎。</div>
+            </div>
+            <button class="btn btn-small" id="clearCompare" type="button">清空比較</button>
+          </div>
+          <div id="comparator"></div>
+        </div>
+
+        <details class="card" style="margin-top:1rem">
+          <summary style="cursor:pointer;font-weight:700;font-size:.9rem">表格檢視（適合列印與快速掃描）</summary>
+          <div class="table-wrap" style="margin-top:.7rem" id="gameTable"></div>
+        </details>
+      </section>
+
+      <section class="chapter" id="ch6">
+        <div class="section-head">
+          <div class="kicker">Deliverable 4 · Data Analysis</div>
+          <h2>獎項 × 市場：四個觀察，沒有一個是因果</h2>
+          <p class="lead">如果把「得獎」和「賣得好」畫成散點圖，會看到同向的例子，也會看到反例。這正是為什麼本 Wiki 不做單一成功分數，而是把獎項、玩家證據、商業數據與長線營運分開。</p>
+        </div>
+
+        <div class="grid grid-4" style="margin-bottom:1rem">
+          <div class="card card-tight"><div class="kicker tiny faint">Observation 01</div><h3>GOTY 與銷量常同向</h3><p>BG3 110／20M、Elden Ring 90／30M；但 Astro Bot 94／1.5M 說明獎項與量體不必同步。</p></div>
+          <div class="card card-tight"><div class="kicker tiny faint">Observation 02</div><h3>服務型遊戲獎項少、壽命長</h3><p>LoL、Fortnite、WoW 的 Award Index 低或 0，但長線營運與文化影響力遠超單一年度。</p></div>
+          <div class="card card-tight"><div class="kicker tiny faint">Observation 03</div><h3>平台與商業模式改變量體</h3><p>Roblox 是平台 127M DAU；Minecraft 300M copies。兩者都不是「單一遊戲營收」。</p></div>
+          <div class="card card-tight"><div class="kicker tiny faint">Observation 04</div><h3>缺值不是 0</h3><p>LoL、Fortnite、Genshin、HSR、WoW 的市場軸留白；模擬器會重新分配權重，而不是補 0。</p></div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="chart-title"><strong>Award Index × Market Tier</strong><span>點圓點看詳情</span></div>
+            <div class="chart" id="scatterChart" role="img" aria-label="Award Index 與 Market Tier 散點圖"></div>
+            <div class="legend"><span><i style="background:#5eead4"></i>Tier 2–5</span><span><i style="background:#6f8297"></i>Tier 0（留白）</span><span>圓點大小＝長線年數</span></div>
+          </div>
+          <div class="card">
+            <div class="chart-title"><strong>類型 × 平均 Award Index</strong><span>樣本小，只看形狀</span></div>
+            <div class="chart" id="genreChart" role="img" aria-label="各類型平均 Award Index"></div>
+            <div class="note" style="margin-top:.5rem">平均值只描述這 18 款案例，不代表整個類型。單一案例的類型（例如 Platformer 只有 Astro Bot）不應外推。</div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:1rem">
+          <div class="card">
+            <h3>2×2 訊號矩陣</h3>
+            <div class="table-wrap" style="margin-top:.6rem">
+              <table>
+                <thead><tr><th></th><th>Award Index ≥ 40</th><th>Award Index &lt; 40</th></tr></thead>
+                <tbody>
+                  <tr><th>Tier ≥ 4</th><td><strong>雙強：</strong>Elden Ring（90／4）、BG3（110／4）</td><td><strong>市場強、獎項弱：</strong>Dota 2、PUBG、Minecraft、Roblox、FFXIV</td></tr>
+                  <tr><th>Tier ≤ 3 或 0</th><td><strong>獎項強、量體較小：</strong>Astro Bot（94／2）、Clair Obscur（74／3）</td><td><strong>其他：</strong>LoL、Fortnite、WoW、Genshin、HSR、CS2、Apex、Rust、Helldivers 2</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note" style="margin-top:.5rem">Helldivers 2 的 Award Index 18、Tier 3，落在右下；FFXIV 的 Award Index 24、Tier 4，落在左下。矩陣是描述工具，不是評價。</div>
+          </div>
+          <div class="card">
+            <h3>為什麼不給一個「成功分數」？</h3>
+            <p style="margin-top:.4rem">因為「成功」至少有四種不同問題：作品有沒有被同業肯定？有多少人真的在玩？商業上是否成立？能不能長期營運？</p>
+            <p style="margin-top:.4rem">把這四題壓成一個數字，會製造虛假精準。本 Wiki 的做法是：分開展示，必要時才用<strong>可調權重</strong>做教學模擬，並公開公式、缺值處理與敏感度。</p>
+            <div class="callout good" style="margin-top:.6rem"><strong>分析結論：</strong>獎項與市場有重疊，但沒有穩定的一對一關係。最值得追問的不是「誰最成功」，而是「你用哪一種成功在衡量」。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch7">
+        <div class="section-head">
+          <div class="kicker">Deliverable 5 · Knowledge Graph</div>
+          <h2>Knowledge Graph：遊戲、類型、獎項、來源的平台</h2>
+          <p class="lead">這張圖不是因果圖，而是索引圖。點節點看它的鄰居；用類型篩選或搜尋，觀察哪些遊戲被同一組獎項與來源連在一起。</p>
+        </div>
+        <div class="graph-controls">
+          <label class="sr-only" for="graphType">節點類型</label>
+          <select id="graphType"><option value="all">全部節點</option><option value="game">遊戲</option><option value="genre">類型</option><option value="award">獎項</option><option value="source">來源</option><option value="platform">平台</option></select>
+          <label class="sr-only" for="graphSearch">搜尋圖譜</label>
+          <input id="graphSearch" type="search" placeholder="搜尋節點…" autocomplete="off">
+          <button class="btn btn-small" id="graphReset" type="button">重設</button>
+          <span class="note" id="graphStats"></span>
+        </div>
+        <div class="graph-wrap">
+          <div class="graph-canvas">
+            <svg id="graphSvg" viewBox="0 0 1200 800" role="img" aria-label="遊戲、類型、獎項、來源與平台的互動知識圖譜"></svg>
+          </div>
+          <aside class="graph-detail" id="graphDetail" aria-live="polite">
+            <h4>點一個節點</h4>
+            <p>節點會顯示它的類型、連線數與相鄰節點。遊戲節點可以直接打開詳情。</p>
+            <p class="note">提示：Tab 鍵可在節點間移動，Enter／Space 選取。拖曳節點可調整位置。</p>
+          </aside>
+        </div>
+        <div class="graph-legend" aria-hidden="true">
+          <span><i style="background:#fbbf24"></i>中心</span>
+          <span><i style="background:#5eead4"></i>類型</span>
+          <span><i style="background:#e8eef6"></i>遊戲</span>
+          <span><i style="background:#fbbf24"></i>獎項</span>
+          <span><i style="background:#60a5fa"></i>來源</span>
+          <span><i style="background:#c084fc"></i>平台</span>
+        </div>
+        <div class="note" style="margin-top:.5rem">圖譜由 <code>data/edges.json</code> 與遊戲資料生成；邊的類型包括 genre、platform、award、source。中心節點只是視覺錨點，不是資料實體。</div>
+      </section>
+
+      <section class="chapter" id="ch8">
+        <div class="section-head">
+          <div class="kicker">Interactive Model · Not a Verdict</div>
+          <h2>成功權重模擬器：讓你的假設被看見</h2>
+          <p class="lead">四個維度：Critical／Award、Player Reach、Commercial、Long-term。調整權重，看排名如何改變。這不是預測，也不是投資建議；它是一個把「你重視什麼」變成可檢查數字的教學模型。</p>
+        </div>
+
+        <div class="sim-layout">
+          <div class="card">
+            <h3>權重</h3>
+            <div class="sim-controls" style="margin-top:.7rem">
+              <div class="weight"><label for="wAward">Critical／Award <strong id="vAward">35</strong></label><input id="wAward" type="range" min="0" max="100" value="35" step="5"></div>
+              <div class="weight"><label for="wReach">Player Reach <strong id="vReach">25</strong></label><input id="wReach" type="range" min="0" max="100" value="25" step="5"></div>
+              <div class="weight"><label for="wCommercial">Commercial <strong id="vCommercial">20</strong></label><input id="wCommercial" type="range" min="0" max="100" value="20" step="5"></div>
+              <div class="weight"><label for="wLongevity">Long-term <strong id="vLongevity">20</strong></label><input id="wLongevity" type="range" min="0" max="100" value="20" step="5"></div>
+            </div>
+            <div class="preset-row" style="margin-top:.7rem">
+              <button class="btn btn-small" data-preset="balanced" type="button">平衡</button>
+              <button class="btn btn-small" data-preset="award" type="button">獎項優先</button>
+              <button class="btn btn-small" data-preset="reach" type="button">市場優先</button>
+              <button class="btn btn-small" data-preset="longevity" type="button">長線優先</button>
+            </div>
+            <div class="callout info" style="margin-top:.8rem;font-size:.76rem"><strong>缺值處理：</strong>每個遊戲只在自己可用的維度上重新分配權重。若 Commercial 缺失，該遊戲的分數由其他維度按比例重算，不會補 0。表格的「覆蓋」欄顯示用了幾維。</div>
+          </div>
+
+          <div class="stack">
+            <div class="card">
+              <div class="chart-title"><strong>公式</strong><span>公開、可重算</span></div>
+              <p class="mono" style="font-size:.82rem;color:#bffcf2;line-height:1.9">Score = Σ(w<sub>d</sub> × s<sub>d</sub>) / Σw<sub>d</sub><br>只對 available 的 d 求和</p>
+              <div class="table-wrap" style="margin-top:.6rem">
+                <table>
+                  <thead><tr><th>維度</th><th>分數 s<sub>d</sub></th><th>缺值</th></tr></thead>
+                  <tbody>
+                    <tr><td>Critical／Award</td><td>min(100, Award Index / 110 × 100)</td><td>不缺失；0 分代表本期無大獎訊號</td></tr>
+                    <tr><td>Player Reach</td><td>Tier × 20</td><td>Tier 0 → 缺失，重新分配</td></tr>
+                    <tr><td>Commercial</td><td>log<sub>10</sub>(copies) / log<sub>10</sub>(300) × 100</td><td>無銷量／營收 → 缺失</td></tr>
+                    <tr><td>Long-term</td><td>min(70, years/20×70) + support（30／15／0）</td><td>不缺失；2025 新作可能接近 0</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="note" style="margin-top:.5rem">Roblox 的 Commercial 以平台 bookings 計算，僅為教學展示，不能與單一遊戲銷量直接比較。</div>
+            </div>
+            <div class="chart" id="simChart" role="img" aria-label="模擬器前五名分數"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <div class="comparator-head">
+            <div><h3>即時排名</h3><div class="note" id="simCoverage"></div></div>
+            <div class="note">分數 0–100；不是市場預測</div>
+          </div>
+          <div class="table-wrap" id="simTable"></div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>敏感度：換一組權重，前五名會不會變？</h3>
+          <div class="table-wrap" style="margin-top:.6rem" id="sensitivity"></div>
+          <div class="note" style="margin-top:.5rem">敏感度只用四組預設權重，不是連續掃描。它的用途是提醒你：排名對權重選擇很敏感，尤其是獎項與市場的權重。</div>
+        </div>
+      </section>
