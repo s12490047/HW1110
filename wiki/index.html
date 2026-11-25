@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Global Game Success Analysis Wiki 目錄：Deliverable 1–7 與結構化資料。">
+<meta name="color-scheme" content="dark">
+<title>LLM Wiki 目錄｜Global Game Success Analysis Wiki</title>
+<style>
+  :root{
+    --bg:#080c12; --panel:#101923; --panel-2:#14202c;
+    --line:#26384b; --line-soft:#1b2a3a;
+    --text:#e8eef6; --muted:#9aacbf; --faint:#6f8297;
+    --accent:#5eead4; --blue:#60a5fa; --amber:#fbbf24; --purple:#c084fc; --pink:#fb7185;
+    --radius:16px; --max:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; min-height:100vh; color:var(--text);
+    background:
+      radial-gradient(1100px 700px at 78% -10%, rgba(94,234,212,.08), transparent 60%),
+      radial-gradient(900px 600px at 18% 8%, rgba(96,165,250,.07), transparent 55%),
+      linear-gradient(180deg,#080c12 0%,#090e15 45%,#070a0f 100%);
+    font-family:"Segoe UI","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+    font-size:16px; line-height:1.7; letter-spacing:.01em;
+  }
+  ::selection{background:rgba(94,234,212,.28);color:#fff}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2,h3{line-height:1.25;margin:0;letter-spacing:-.01em}
+  p{margin:0}
+  ul{margin:0;padding-left:1.2rem}
+  code{font-family:"Cascadia Code",Consolas,monospace;background:#0a121b;border:1px solid var(--line-soft);border-radius:6px;padding:.1em .38em;color:#b9f5e9;font-size:.88em}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+  .skip-link{position:absolute;left:12px;top:-60px;z-index:10;background:var(--accent);color:#04100e;padding:.6rem 1rem;border-radius:10px;font-weight:800}
+  .skip-link:focus{top:12px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1rem,4vw,2.2rem)}
+
+  header.hero{padding:clamp(2.6rem,7vw,4.6rem) 0 clamp(1.8rem,4vw,2.6rem);border-bottom:1px solid var(--line-soft)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--accent);font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.65}
+  h1{font-size:clamp(1.9rem,5vw,3.2rem);font-weight:850;letter-spacing:-.03em}
+  .grad{background:linear-gradient(100deg,#e8fff9,#5eead4 45%,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:var(--muted);font-size:clamp(.95rem,1.5vw,1.05rem);max-width:70ch;margin-top:.9rem}
+  .meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+  .chip{display:inline-flex;align-items:center;gap:.3rem;border:1px solid var(--line);background:#0d1620;color:var(--muted);border-radius:999px;padding:.2rem .6rem;font-size:.72rem;white-space:nowrap}
+  .chip.accent{border-color:rgba(94,234,212,.3);color:#bffcf2;background:rgba(94,234,212,.07)}
+  .actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+  .btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:.58rem .95rem;font-size:.85rem;font-weight:650;transition:background .15s,border-color .15s}
+  .btn:hover{background:var(--panel-2);border-color:#35506a;text-decoration:none}
+  .btn-primary{background:linear-gradient(135deg,rgba(94,234,212,.95),rgba(45,212,191,.82));border-color:transparent;color:#04110e;font-weight:850}
+  .btn-primary:hover{background:linear-gradient(135deg,#7ff7e3,#5eead4)}
+
+  section{padding:clamp(2rem,5vw,3.2rem) 0;border-bottom:1px solid var(--line-soft)}
+  section:last-of-type{border-bottom:0}
+  .sec-head{margin-bottom:1.5rem;max-width:80ch}
+  .sec-head .kicker{font-size:.7rem;color:var(--faint);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem}
+  h2{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:820}
+  .sec-head p{color:var(--muted);font-size:.88rem;margin-top:.5rem}
+
+  .list{display:grid;gap:.8rem}
+  .item{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1rem;align-items:start;
+    background:linear-gradient(180deg,rgba(20,32,44,.88),rgba(13,21,30,.9));
+    border:1px solid var(--line-soft);border-radius:var(--radius);padding:1.05rem 1.15rem;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+    transition:border-color .15s,transform .15s;
+  }
+  .item:hover{border-color:#35506a}
+  .num{font-family:"Cascadia Code",Consolas,monospace;font-size:.78rem;font-weight:800;color:var(--accent);background:rgba(94,234,212,.08);border:1px solid rgba(94,234,212,.24);border-radius:9px;width:2.4rem;height:2.4rem;display:grid;place-items:center;flex:0 0 auto}
+  .item h3{font-size:.98rem;font-weight:780}
+  .item h3 a{color:var(--text)}
+  .item h3 a:hover{color:var(--accent);text-decoration:none}
+  .desc{color:var(--muted);font-size:.82rem;margin-top:.2rem}
+  .tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem}
+  .tag{font-size:.66rem;color:var(--faint);border:1px solid var(--line-soft);border-radius:999px;padding:.08rem .45rem}
+  .links{display:flex;flex-direction:column;gap:.3rem;align-items:flex-end;font-size:.72rem;white-space:nowrap}
+  .links a{color:var(--muted);border:1px solid var(--line-soft);border-radius:8px;padding:.24rem .55rem;background:#0b131c}
+  .links a:hover{color:var(--accent);border-color:rgba(94,234,212,.35);text-decoration:none}
+  .links .primary{color:#bffcf2;border-color:rgba(94,234,212,.3);background:rgba(94,234,212,.07);font-weight:700}
+
+  .files{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem}
+  .file{background:linear-gradient(180deg,rgba(20,32,44,.85),rgba(13,21,30,.9));border:1px solid var(--line-soft);border-radius:14px;padding:1rem}
+  .file h3{font-size:.92rem;font-weight:760}
+  .file .path{font-family:"Cascadia Code",Consolas,monospace;font-size:.72rem;color:var(--faint);margin-top:.15rem}
+  .file p{color:var(--muted);font-size:.78rem;margin-top:.45rem}
+  .file .links{flex-direction:row;align-items:center;justify-content:flex-start;margin-top:.7rem}
+
+  .note{border:1px solid rgba(96,165,250,.28);background:linear-gradient(135deg,rgba(96,165,250,.09),rgba(96,165,250,.02));border-radius:var(--radius);padding:1rem 1.15rem;color:#cfe5ff;font-size:.84rem}
+  .note strong{color:#fff}
+  .note ul{margin-top:.4rem}
+  .note li{margin-top:.25rem}
+
+  .flow{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;font-size:.76rem;color:var(--muted);margin-top:.9rem}
+  .flow span{padding:.24rem .55rem;border:1px solid var(--line-soft);border-radius:8px;background:#0b131c;color:var(--muted)}
+  .flow i{color:var(--faint);font-style:normal}
+
+  footer{padding:2rem 0 3rem;color:var(--faint);font-size:.75rem}
+  footer p + p{margin-top:.3rem}
+
+  @media (max-width:720px){
+    .item{grid-template-columns:auto minmax(0,1fr)}
+    .links{grid-column:1 / -1;flex-direction:row;align-items:center;justify-content:flex-start}
+    .links a{flex:0 0 auto}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  @media print{
+    body{background:#fff;color:#111}
+    .actions,.skip-link{display:none}
+    .item,.file,.note{border-color:#ccc;background:#fff;box-shadow:none}
+    .item h3 a,.desc,.file p,.sec-head p,.lead,.note{color:#222}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#deliverables">跳到交付物清單</a>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">LLM Wiki · Deliverables 1–7</div>
+    <h1>Global Game Success<br><span class="grad">Analysis Wiki</span></h1>
+    <p class="lead">年度最佳 ≠ 市場第一？全球遊戲獎項、玩家表現與市場成功分析。這裡是知識庫本體：研究計畫、來源 Ingest、18 款案例知識庫、資料分析、知識圖譜、HTML 規格、Loop／Graph 紀錄與反思。全部為繁體中文，專業名詞保留英文。</p>
+    <div class="meta">
+      <span class="chip accent">研究期間 2021–2025</span>
+      <span class="chip">擷取日 2026-11-25</span>
+      <span class="chip">18 款案例</span>
+      <span class="chip">22 個來源</span>
+      <span class="chip">133 條資料邊</span>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="../index.html">開啟教學簡報 →</a>
+      <a class="btn" href="https://github.com/s12490047/HW1110">GitHub Repository</a>
+      <a class="btn" href="https://s12490047.github.io/HW1110/">簡報線上版</a>
+    </div>
+  </header>
+
+  <section id="deliverables" aria-labelledby="d-title">
+    <div class="sec-head">
+      <div class="kicker">Knowledge Base</div>
+      <h2 id="d-title">交付物 00–07</h2>
+      <p>標題連到 GitHub 的排版版本（markdown 會被渲染成可讀頁面）；右側「原始 .md」開本頁同源的純文字檔。建議依編號順序閱讀。</p>
+    </div>
+
+    <div class="list">
+
+      <article class="item">
+        <div class="num">00</div>
+        <div>
+          <h3><a href="https://github.com/s12490047/HW1110/blob/main/wiki/00-research-blueprint.md">D1 — Research Blueprint</a></h3>
+          <p class="desc">研究緣起、核心問題、四個成功維度、18 款目的取樣、Award Index 與 Audience Evidence Tier 的設計理由與限制。</p>
+          <div class="tags"><span class="tag">研究設計</span><span class="tag">rubric</span><span class="tag">取樣</span></div>
+        </div>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/wiki/00-research-blueprint.md">GitHub 排版版</a>
+          <a href="00-research-blueprint.md">原始 .md</a>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="num">01</div>
+        <div>
+          <h3><a href="https://github.com/s12490047/HW1110/blob/main/wiki/01-ingest-report.md">D2 — Ingest Report</a></h3>
+          <p class="desc">22 個來源的 Source ID、URL、發布日、擷取日、type／period／status 與限制；兩筆受阻來源（S21 403、S22 禁止爬取）的處理方式。</p>
+          <div class="tags"><span class="tag">來源卡</span><span class="tag">claim 層</span><span class="tag">口徑</span></div>
+        </div>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/wiki/01-ingest-report.md">GitHub 排版版</a>
+          <a href="01-ingest-report.md">原始 .md</a>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="num">02</div>
+        <div>
+          <h3><a href="https://github.com/s12490047/HW1110/blob/main/wiki/02-knowledge-base.md">D3 — Game Knowledge Base</a></h3>
+          <p class="desc">31 欄位的 schema 定義、18 款案例的完整條目、缺值一律 N/A 的規則，以及與 <code>data/games.json</code> 的對應。</p>
+          <div class="tags"><span class="tag">18 款</span><span class="tag">schema</span><span class="tag">N/A 規則</span></div>
+        </div>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/wiki/02-knowledge-base.md">GitHub 排版版</a>
+          <a href="02-knowledge-base.md">原始 .md</a>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="num">03</div>
+        <div>
+          <h3><a href="https://github.com/s12490047/HW1110/blob/main/wiki/03-data-analysis.md">D4 — Data Analysis</a></h3>
+          <p class="desc">Award Index 的偏態分布、Tier 與獎項的錯位、類型平均、覆蓋率與缺值結構；只描述樣本內的形狀，不做因果推論。</p>
+          <div class="tags"><span class="tag">分布</span><span class="tag">錯位</span><span class="tag">覆蓋率</span></div>
+        </div>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/wiki/03-data-analysis.md">GitHub 排版版</a>
+          <a href="03-data-analysis.md">原始 .md</a>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="num">04</div>
+        <div>
+          <h3><a href="https://github.com/s12490047/HW1110/blob/main/wiki/04-knowledge-graph.md">D5 — Knowledge Graph</a></h3>
+          <p class="desc">72 節點／145 邊的索引圖：center、game、genre、platform、award、source 六種實體，邊的語意與為何它不是因果圖。</p>
+          <div class="tags"><span class="tag">72 節點</span><span class="tag">145 邊</span><span class="tag">索引圖</span></div>
+        </div>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/wiki/04-knowledge-graph.md">GitHub 排版版</a>
+          <a href="04-knowledge-graph.md">原始 .md</a>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="num">05</div>
+        <div>
+          <h3><a href="https://github.com/s12490047/HW1110/blob/main/wiki/05-html-spec.md">D6 — Interactive HTML 規劃</a></h3>
+          <p class="desc">為何「先 Wiki、後 HTML」、12 章結構與互動對照、<code>src/</code> 分檔與 <code>tools/build.py</code> 的建置流程。</p>
+          <div class="tags"><span class="tag">12 章</span><span class="tag">build</span><span class="tag">投影</span></div>
+        </div>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/wiki/05-html-spec.md">GitHub 排版版</a>
+          <a href="05-html-spec.md">原始 .md</a>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="num">06</div>
+        <div>
+          <h3><a href="https://github.com/s12490047/HW1110/blob/main/wiki/06-loop-graph.md">Loop／Graph 設計與執行紀錄</a></h3>
+          <p class="desc">九節點循環圖、哪些步驟重複、檢查放在哪、為什麼這樣設計；含一次實際執行與三處缺陷的修正紀錄。</p>
+          <div class="tags"><span class="tag">loop</span><span class="tag">檢查點</span><span class="tag">執行紀錄</span></div>
+        </div>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/wiki/06-loop-graph.md">GitHub 排版版</a>
+          <a href="06-loop-graph.md">原始 .md</a>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="num">07</div>
+        <div>
+          <h3><a href="https://github.com/s12490047/HW1110/blob/main/wiki/07-reflection.md">反思 — 最常出錯的節點與檢查前移</a></h3>
+          <p class="desc">第一名是「整理／正規化」：編碼、簡繁混用、單位錯置、重複計分；說明檢查如何前移到 schema 與 build，以及 workflow 是否修改。</p>
+          <div class="tags"><span class="tag">反思</span><span class="tag">根因</span><span class="tag">workflow</span></div>
+        </div>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/wiki/07-reflection.md">GitHub 排版版</a>
+          <a href="07-reflection.md">原始 .md</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="data" aria-labelledby="data-title">
+    <div class="sec-head">
+      <div class="kicker">Structured Data</div>
+      <h2 id="data-title">結構化資料（data/）</h2>
+      <p>簡報與 Wiki 共用同一份資料。所有數字都從這裡出發，經 <code>tools/build.py</code> 驗證後才投影成畫面。</p>
+    </div>
+
+    <div class="files">
+
+      <div class="file">
+        <h3>games.json</h3>
+        <div class="path">data/games.json</div>
+        <p>18 款案例 × 31 欄位：獎項拆解、Award Index、Tier、銷量／CCU、商業模式與限制。</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/data/games.json">GitHub</a>
+          <a href="../data/games.json">原始 JSON</a>
+        </div>
+      </div>
+
+      <div class="file">
+        <h3>sources.json</h3>
+        <div class="path">data/sources.json</div>
+        <p>22 張來源卡：Source ID、URL、發布日、擷取日、type、status 與使用限制。</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/data/sources.json">GitHub</a>
+          <a href="../data/sources.json">原始 JSON</a>
+        </div>
+      </div>
+
+      <div class="file">
+        <h3>awards.json</h3>
+        <div class="path">data/awards.json</div>
+        <p>TGA 2021–2025 五屆典禮的獎項名單與入圍，供 Award Index 拆解對照。</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/data/awards.json">GitHub</a>
+          <a href="../data/awards.json">原始 JSON</a>
+        </div>
+      </div>
+
+      <div class="file">
+        <h3>edges.json</h3>
+        <div class="path">data/edges.json</div>
+        <p>133 條資料邊（build 產生）：遊戲 ↔ 類型、平台、獎項、來源，知識圖譜的資料來源。</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/s12490047/HW1110/blob/main/data/edges.json">GitHub</a>
+          <a href="../data/edges.json">原始 JSON</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="how" aria-labelledby="how-title">
+    <div class="sec-head">
+      <div class="kicker">Pipeline</div>
+      <h2 id="how-title">Wiki 與簡報的關係</h2>
+      <p>Wiki 是可驗證的知識層，簡報是它的投影結果。修改資料後重跑建置，兩邊不會分叉。</p>
+    </div>
+
+    <div class="flow" aria-label="資料流程">
+      <span>取得資料</span><i>→</i><span>來源卡／claim</span><i>→</i><span>正規化</span><i>→</i><span>檢查（schema）</span><i>→</i><span>data/*.json</span><i>→</i><span>build 驗證</span><i>→</i><span>index.html</span>
+    </div>
+
+    <div class="note" style="margin-top:1.1rem">
+      <strong>關於 markdown 檔：</strong>GitHub Pages 不會把 <code>.md</code> 渲染成網頁，直接點只會看到純文字。因此每張卡的主要連結指向 GitHub 的排版版本；「原始 .md」是同源檔案，供離線或下載使用。
+      <ul>
+        <li>本頁本身是靜態 HTML，無外部字型、無外部 JS／CSS，離線可開。</li>
+        <li>資料異動流程：改 <code>data/</code> 或 <code>src/</code> → <code>py tools/build.py</code> → <code>index.html</code> 重新產生。</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Global Game Success Analysis Wiki ｜ 研究期間 2021–2025 ｜ 資料擷取日 2026-11-25</p>
+    <p>引用數據與獎項名單著作權屬原發布者；遊戲名稱與商標屬各發行商所有，僅作研究與教學引用。</p>
+  </footer>
+
+</div>
+</body>
+</html>

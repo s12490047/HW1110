@@ -76,6 +76,7 @@ src/
 tools/
   build.py                 # 驗證 → 產生 edges → 合併成 index.html
 wiki/
+  index.html               # Wiki 目錄頁（GitHub Pages 入口）
   00-research-blueprint.md # D1 研究計畫
   01-ingest-report.md      # D2 來源整理
   02-knowledge-base.md     # D3 遊戲知識庫
